@@ -1,0 +1,2077 @@
+freeswitch (1.0.5)
+
+	all: run indent on the whole tree and update copyright dates in prep for 1.0.5 (r:16579)
+	applications: add inline dp to multiple apps (MODAPP-337/r:14922)
+	build: Fix build to account for FreeBSD sed issues (FSBUILD-184/r:14479)
+	build: build unimrcp after sofia (r:14507)
+	build: Fix mod_ldap not building on Linux (FSBUILD-189/r:14725)
+	build: add --with-rundir configure param and -run freeswitch runtime param to adjust the location of the pid file (FSBUILD-188/r:14768)
+	build: fix compile on Ubuntu 8.10 (FSCORE-443/r:14928)
+	build: add mod_cidlookup (r:14930)
+	build: fix libtiff build (r:15034)
+	build: CMAKE_MINIMUM_REQUIRED is called too late. (FSBUILD-192/r:15050)
+	build: remove broken modules from debian build (FSBUILD-193/r:15068)
+	build: fix Build-Depends on debian build for skypiax (FSBUILD-197/r:15113)
+	build: Debian build misses some packages (FSBUILD-201/r:15216)
+	build: Win32 Dependencies do not download if there is a space in the path to sources (FSBUILD-203/r:15348)
+	build: Handle BIGENDIAN Windows Bug (MODENDP-245/r:15410)
+	build: fix spandsp installing (FSBUILD-198/r:15414)
+	build: use same version of libtool and libtoolize (FSBUILD-205/r:15416)
+	build: Update Debian build init script (FSBUILD-204/r:15417)
+	build: Fix Debian script broken in r15417 (FSSCRIPS-21/r:15443)
+	build: Add windows projects for Broadvoice only 2008 (r:15470)
+	build: debian: remove incorrect option (FSBUILD-208/r:15496)
+	build: fix automated libsrtp build (r:15523)
+	build: fix --srcdir for modules.conf (r:15526)
+	build: fix --srcdir for sounds_version.txt and swigall
+	build: fix uclibc cross compile issues (stolen from http://astlinux.svn.sourceforge.net/viewvc/astlinux/trunk/package/freeswitch/freeswitch-sqlite-make.patch?revision=2455) (r:15531)
+	build: add new broadvoice to windows solution and cleanup template (r:15562)
+	build: Add initial build support to windows (MODUNIMRCP-6/r:15610)
+	build: srcdir fixes for modmake.rules (FSBUILD-211/r:15644)
+	build: srcdir fixes for Makefile.am (FSBUILD-211/r:15645)
+	build: srcdir fixes for configure.in (FSBUILD-211/r:15646)
+	build: fix srcdir for libs/apr/configure.gnu (FSBUILD-211/r:15648)
+	build: fix calling of sub configure.gnu files during --srcdir build (FSBUILD-211/r:15661)
+	build: fix --srcdir make error (FSBUILD-211/r:15673)
+	build: Initial check in for Windows Inno Setup script (r:15681)
+	build: add --disbale-cpp configure argument to disable the c++ build for the core (r:15717)
+	build: pass configure args/vars to sub-configure commands run from module makefiles (r:15718)
+	build: try to not insert -std=c99 into cflags passed to libs that are not ansi compliant (r:15739)
+	build: add -Wdeclaration-after-statement for supported compilers (r:15762)
+	build: add changes for sounds download to allow independent version specific selection (r:15777)
+	build: move sounds out to their own packages as they do not change revisions with freeswitch (r:15809)
+	build: fix setting of BASE passed to module makefiles when doing --srcdir builds (FSBUILD-211/r:15814)
+	build: Numerous --srcdir fixes (FSBUILD-211/r:15849)
+	build: compile by default on osx 10.6 and add --enable-64 support (with previous patch) for osx 10.6 (r:15862)
+	build: add --enable-64 support for os x 10.4 and 10.5 (r:15874)
+	build: add missing modules to modules.conf (FSBUILD-214/r:15879)
+	build: fix mod_managed build on gcc 4.4 (r:15897)
+	build: Disable rpath checking in freeswitch.spec (FSBUILD-217/r:16037)
+	build: Remove libuuid from tree (r:16072)
+	build: Avoid building static version of modules (e.g. mod_enum.a) by adding the "-shared" libtool option. (r:16225)
+	build: Fix pidfile path in debian init script (FSBUILD-264/r:17040)
+	config: improvements to French language handling (MODASRTTS-20/r:14911)
+	config: Add valet_parking to default config (r:15124)
+	config: Add valet macros (r:15156)
+	config: Fix dialplan 6000 - call park retrieval example (r:15292)
+	config: clarify the info as the word IP in the option isn't clearly saying you can put an IP in the options value (r:15302)
+	config: Convert lang/fr/vm/sounds.xml to utf8 and minor changes (MODASRTTS-22/r:15319)
+	config: Fix default group calling so that the order is followed (FSCONFIG-12/r:15492)
+	config: add commented uuid param to mod_logfile's default config (r:15537)
+	config: add descriptions for broadvoice codecs (FSCORE-497/r:15626)
+	config: Add core-db-dsn (commented) to switch.conf.xml (r:15756)
+	config: Block intercepts after call has been answered (FSCONFIG-16/r:15828)
+	config: Move erlang module's default config file to be with all the others (r:15881)
+	config: Add confirm-key & -macro, tts-engine & -voice, confirm-attempts attributes, extra comments to ivr.conf.xml (r:15929)
+	config: Allow specifying auth-scheme in config (r:16350/MDXMLINT-56)
+	config: Improvements to french lang (FSCONFIG-18/r:16585)
+	config: Add new English sounds, sound prompts (r:16911)
+	core: Add per-call logging (r:14509)
+	core: Fix IVR menu timeout when caller presses no digits (DP-4/r:14548)
+	core: re-factor node allocation and make a copy of userdata in case the session gets killed before the logger module gets the node (r:14555)
+	core: don't expose node allocation functions outside of switch_log.c (r:14556)
+	core: Fix leak in xml ivr menus (FSCORE-421/r:14579)
+	core: add record_start and record_stop events (r:14591)
+	core: re-factor mod_event_socket so it uses switch_log functions to duplicate and free log nodes while it uses them internally (fix bad ptr for userdata on event socket listeners) (r:14598)
+	core: add answersec answermsec and answerusec to time how long it took for a call to be answered (r:14620)
+	core: add recursive flags and workaround for nested broadcast in controlled situations (r:14644)
+	core: add origination_cancel_key variable for a dtmf key that can abort an originating call (r:14645)
+	core: add state change hooks for destroy (r:14647)
+	core: fix reaction in att_xfer when call is cancelled or times out (r:14650)
+	core: fix timeout while bridge is waiting for CF_BRIDGED flag (FSCORE-424/r:14702)
+	core: set the hostname core variable in switch_core_init (r:14726)
+	core: add more stuff to event in hangup hook api (r:14740)
+	core: add graceful zrtp failure (r:14745)
+	core: reduce poll timeout when dtmf is present (r:14749)
+	core: fix start_dtmf muting input from portaudio (FSCORE-426/r:14755)
+	core: fix missing reset causing the same timestamp forever on perfect storm of conditions involving transcoding and ptime combo (gotta love it) (r:14771)
+	core: CoreSession::originate: set the uuid on success (r:14773)
+	core: add optional prefix arg to set_user (FSCORE-429/r:14789)
+	core: try to improve autoflush and other silly audio glitches from edge cases and help (FSCORE-416/r:14800)
+	core: fix Windows mem leak (FSCORE-440/r:14882)
+	core: tolerate offset dtmf payload (zoiper) (r:14883)
+	core: Add the ability to seperate the spool and the storage directories for voicemail (BOUNTY-9/r:14889)
+	core: Add min_dtmf_duration setting to FS core and modified default_dtmf_duration in rfc2833 queuing function to not be used as min (FSCORE-442/r:14893)
+	core: Remove crash protection (r:14919)
+	core: Move switch_util_quote_shell_arg to core functions (FSCORE-446:/r:14958)
+	core: add preprocess framework for agc ec etc, ALPHA, needs work (r:14960)
+	core: add i flag to bind_meta_app to do inline execute of the app (not wise to use unless app returns instantly) (r:14969)
+	core: fix using native_file as ringback on codecs that have passthru only (r:14980)
+	core: pita bypass media transfer fiasco fix (r:14983)
+	core: don't enforce existing file check on streams (r:15014)
+	core: re-INVITEs sent only after ~2 seconds (FSCORE-453/r:15021)
+	core: changing default behavior ignore_early_media=true must be set together with ringback to generate local ringback on early media (r:15025)
+	core: improve behavior of leg_delay_start, leg_timeout, leg_progress_timeout (FSCORE-439/r:15027)
+	core: Fix spinning threads that receive 183 on bridge/originate with bypass_media set (FSCORE-452/r:15028)
+	core: Check handling of SIGINT (FSCORE-456/r:15051)
+	core: add bridge_answer_timeout variable, a timeout in seconds how long to tolerate a bridge that is in early media without being answered (can be set on either leg) (r:15057)
+	core: Enable auto update displays in more places (r:15110)
+	core: fix file handle mem leak (thanks pressuerman) (r:15114)
+	core: add CALL_UPDATE event (r:15119)
+	core: move accidental new behavior behind new param originate_continue_on_timeout=true (r:15121)
+	core: fix att xfer to an app (r:15122)
+	core: Fix CODEC event has duplicate codec name and rate in lowercase (MODEVENT-59/r:15123)
+	core: add missing comma that causes buffer overflow in event socket (r:15128)
+	core: expand range of acceptable chars (MODENDP-249/r:15129)
+	core: Add 48k 30ms and 40ms codecs (r:15135)
+	core: Fix playback cannot play stereo .wav files (FSCORE-463/r:15139)
+	core: re-factor some of the message parsing code to use fifo to reduce threading contention (r:15142)
+	core: send update after both sides are answered (r:15149)
+	core: fix playback_ms and record_ms to work right and add playback_seconds and record_seconds (r:15155)
+	core: delay update till after media has been confirmed to prevent SOA race in sip (r:15159)
+	core: fix arg parsing on restart to not accumulate args (r:15164)
+	core: add new macro to make sure we don't send bypass command too soon (r:15165)
+	core: Fix shutdown not working on Windows with fs_cli (FSCORE-435/r:15167)
+	core: Fix inbound calls with incompatible codecs can result in heap corruption and crash (FSCORE-467/r:15178)
+	core: prevent unsolicited ring_ready (r:15179)
+	core: make switch_core_sqldb_stop non-blocking (FSCORE-470/r:15183)
+	core: add SWITCH_MESSAGE_INDICATE_UUID_CHANGE to warn a session when the uuid has changed (r:15193)
+	core: Handle bypass_media_after_bridge with loopback (FSCORE-418/r:15195)
+	core: hangup_after_bridge=false only works if bypass_media=false (FSCORE-417/r:15196)
+	core: add api_on_answer var (r:15207)
+	core: Fix thread runaway in switch_console_loop for Windows (FSCORE-472/r:15209)
+	core: change switch_strlen_zero to zstr (r:15211)
+	core: add ignore_display_updates variable to block display updates on that leg (r:15218)
+	core: re-factor how record_answer_req=true works, add media_bug_answer_req=true variable and backport record_answer_req=true to use it (IRQ-00/r:15235)
+	core: don't consider cng packets for rtp auto-adjust (r:15240)
+	core: add RECORD_READ_ONLY and RECORD_WRITE_ONLY chan vars to influence session_record (r:15257)
+	core: answer channel on record to ensure media (r:15265)
+	core: re-factor ringback so it does not start early_media until it has to (r:15266)
+	core: add record_min_sec chan var (r:15271)
+	core: flush audio on reset of auto-adjust (r:15282)
+	core: filter out unwanted media on rtp (r:15284)
+	core: make switch_cmp_addr ipv6 friendly and cleanup/refactor autoadjust code in rtp (r:15289)
+	core: add slide_write to switch_buffer (r:15297)
+	core: add non opaque return for switch_thread_cond_timedwait (r:15322)
+	core: fix some bypass xfer scenarios (r:15326)
+	core: Originate/bride doesn't pass 183s, then times out on media while in bypass-media mode (FSCORE-479/r:15329)
+	core: add flags to state_handler table (r:15356)
+	core: send callee id info as caller id info when an outbound call becomes the a leg of another outbound call (r:15390)
+	core: fix issue with global bypass_media_after_bridge messing up callflow (r:15404)
+	core: add DUMP_EVENT macro (r:15439)
+	core: Add Record-File-Path to SWITCH_EVENT_RECORD_* fired by switch_ivr_record_file() (FSCORE-486/r:15446)
+	core: expand per-thread db caching to odbc (r:15453)
+	core: add switch_ivr_enterprise_originate optional new dimension to originate strings every element in :_: separated list in originate strings will fire in a dedicated thread and can contain their own {} and , and | lists (r:15455)
+	core: add read_frame_callback to gentones (r:15459)
+	core: add ringback to enterprise_originate (r:15461)
+	core: tolerate MySQL ODBC limitation (FSCORE-487/r:15465)
+	core: add <> var container to enterprise_originate syntax to set variables to pass to every thread (r:15469)
+	core: add cache_db handle api (odbc/sqlite abstraction) (r:15473)
+	core: caller/ee id cleanup (r:15474)
+	core: add support for running core-db over odbc (r:15487)
+	core: Properly count CNG packets (FSCORE-489/r:15493)
+	core: Fix segfault on exit (FSCORE-491/r:15499)
+	core: add append and truncate to audio file API (r:15503)
+	core: re-factor enterprise_originate (r:15565)
+	core: fix thread saftey issue in expiring media bugs (r:15587)
+	core: add debug-level to switch.conf.xml and tweak a few debugs (r:15595)
+	core: re-factor/abstract the core sql stuff more (r:15599)
+	core: don't hangup call on asr errors (FSCORE-493/r:15623)
+	core: fix db connection hijacking issue (r:15624)
+	core: send bridge/unbridge indication during eavesdrop (r:15638)
+	core: record the correct remote_media_ip and remote_media_port even when we autoadjust (FSCORE-500/r:15659)
+	core: improve chunked sql transaction submission (r:15672)
+	core: add switch_caller_extension_add_application_printf() (r:15688)
+	core: Fix switch_poll timeout that causes bad audio in Windows (FSCORE-501/r:15722)
+	core: add switch_core_vsprintf (r:15737)
+	core: allow recursive broadcasting (r:15757)
+	core: Add support for coma-delimited lists in a user's auth-acl param (MODENDP-224/r:15760)
+	core: allow listeners to pre-bind to subclasses before the main subscriber is loaded and fix off by one issue in unbinding event handler functions (r:15790)
+	core: don't mix ptimes in the codec string lists, just discard conflicting ones (r:15797)
+	core: Fix 'uuid_bridge' kills both channels if one of them is executing java app (FSCORE-508/r:15799)
+	core: add io mutex to cache db for optional mutex protection (r:15800)
+	core: add chan name to log lines (r:15835)
+	core: fix caller_profile race in hangup that may cause some missing cdr data in certain cases (r:15839)
+	core: add priority queue for events so important broadcasts like hold music can take precedence over event-lock (r:15865)
+	core: Adding switch_mprintf (broken out from sqlite)
+		Adding new %w to mprintf to auto escape both single quote and backslashes
+		Improve the tab completion a tad and fix some sqlite/odbc compat with new mprintf opts
+		Change the default stream writer to use switch_vmprintf so %q/%w can be used there too (r:15875)
+	core: Fix choppy inband DTMF generation from FS (FSCORE-510/r:15896)
+	core: fix record size causing mysql table create failure (FSCORE-512/r:15938)
+	core: fix x-fer for SIP phones (FSCORE-513/r:15944)
+	core: cleanup tab completion more and introduce new callback based expansion functions to do real time tab completion in some areas (r:15952)
+	core: fix build without SWITCH_HAVE_LIBEDIT on Windows and perhaps others (r:15953)
+	core: switch_ivr_parse_event(): allow execute-app-args to be specified in event body (FSCORE-514/r:15970)
+	core: return true/false from sql tester incase you want to do more stuff when the table had to be created (r:15981)
+	core: add fsctl flush_db_handles to expire any unused db handles (r:15982)
+	core: allow mod_say to use more than nine digits (MODAPP-380/r:15984)
+	core: reset audio level on mute/unmute (r:15991)
+	core: Add tab complete to windows (r:16000)
+	core: Fix playback during a record session causing invalid wav file (FSCORE-517/r:16003)
+	core: don't restart runtime functions when shutting down (r:16008)
+	core: Add tab complete to windows (ESL-24/r:16010)
+	core: switch_play_and_get_digits now returns SWITCH_FALSE if caller doesn't dial anything (DP-10/r:16011)
+	core: adding 12kHz and 24kHz (r:16026)
+	core: Fix  dialplain looping over and over again when group_confirm_file is missing (DP-11/r:16063)
+	core: trade some max call count for more accurate timing in full media situations, hint: use 30ms ptime for drastic reduction in resources (r:16081)
+	core: add core param for controling timer (r:16093)
+	core: Incorrect handling when rtp-timer-name=none causes medialess RTP sessions to never time out (FSRTP-10/r:16100)
+	core: add SOCKET_EVENT event (r:16135)
+	core: count runlevel to prevent dup calls to the core init routines (r:16140)
+	core: fix power of 10 in cps counter (r:16144)
+	core: add ;; delim to console (r:16166)
+	core: fix mitm for audio for passing sas with zrtp (r:16204)
+	core: setting jitter buffer keeps dtmf events from firing (FSCORE-523/r:16207)
+	core: don't segfault when -nonat is used and nat_map reinit is called (r:16253)
+	core: switch to conditional broadcast mode on slow kernels (r:16308)
+	core: add bridge_early_media=true variable to hear early media from first channel with early media as ringback, this is 1 way audio (r:16313)
+	core: fix progress_timeout sets incorrect originate_status (FSCORE-527/r:16314)
+	core: switch_ivr_originate: fix windows compiler warning (r:16320)
+	core: few new command line opts -vm for conditonal timer, -nocal to skip timer calibration and -nort to turn off clock_realtime fam of functions (r:16324)
+	core: fix failed_xml_cdr prefix is not respected (FSCORE-529/r:16401)
+	core: allow alias expansion from fs_cli (r:16416)
+	core: allow double escape in parser for \ (r:16440)
+	core: Add a -version flag to freeswitch binary (FSCORE-534/r:16482)
+	core: Delay windows service startup so other command line options are processed (r:16558)
+	core: ZRTP Video works with ZFone (but you have to set your endpoint to use 99 for the payload for video or 125 in mod_h26x.c for H264 becuase the payloads MUST match or it can't figure it out (r:16563)
+	core: add new api funcs to xml (r:16605)
+	core: disable cpu timer affinity by default but make it still possible via config and fix stray constant in tipping_point (r:16679)
+	core: rename switch_socket_create_pollfd to switch_socket_create_pollset, add switch_socket_create_pollfd that really creates a pollfd out of a socket, expose switch_pollset_poll and switch_pollset_remove (r:16683)
+	core: Fix play_and_get_digits not honoring max_tries param (FSCORE-554/r:16706)
+	core: Fix bridge_answer_timeout dropping calls even after being answered (FSCORE-556/r:16737)
+	core: add force_local_ip_v4 and force_local_ip_v6 global vars to override the core funcs to always discover the same ip (r:16801)
+	core: compromising on timing code, remove -vm and make it default, make new -heavy-timing for previous default, change tipping-point to work of count of active timers rather than sessions, this should statisfy the droves of 'I wish it worked like 1.0.4 people' (r:16853)
+	core: add events for bug start and stop (r:16858)
+	core: "I want my two dollars, er, CPU percentage points" (r:16869)
+	core: skip dialplan args with bad char sequences (r:16882)
+	core: fix mem leak in phrases (r:16884)
+	core: add an event to phrases to be used as possible variables in parsing (r:16885)
+	core: Fix infinite loop that consumes RAM on bridge group/ and enterprise originate (r:16913)
+	core: Fix crash in UniMRCP stream_write callback (r:16917)
+	core: Fix dore dump in mod_stun.c (MODENDP-297/r:16953)
+	core: add fsctl min_idle_cpu and min-idle-cpu feature to refuse calls after the system falls below a certain percentage of idle cpu (r:16962)
+	core: add record_fill_cng var (r:16964)
+	core: Remove proxy media flag on video calls when not in proxy media (FSRTP-12/r:16969)
+	core: improve group_confirm:
+		group_confirm_read_timeout=<ms>
+		group_confirm_file=<file>
+		group_confirm_error_file=<file>
+		group_confirm_key=<now can be one or more keys>
+	core: add uuid_bridge_continue_on_cancel var to move on in dialplan if uuid_bridged channel hits a bad b-leg (r:17044)
+	core: switch_core_service_thread() causes crash in Windows (FSCORE-576/r:17065)
+	core: Break the loop in switch_ivr_parse_all_events() if CF_BREAK flag has been set (FSCORE-577/r:17074)
+	core: Fix memory leak caused by the function switch_core_codec_copy (FSCORE-579/r:17105)
+	core: add sanity check to project size of decoded codec data (r:17108)
+	docs: Add large Doxygen update (thanks Muhammed Shahzad) (r:14973)
+	docs: update es phrase file (MODAPP-317/r:15575)
+	embedded_languages: Prevent unloading of embedded languages modules (also fixes MODLANG-121/r:14491)
+	embedded_languages: add session.hangupCause() (r:14912)
+	embedded_languages: add session.getState() (r:14924)
+	embedded_languages: Fix caller_profile old code forcing empty caller ID (FSCORE-450/r:15006)
+	embedded_languages: add bridged method to scripting langs (r:16854)
+	libapr: add new apr functions/macros needed by unimrcp update (r:15542)
+	libbroadvoice: update to http://www.soft-switch.org/downloads/snapshots/voipcodecs/broadvoice-20091122.tar.gz (r:15602)
+	libdingaling: patch libdingaling to use next_tag instead of child (r:14624)
+	libesl: automatically load ESL.so in PHP (r:14707)
+	libesl: fix php swig generation (ESL-20/r:14750)
+	libesl: disable duplicate headers on request param events (r:14909)
+	libesl: c# wrapper for esl lib (r:14955)
+	libesl: add logger.pl a FS debug tool using ESL.pm (r:15377)
+	libesl: Add send_info example  (r:15613)
+	libesl: use event_clone type internally to not confuse people who think they are getting events in response to commands (r:15660)
+	libesl: hook new complete api up to FSAPI and export tab completion down to fs_cli (r:15956)
+	libesl: change execute and executeAsync to return the last event instead of status since it will almost always be 0 (r:15973)
+	libesl: add help banner on connection failure (ESL-25/r:16040)
+	libesl: add support for user level auth to esl and fs_cli (r:16161)
+	libesl: tcl example thanks Mark Mann (r:16307)
+	libesl: rename 'event' by 'Event', so it's C# keyword (r:16519)
+	libesl: Improve C# support. Rename properties like C#-style (r:16520)
+	libesl: fix filters (and please use JIRA instead of mailing list to report bugs) (r:16527)
+	libesl: Add new examples about use ESL managed. Inbound and Outbound modes were documented. (r:16541)
+	libesl: Fix possible ESL deadlock when waiting for non-existent data on socket (r:16721)
+	libesl: fix esl sendevent issue and change the sendEvent method to return the reply text like sendRecv etc (r:16921)
+	libesl: Add ESL Dispatch perl example (Thanks Jay Binks) (r:16922)
+	libiksemel: fix iksemel build against gnutls 2.x (FSBUILD-219/r:16019)
+	libjs: pass ldflags to dso builds for libjs and nspr (r:16549)
+	libminiupnpc: make socket connection nonblocking to timeout to dead ip addrs (r:16611)
+	libportaudio: Dither code in mod_portaudio doesn't properly compile on 64 bit systems (r:15422)
+	libsofiasip: fix sofia build with new openssl (r:15426)
+	libsofiasip: make sofia not auto-respond to SUBSCRIBE refresh requests (r:16273)
+	libsofiasip: Assertion fails in nua_bye_server_report (SFSIP-197/r:16534)
+	libsofiasip: Fix segfault in stun_encode_message (FSCORE-551/r:16635)
+	libsofiasip: fix typo in sofia that causes endless loop when you have a challenge with 2 auth headers in it (r:17114)
+	libspandsp: update to spandsp snapshot 20091005 (r:15084)
+	libspandsp: update to spandsp-20091006 snapshot (r:15093)
+	libspandsp: fix spandsp build on 32 bit 10.6 OS X builds (LBCODEC-4,MODAPP-351/r:15631)
+	libstfu: add resize function (r:14871)
+	libunimrcp: Update to unimrcp 1297, remove API change (r:15615)
+	libunimrcp: unimrcp windows x64 build support and fix release builds (r:15621)
+	libuuid: inital addition of libuuid to tree (r:16021)
+	mod_alsa: update to new module api (r:14833)
+	mod_bv: remove non-working bv codecs pending working lib from steve and mod_bv unified with both codecs in one module. (r:15559)
+	mod_bv16: add support for BroadVoice16 codec (r:15464)
+	mod_bv16: add plc (r:15466)
+	mod_bv16: move bv16 so it doesn't use the same number as another codec in mod_voipcodecs (r:15468)
+	mod_bv32: add support for BroadVoice32 codec (r:15464)
+	mod_bv32: add plc (r:15466)
+	mod_cdr_csv: try to rotate on failed write to cdr file (r:14948)
+	mod_cdr_pg_csv: postgresql cdr module, requires some adjustments to make it more platform agnostic, good for solaris and centos (Cypromis) (r:17100)
+	mod_celt: bring CELT up to the latest build we need more testers  (r:15278)
+	mod_celt: add CELT for Windows (r:16414)
+	mod_cidlookup: Fix segfault on no DSN (MODAPP-346/r:15019)
+	mod_cidlookup: add whitepages.com support (r:15023)
+	mod_cidlookup: add channel var / debug log for cidlookup src (r:15268)
+	mod_cidlookup: fix minor bugs, make whitepages work if regular url not set (oops), channel var set for area,	ignore "UNKNOWN" and "UNAVAILABLE" from API (r:15331)
+	mod_cidlookup: more cleanup, always try to get a location, add verbose option to api call, cache area and src so the cache is full rep of cid data (r:15333)
+	mod_cidlookup: proper fix for working in npanxx only mode (thanks for the heads up bkw) (r:15341)
+	mod_cidlookup: use new cached odbc api (r:15680)
+	mod_cidlookup: add shorter timeout + warn on slow responses (r:15683)
+	mod_commands: add host_lookup api call (r:14667)
+	mod_commands: add uuid_exists api call (r:14668)
+	mod_commands: add non-destructive regex substitution (MODAPP-319/r:14727)
+	mod_commands: add bg_system (like system but in the bg) (r:14746)
+	mod_commands: add optional trailing & to sched_api to denote running the task in a sep thread (r:14765)
+	mod_commands: fix segfault (r:14961)
+	mod_commands: Updating tab completion for show cli command (FSCORE-468/r:15180) 
+	mod_commands: add api hostname (r:15225)
+	mod_commands: add uuid_debug_audio <uuid> <read|write|both> <on|off> (r:15274)
+	mod_commands: add more autocomplete items (FSCORE-468/r:15506)
+	mod_commands: Fix group_call returns nothing if one endpoint on the group is not registered (MODAPP-368/r:15530)
+	mod_commands: fix parsing in time_test to prevent a few edge cases (r:15549)
+	mod_commands: add db_cache API - shows db cache status (FSCORE-503/r:15697)
+	mod_commands: add escape API to escape a string (r:15764)
+	mod_commands: add uuid_recv_dtmf (r:15840)
+	mod_commands: change name of 'key' field due to reserved name in sql (r:15842)
+	mod_commands: add console_complete_xml api (r:15967)
+	mod_commands: fix db_cache's auto-complete (r:15969)
+	mod_commands: add uuid_audio cli cmd (r:15989)
+	mod_commands: check for zstr(cmd) in escape_function (r:16029)
+	mod_commands: Fix group_call_function not loading group-dial-string and dial-string from user type pointer (MODAPP-335/r:16034)
+	mod_commands: add timer_test cli app (r:16079)
+	mod_commands: fsctl add shutdown now for debugging (r:16220)
+	mod_commands: add uuid_simplify and sip_auto_simplify (r:16420)
+	mod_commands: switch_channel_expand_variables value escape enhancement (MODAPP-354/r:16465)
+	mod_commands: Add missing show modules to mod_commands (FSCORE-468/r:17015)
+	mod_conference: Fix conference floor ownership being ceded too easily (MODAPP-323/r:14703)
+	mod_conference: Display callers' rates (r:14992)
+	mod_conference: Don't start conf auto record until a second party arrives (MODAPP-348/r:15029)
+	mod_conference: wait-mod doesn't loop moh-sound audio file (MODAPP-349/r:15171)
+	mod_conference: Return additional flags in xml_list (MODAPP-360/r:15275)
+	mod_conference: take pin from x header (MODAPP-333/r:15415)
+	mod_conference: add more mutexes to video thread (r:15551)
+	mod_conference: fix video thread (r:15590)
+	mod_conference: add mute on/mute off actions in addition to toggle mute action (MODAPP-370/r:15845)
+	mod_conference: add conference member data into the play-file-member-done event (r:15909)
+	mod_conference: add waste-bandwidth flag to conference (r:16110)
+	mod_conference: mix member play file data in with conference so you can hear the bg while hearing the member file (r:16408)
+	mod_conference: mod_conference add conference_max_members channel variable that can be set on the first channel calling a conference to override the profiles max-members param (r:16597)
+	mod_conference: Change conf recording to start properly when 2nd person joins (MODAPP-398/r:16681)
+	mod_conference: Fix race condition that occasionally prevents conf "alone" sound from playing (MODAPP-400/r:16723)
+	mod_conference: Add 'you are now muted' prompt to deaf-mute conference option. (MODAPP-402/r:16908)
+	mod_console: Improved tab completions, and more description usage informations (LOGGER-2/r:15103) 
+	mod_curl: don't include response code in response data as it has its own var (MODAPP-369/r:15591)
+	mod_dialplan_xml: Fix anti-action not being supported for time-based conditions (DP-6/r:14901)
+	mod_dialplan_xml: add inline=true to actions to exec certain apps right away (also mod_dptools) (r:14906)
+	mod_dialplan_xml: Fix condition "week of year" calculation (DP-7/r:14968)
+	mod_dialplan_xml: Add holiday, week of year matching (Thanks Vagabond) (r:15721)
+	mod_dialplan_xml: Add optional loops attr to xml dp extension (thanks MOC) (r:16886)
+	mod_dingaling: fix segfault on unload (MODENDP-243/r:14588)
+	mod_dingaling: Fix mod_dingaling does not reads profile information from configuration file at runtime till whole module is reloaded (LBDING-15/r:14917)
+	mod_dingaling: force marked answer on dingaling outbound calls when accept is received (r:17043)
+	mod_dingaling: Fix STUN-related core dump (MODENDP-299/r:17049)
+	mod_directory: initial commit of real code (MODAPP-325/r:14981)
+	mod_directory: fix segfault on failure (r:15076)
+	mod_distributor: Initial commit (r:15421)
+	mod_dptools: add optional level argument to info app to choose the log level it logs on (r:14643)
+	mod_dptools: jump to a specific offset with the playback by appending @@<samples> to the path (r:14752)
+	mod_dptools: make continue_on_fail trigger explicit matching and only do default behavior when it's not set (r:14972)
+	mod_dptools: att_xfer sometimes doesn't detect B leg hanging up on PSTN - this is a patch to hangup B and initiate the transfer of A to C by pressing * (DP-8/r:15013)
+	mod_dptools: Add Campon feature. (r:15201)
+	mod_dptools: Add campon_stop_key and campon_announce_sound to tell the user how to force it to the end of the waiting period (r:15220)
+	mod_dptools: Remove attended transfer from reasons for continue_on_fail (FSCORE-367/r:15367) 
+	mod_dptools: add dp apps for setting audio level and muting (r:15993)
+	mod_dptools: make cn optional for mute 1 means absolute silence > 1 means generate cn level (r:15996)
+	mod_dptools: add leading m:<delim>: to change delim on inline dp eg m:^:set:foo=bar^set=blah=true to put an end to Vagabond's suffering (r:16526)
+	mod_dptools: make bridge_terminate_key work in bypass media when using info dtmf (r:16530)
+	mod_dptools: Fix bypass_media ignored in dial string (DP-14/r:16588)
+	mod_dptools: add param setting function to asr (r:16600)
+	mod_dptools: add action='user_call' to xml_curl lookups for the user endpoint (r:17115)
+	mod_erlang_event: Add support for simply sending an arbitrary message to an arbitrary registered process at a node (r:14875)
+	mod_erlang_event: Deprecate new_pid message in favor of get_pid which has an extra element, the call's UUID (r:14877)
+	mod_erlang_event: optionally allow compatibility with nodes running older OTP releases (R7 through current) (r:15189)
+	mod_erlagn_event: Don't exit the entire listener for a single session failure (reported by Timur Irmatov) (r:16516)
+	mod_esf: Add ability to adjust multicast packet TTL with the config (MODAPP-338/r:14927)
+	mod_esf: fix compile error on windows (r:14934)
+	mod_event_multicast: clean up mod_event_multicast to use blocking recvfrom and better error checking (r:15791)
+	mod_event_socket: add unique-id check to sendevent to send and event to a session instead of the system (r:14874)
+	mod_event_socket: fix mem leak (MODEVENT-54/r:14891)
+	mod_event_socket: fix CHANNEL_HANGUP_COMPLETE missing under myevents (MODEVENT-56/r:15011)
+	mod_event_socket: fix event_sink race (r:15389)
+	mod_event_socket: fix expires seg in event_sink (r:15594)
+	mod_event_socket: only kill event socket on 100 consecutive errors (r:15671)
+	mod_event_socket: add userauth <user>@<domain>:<pass> to event_socket to auth against user directory uses esl-password esl-allowed-api esl-allowed-events and esl-allowed-log to control resource access (r:16160)
+	mod_fax: add spandsp_start_dtmf app to mod_fax (r:16727)
+	mod_fax: put tx page count if its TX (r:16940)
+	mod_fifo: fix mod_fifo not honoring member_timeout (MODAPP-322/r:14552)
+	mod_fifo: add fifo_position var (r:14806)
+	mod_fifo: add API: fifo_add_outbound to add outbound members to a FIFO (r:14809)
+	mod_fifo: allow to call outbound member on on-the-fly fifo, also add a settings params to delete or keep all dynamic fifo entry (MODAPP-332/r:14989) 
+	mod_fifo: skip setting callerid when it's already set (r:15071)
+	mod_fifo: convert mod_fifo to cache_db (r:15971)
+	mod_fifo: Small bug in odbc-dsn settings parsing (MODAPP-383/r:16018)
+	mod_fifo: Fix core dump on assert fail in switch_core_hash (FSCORE-574/r:17023)
+	mod_fsv: wait for video before recording in mod_fsv (r:17103)
+	mod_h323: initial commit (r:15223)
+	mod_h323: fix faststart in progress handling (r:15352)
+	mod_h323: remove SWITCH_RTP_FLAG_AUTOADJ because its not work correctly and not do anything reliable in our cases (r:15374)
+	mod_h323: fix rtp timer initialisation.
+		implement alerting-indication option and channel variable.
+		implement progress-indication option and channel variable. (r:15905)
+	mod_h323: move faststart to callproceeding due to some broken hardware not understand correctly faststart in progress. (r:15906)
+	mod_h323: fix slow start handling (r:15935)
+	mod_h323: add PI handling in alerting (r:15936)
+	mod_h323: add PI handling in Call Proceeding (r:15397)
+	mod_fifo: gracefully fail on missing config file (r:15106)
+	mod_iax: avoiding buffer overflow in silly iax lib (r:14910)
+	mod_iax: move to unsupported (r:16460)
+	mod_lang: Change mod_lua so that it registers as a dialplan (MODLANG-140/r:15400)
+	mod_lcr: fix possible null string passed to switch_log_printf (r:14514)
+	mod_lcr: Add support for user_rates which are the (optional) end-user rates (MODAPP-340/r:15022)
+	mod_lcr: fix potential buffer overflow (r:17051)
+	mod_limit: set more chan vars in limit_function (r:14733)
+	mod_limit: fix counter-only mode in limit_hash_execute (r:14829)
+	mod_limit: add limit_ignore_transfer var (MODAPP-334/r:14830)
+	mod_limit: add limit_execute (like limit_hash_execute); allow -#s to act as counter only; add INFO level logs to limit similar to limit_hash (r:14870)
+	mod_limit: make limit work with neg count like limit_hash  (r:14920)
+	mod_limit: move mod_limit to cache_db and clean up vm legacy code (r:15677)
+	mod_limit: remove memcache version, it never worked right and is unworkable w/out a lot	of effort.  will revisit when pluggable limit implemented (r:15908)
+	mod_limit: mod_limit: use = instead of like (r:16020)
+	mod_limit: Fix stack corruption when calling an empty call-group (MODAPP-407/r:16957)
+	mod_limit: Improve rate limit support add switch_core_hash_delete_multi (MODAPP-412/r:17085)
+	mod_local_stream: add chime-list to local_stream (r:14966)
+	mod_local_stream: Fix memory leak at mod_local_stream (MODFORM-36/r:15431)
+	mod_logfile: add uuid parameter to prefix log files by the call's uuid (r:15502)
+	mod_lua: add conjure-session code and make session available in API commands (r:14739)
+	mod_lua: make luarun use a new pool every call (r:14763)
+	mod_lua: fix seek function (MODLANG-124/r:14812)
+	mod_lua: add argv[0] (MODLANG-122/r:15433)
+	mod_lua: Fix unsetInputCallback() removing HangupHook (MODLANG-158/r:16843)
+	mod_managed: Add utility function to create SWIGTYPE_p objects (r:14923)
+	mod_managed: Add ProgressMediaTime to ChannelVariables (r:15001)
+	mod_managed: Set stick flag on state handler so signal_bridge won't nuke it (r:15357)
+	mod_managed: hangup handler should run in cs_reporting (r:15375)
+	mod_managed: Add XmlSearchBinding (r:15406)
+	mod_memcache: update to libmemcached 0.32 (r:14935)
+	mod_memcache: add --with-memcached=no to libmemcached configure (r:14938)
+	mod_nibblebill: Support custom sql with var expansion (MODAPP-409/r:17081)
+	mod_opal: Added setting of outgoing number and display name from extension number so H.323/Q.931 fields are set correctly in ALERTING and CONNECT messages sent for incoming calls.(r:14900)
+	mod_opal: Fixed compile issues with latest Opal (r:15545)
+	mod_portaudio: fix compilation failure in mod_portaudio_stream (MODFORM-35/r:14531)
+	mod_portaudio: add context param (r:14737)
+	mod_portaudio: make the ringfile configurable via new API command 'pa ringfile' (r:15633)
+	mod_portaudio: fix mod_portaudio linux build with alsa (MODAPP-377/r:15899)
+	mod_portaudio: Set a new channel variable with the call_id (MODAPP-277/r:16115)
+	mod_portaudio: fix pa play bug (r:16188)
+	mod_portaudio: default to dialplan 'XML' instead of 'default' (r:16345)
+	mod_portaudio: Add event for audio device error and properly register/unregister custom event subclasses (MODENDP-282/r:16354)
+	mod_python: Fix segfault on multiple calls to Python (MODLANG-133/r:14847)
+	mod_python: Fix infinite recursion in python script causing crash (MODLANG-134/r:14898)
+	mod_python: fix memory leak (MODLANG-136/r:15432)
+	mod_python: Fix input callback with additional argument causes segfault (MODLANG-153/r:16536)
+	mod_rad_auth: Add RADIUS authentication module (r:17012)
+	mod_radius_cdr: Fix Framed-IP-Address in start and stop having wrong IP (MODEVENT-52/r:15197)
+	mod_radius_cdr: Fix memory leak from large CPS test (MODEVENT-55/r:15198)
+	mod_sangoma_codec: added to trunk - thanks Moy (r:17110)
+	mod_say: first cut and say interface rework to include gender and put all args into a struct for easier future extension (r:16929)
+	mod_say_es: Improve Spanish lang handling (MODAPP-317/r:15424)
+	mod_say_fr: mod_say_fr: Update for better french support. Will probably have more stuff from FSCORE-528  to complement this patch (r:16933)
+	mod_say_hr: add Croatian say module (r:17011)
+	mod_say_hu: add mod_say_hu to trunk from csecket branch (r:15622)
+	mod_say_it: Fix italian pronounce in mod_say_it (MODAPP-362/r:15407)
+	mod_say_it: fix hundred pronunciation (MODAPP-367/r:15500)
+	mod_say_th: add mod_say_th (MODLANG-144/r:15592)
+	mod_silk: add new module FTW! (r:16945)
+	mod_skinny: add new module, add conf.xml file and add to modules.in (r:16863)
+	mod_skel_codec: Add (thanks Moy) (MODCODEC-14/r:14959)
+	mod_skypiax: ubermegapatch, more stability, robustness, scalability. Memory leaks not yet investigated, we'll do next (r:14517)
+	mod_skypiax: more stability, no dangling channels, MODSKYPIAX-42, added 'sk list' statistics (thanks Seven Du) MODENDP-236 (r:14533)
+	mod_skypiax: now it accepts a max of 1 call from the same skypename to the same skypename (multiple instances of user A calling multiple instances of user B) each 1.5 seconds (r:14834)
+	mod_skypiax: fires a custom event when an incoming CHATMESSAGE arrives. (r:14845)
+	mod_skypiax: added skypiax_chat command.(r:14857)
+	mod_skypiax: now outbound chatmessages follow the standard path, you can send them with: chat,<proto>|<from>|<to>|<message> or with: skypiax_chat,<interfacename> <to> <text>. (r:14884)
+	mod_skypiax: when sending a chatmessage, do not report it as an incoming message (eg: do not report the messages sent by myself) (r:15327)
+	mod_skypiax: added one more 'PROTOCOL 7' command, because windows was not getting it. Now CHATMESSAGES will probably work on windows too (r:15342)
+	mod_skypiax: added 'report_incoming_chatmessages' configuration file per_interface setting. To activate it, put its value to '1' or 'true', any other value will be 'false'. Defualts to 'true' (r:15343)
+	mod_skypiax: commented out 'XCloseDisplay' lines, seems to cause crashes... (r:15344)
+	mod_skypiax: no more pipes for audio samples exchange between threads.(r:15541)
+	mod_skypiax: do not add delay when a sleep() or play() are executed by a script after answer() and before sending audio. (MODSKYPIAX-29, MODSKYPIAX-58/r:15585) 
+	mod_skypiax: changed audio i/o tcp socket size and timing constant on linux, for better compatibility with virtual machines (r:16330)
+	mod_skypiax: added FS timers, allow for better Virtual Machine (xen, ec2) conference behavior, to be polished (r:16521)
+	mod_snipe_hunt: add mod_snipe_hunt to tree (r:14937)
+	mod_sndfile: Fix core dump when trying to record ADCPM in stereo (MODFORM-39/r:16999)
+	mod_sofia: allow custom SIP X-headers in 180/183/200 messages (MODSOFIA-20/r:14482)
+	mod_sofia: use switch_mprintf to securely parse the user parameters for the SQL query for reboot in mod_sofia (MODENDP-233/r:14484)
+	mod_sofia: display the profile name on sofia status gateway xxx (r:14520)
+	mod_sofia: display the profile name on sofia xmlstatus gateway xxx (r:14527)
+	mod_sofia: fix stun: from appearing in sdp round two (r:14532)
+	mod_sofia: we need to handle redirects before checking for proxy mode if we want them to work in bypass or proxy media (IRC-00/r:14537)
+	mod_sofia: refactor sofia_glue_tech_choose_[video_]port (r:14541)
+	mod_sofia: Fix NAT Reboot notify by merging the MWI notify and Reboot notify to a unified function (MODENDP-242/r:14581)
+	mod_sofia: FIX parsing of argument of sofia status AND add a new search option (MODENDP-232/r:14585)
+	mod_sofia: add 10 second media timeout waiting for codec establishment (MODSOFIA-22/r:14586)
+	mod_sofia: Enable creation of sip compact headers from sofia profile configuration (MODENDP-246/r:14698)
+	mod_sofia: Fix race with hold/unhold in proxy media (FSCORE-432/r:14797)
+	mod_sofia: ATTENTION BEHAVIOR CHANGE... you now have to explicitly set sip_invite_to_params to add params to the to field we will NO longer fall back to sip_invite_params in this case. (FSCORE-433/r:14849)
+	mod_sofia: Fix missing NOTIFY MWI when registering via proxy (MODSOFIA-26/r:14851)
+	mod_sofia: add set funcs for impls (r:14881)
+	mod_sofia: Segfault when receiving 30x response without contact header (MODENDP-247/r:14953)
+	mod_sofia: Added sip_rh_ response header addition capability (MODSOFIA-29/r:14967)
+	mod_sofia: new param force-subscription-domain (r:14971)
+	mod_sofia: improve bad timestamp detection (r:14979)
+	mod_sofia: Override the MWI User@Domain used per user/group/domain (MODENDP-241/r:14987) 
+	mod_sofia: set extension=auto_to_user in gateway to make destination equal to user (r:15010)
+	mod_sofia: cover up sofia bug parsing contact strings that do not have <> in them (r:15026)
+	mod_sofia: no more 202 Accepted after REFER since changeset 14701 (MODSOFIA-31/r:15056)
+	mod_sofia: append host when its not supplied on carrot dialing (r:15099)
+	mod_sofia: Fix MESSAGE_QUERY causes event without minimum event information (MODEVENT-58/r:15117)
+	mod_sofia: Add a log message when the invite has no SDP and 3pcc isn't enabled to aid troubleshooting (r:15140)
+	mod_sofia: add variable for one legged 302's via originate so you can tell it happened. (r:15163)
+	mod_sofia: clear up some more display issues and fix resume-media-on-hold sofia option (r:15177)
+	mod_sofia: Fix bridge call seems to hangup as if originator_cancelled when it has not (FSCORE-471/r:15186)
+	mod_sofia: fix issue with resume-media-on-hold and t38 re-invites (r:15187)
+	mod_sofia: Fix RTP destination port is not updated (SFSIP-180/r:15190)
+	mod_sofia: add sip-force-extension (r:15191)
+	mod_sofia: add firing of event after processing re-INVITE (MODENDP-253/r:15205)
+	mod_sofia: record path and template are two values with backwards compatibility tried  (r:15208)
+	mod_sofia: make sure dest is not blank for rare edge case (r:15212)
+	mod_sofia: Fix seg where INVITE w/o SDP + FS 3pcc-proxy + B leg has early media (MODSOFIA-33/r:15214)
+	mod_sofia: sql-in-transactions profile param (only vaid on first load) whether or not to bundle sql stmts in transactions (r:15217)
+	mod_sofia: add pass-callee-id (defaults to true) disable by setting it to false if you encounter something too stupid to ignore X headers (r:15230)
+	mod_sofia: overcome ack via in nat (r:15277)
+	mod_sofia: windows compiler fixes and switch_mprintf overflow(32bit only) (r:15286)
+	mod_sofia: doing caret dialing to a location without a gateway will result in the host being null in some cases this will not allow that if you specify the full sip:dest@host it works fine but if you only specify the number then host will be null (r:15332)
+	mod_sofia: add distinct-to=true|false to be used with from-domain when you don't want to change the to (r:15334)
+	mod_sofia: make subscriptions time out, discard code that made them last forever (r:15364)
+	mod_sofia: reset handle on bad reg (r:15365)
+	mod_sofia: don't send blank update (r:15366)
+	mod_sofia: fix sql stmt for blf subs (r:15396)
+	mod_sofia: fix bug tolerating the other guy's bug (r:15401)
+	mod_sofia: experimental support for send-message-query-on-register=first-only (r:15405)
+	mod_sofia: add pai to responses (r:15408)
+	mod_sofia: add columns to sip_dialogs (r:15420)
+	mod_sofia: avoiding initial segfault (MODENDP-265/r:15427)
+	mod_sofia: solve problem from MODENDP-258 with an alternate approach, and make send-message-query-on-register=first-only and sql-in-transactions=true the defaults (MODENDP-258/r:15441)
+	mod_sofia: lookup gateway by realm when not found by name (r:15475)
+	mod_sofia: if the phone is behind nat with us... don't consider nat processing fixes cases where things are EVIL like cisco 79xx (r:15486)
+	mod_sofia: Fix sofia statistics (MODSOFIA-38/r:15491)
+	mod_sofia: add content-disposition to SEND_INFO (r:15495)
+	mod_sofia: video improvements (r:15524)
+	mod_sofia: always check for callee update not just because of pai (r:15589)
+	mod_sofia: add ani and aniii to caller profile (MODSOFIA-34/r:15596)
+	mod_sofia: reset timestamp counter when we get new sdp etc because sonus likes to say ptime 20 and send 30ms timestamps in the 183 then once they say 200 ok with the same sdp they decide to actually send 20 for real this time (FSRTP-8/r:15597)
+	mod_sofia: convert sofia to use new core version of cache db handles (r:15600)
+	mod_sofia: Fix crash where client register request does not contain "nc" parameter (MODSOFIA-39/r:15609)
+	mod_sofia: Add ping hysteresis for SIP peer qualification (MODSOFIA-40/r:15628)
+	mod_sofia: add sip_profile_name go go with sip_gateway_name on outgoing calls (r:15629)
+	mod_sofia: fail2ban support in mod_sofia thanks jay binks. (MODSOFIA-41/r:15654)
+	mod_sofia: Revert part of MODSOFIA-41 r15654 that deals with phone reboot - breaks Aastra/Polycom (r:15656)
+	mod_sofia: Fix call not hanging up after hold (FSCORE-481/r:15657)
+	mod_sofia: add separate inbound/outound codec prefs params to sofia profile original codec-prefs sets both to the same value for back-compat (r:15658)
+	mod_sofia: reset the remote_media ip/port vars more often (r:15676)
+	mod_sofia: retry reg faster on dns timeouts (r:15763)
+	mod_sofia: huge sonus infection (FSRTP-8/r:15781)
+	mod_sofia: fix runaway ptime mismatch with xlite and bv (r:15788)
+	mod_sofia: set sip_copy_custom_headers=false to avoid custom sip headers to be copied on the b-leg (r:15789)
+	mod_sofia: send bye instead of cancel after invalid 200 OK (MODENDP-270/r:15808)
+	mod_sofia: don't set auto-nat on ipv6 profiles (r:15829)
+	mod_sofia: Fix att_xfer origination_cancel not working and b has no chance to talk with c in an A-B-C scenario (MODAPP-376/r:15838)
+	mod_sofia: add disable_q850_reason chan var to disable sending Reason header in sip BYE messages (MODSOFIA-44/r:15850)
+	mod_sofia: Fix UPDATE being sent to session creator without crypto (MODENDP-273/r:15851)
+	mod_sofia: add shutdown-on-fail param to sofia profiles (MODSOFIA-45/r:15854)
+	mod_sofia: fix send-message-query-on-register set to 'false' (MODSOFIA-42/r:15857)
+	mod_sofia: move NUTAG_MIN_SE to sofia_glue_do_invite so it only appears on requests. (MODSOFIA-47/r:15943)
+	mod_sofia: Fix redirect contacts not set correctly on 300 Mutliple Choices (SFSIP-190/r:15994)
+	mod_sofia: Add fix for silly endpoints who use G729a improperly (MODSOFIA-48/r:16004)
+	mod_sofia: Add ping hysteresis for SIP peer qualification (MODSOFIA-40/r:16039)
+	mod_sofia: Major presence update (r:16053)
+	mod_sofia: Fix sofia loglevel 9 (MODSOFIA-50/r:16058)
+	mod_sofia: don't segfault on notify message with no contact (r:16130)
+	mod_sofia: honor disabled soa flag in re-invite (r:16193)
+	mod_sofia: share and share alike, only nothing is alike in sip =/ (r:16194)
+	mod_sofia: Get sofia "auth-calls" parameter and directory "auth-acl" parameter to work through a proxy. (BOUNTY-12/r:16200)
+	mod_sofia: add command-line completion for sofia xmlstatus (MODSOFIA-52/r:16260)
+	mod_sofia: held-private now works (r:16295)
+	mod_sofia: add event header to gateway registration events (MODENDP-281/r:16319)
+	mod_sofia: fix PUBLISH/200 response sent without ETag (FSCORE-262/r:16388)
+	mod_sofia: set chanvars on both directions in sip and introduce sip_to_tag and sip_from_tag vars (r:16395)
+	mod_sofia: fix rpid and from correctly when auto-nat is enabled so polycom won't display the flipping URI and freak some poor souls out :P  (r:16473)
+	mod_sofia: sip is stupid MODSOFIA-51, the 202 has to have the correct contact or the phone comes back and subscribes to the contact and not the actual extension (MODSOFIA-51/r:16500)
+	mod_sofia: fix attended transfer bug where port specified in Refer-To header is ignored (MODENDP-291/r:16524)
+	mod_sofia: exec sql stmt sooner to prevent race (r:16525)
+	mod_sofia: add sip_append_audio_sdp var (r:16537)
+	mod_sofia: add user-agent-filter and max-registrations-per-extension (BOUNTY-15/r:16557)
+	mod_sofia: Fix FS-SIPX attendant transfer problem (SFSIP-86/r:16562)
+	mod_sofia: fire presence_out when reg is flushed manually (r:16564)
+	mod_sofia: exclude rows with the current call_id - could be an endpoint updating it's
+	registration while we're at max_registrations (r:16567)
+	mod_sofia: Multicast presence/mwi patch and a small registrations improvements with some NULL-proofing (MODSOFIA-46/r:16575)
+	mod_sofia: document tracelevel, add completion for tracelevel (r:16599)
+	mod_sofia: add extended info parsing feature to send api commands or queue messages to sessions over info packets (r:16688)
+	mod_sofia: add ability for multiple profiles to share the same gateway names via profile::gwname syntax for normT (r:16698)
+	mod_sofia: allow domains with no dot in them as long as you specify a profile name (r:16739)
+	mod_sofia: add sofia_dig [xml] api func (r:16745)
+	mod_sofia: Allow rewrite of the o= line either by detault or as an option when proxy_media=true (MODSOFIA-50/r:16806)
+	mod_sofia: change default dtmf duration to 2000ms from 100ms (MODENDP-296/r:16888)
+	mod_sofia: move exception for iLBC hack to sdp up to sofia (see Moc if anything breaks) (r:16898)
+	mod_sofia: Rewrite of the s= line when proxy_media=true (Following MODSOFIA-50) (MODSOFIA-64/r:16919)
+	mod_sofia: Add expires to PRESENCE_PROBE event (MODENDP-298/r:16968)
+	mod_sofia: add display feature to SCA (r:17054)
+	mod_sofia: fix it so the Cisco phones will update their display properly in these cases and not show Private for all calls (r:17066)
+	mod_sofia: only allow barge-in on SCA mode when calls are from their own line (r:17067)
+	mod_sofia: add sip_local_network_addr var to see the ip of the sip profile a call came in or went out on for cdr (FSCORE-562/r:17073)
+	mod_sofia: mod_sofia: Add url encode to a var in the xml output to be valid xml. Also changed switch_url_encode to return the pointer of the string rather than the length, same as switch_amp_encode() (r:17087)
+	mod_sofia: prevent race in killgw followed by an immediate rescan with the same gateway name (r:17096)
+	mod_sofia: fix telephone-event negotiation with devices that don't do what the rfc says they SHOULD do (r:17097)
+	mod_sofia: Double @ in To header (MODENDP-300/r:17098)
+	mod_spidermonkey: allow inline javascript, use a ~ as first script character (r:15598)
+	mod_spidermonkey: fix mod_spidermonkey on OSX 10.6 (lets see if this breaks any other platforms) (r:15650)
+	mod_spidermonkey: fix teletone issues in javascript (MODLANG-159/MODLANG-162/r:16909)
+	mod_spidermonkey_core_db: Allow to bind value to parameters in prepared statements (MODLANG-139/r:15632)
+	mod_syslog: Enable mod_syslog to log to a specific facility (LOGGER-3/r:15162)
+	mod_syslog: mod_syslog does not respect facility setting, always logs to user.* (LOGGER-4/r:15447)
+	mod_syslog: fixed mod_syslog.c on solaris since there is no LOF_FTP and LOG_AUTHPRIV in solaris syslog (r:15606)
+	mod_syslog: add uuid logging support (r:16187)
+	mod_tts_commandline: Add new module (r:14827)
+	mod_tts_commandline: introduce the rate parameter, decrease useless verbosity (r:14885)
+	mod_tts_commandline: cut samples in half (suggested by anthm), adjust and clean log levels (r:14886)
+	mod_tts_commandline: add config (r:14887)
+	mod_tts_commandline: quote shell args, create an unique tempfile (r:14931)
+	mod_tts_commandline: improve, update config file (MODASRTTS-21/r:14932)
+	mod_unimrcp: add support for file://, <speak, and <grammar (r:15236)
+	mod_unimrcp: fixed pizza demo bug, other misc ungoodness (r:15330)
+	mod_unimrcp: Add enable-profile-events param to mod_unimrcp (r:15528)
+	mod_unimrcp: Add enable-profile-events param to mod_unimrcp config (r:15529)
+	mod_unimrcp: Support UniMRCP 0.8.0 and new RTCP configuration params (r:15554)
+	mod_unimrcp: Update Nuance MRCP configuration to send RTCP BYE (r:15555)
+	mod_unimrcp: unimrcp - add windows 2008 project support - doesn't do anything yet (r:15569)
+	mod_unimrcp: support resampling for TTS (UniMRCP 0.8.0 only) (r:15570)
+	mod_unimrcp: update to new api in unimrcp r1297 (r:15616)
+	mod_unimrcp: fix for loquendo MRCPv2 - destroy session instead of removing channel (r:15736)
+	mod_unimrcp: Added synthparams and recogparams to config so that default MRCP params can be defined for SPEAK and RECOGNIZE requests (r:16717)
+	mod_unimrcp: Added ssml-mime-type config param to deal with server that doesn't like application/ssml+xml (r:16720)
+	mod_unimrcp: Do not allow speech_channel_destroy() to return unless MRCP session has been terminated. Do not explicitly destroy mutexes, buffers, and condvars that are allocated off of pool. (r:16938)
+	mod_valet_parking: add (r:15072)
+	mod_valet_parking: sense att xfer in valet (r:15126)
+	mod_valet_parking: add events and valet_info fsapi to valet parking (r:15136)
+	mod_valet_parking: add auto ext type and support for being called from bind_meta_app to valet_parking (needs some more) (r:15145)
+	mod_valet_parking: add sleep to inline dp to make xfer to valet wait a second (r:15168)
+	mod_valet_parking: enforce arg checking (r:15176)
+	mod_valet_parking: Add mod_valet_parking to the windows build (r:15185)
+	mod_vmd: fix glaring rwdeadlock in mod_vmd (r:14994)
+	mod_vmd: make MIN_TIME configurable via channel variables(MODAPP-372/r:15825)
+	mod_voicemail: fix operator-ext/operator-extension duplicate config declaration (r:14498)
+	mod_voicemail: allow profile to be specified sep from domain user@domain.com@myprofile (r:14756)
+	mod_voicemail: announce number of saved messages when there are no new messages (r:14964)
+	mod_voicemail: Add new api call to get user mailbox settings (MODAPP-325/r:14982) 
+	mod_voicemail: Add ability to skip greeting and instructions when leaving voicemail (MODAPP-331/r:14990)
+	mod_voicemail: Fix VM disk quota (MODAPP-353/r:15161)
+	mod_voicemail: add missing switch_event_destroy in profile config function (r:15262)
+	mod_voicemail: default samplerate to 0 instead of 8000 so that we record using the channel's native rate, thx bkw (r:15394)
+	mod_voicemail: prevent obscure divide by zero code path (r:15413)
+	mod_voicemail: create max timeouts feature like the one in ivr_menu (MODAPP-365/r:15471)
+	mod_voicemail: decrease sql queries for message counts (MODAPP-359/r:15636)
+	mod_voicemail: Fix r15636 so New are New, and Old are Old messages (r:15639)
+	mod_voicemail: mod_voicemail: Change so total_new_messages and total_saved_messages include the count of new/saved urgent messages (Issue caused by MODAPP-359) (r:15670)
+	mod_voicemail: Fix segfault (FSCORE-511/r:15876)
+	mod_voicemail: passing originator's account name to cc'd accounts or groups to let them see who forwarded it (BOUNTY-13/r:16270)
+	mod_voicemail: Allow param for voicemail to allow message file type to be changed (MODAPP-394/r:16576)
+	mod_voicemail: copy user xml to a dynamic xml obj so you do not hold exclusive lock on global xml registry the whole time you are leaving a vm (r:16577)
+	mod_voicemail: fix vm to inherit params from domain/group (r:16644)
+	mod_voicemail: that shouldve been wrlock, and its missing an unlock (r:16647)
+	mod_voicemail: add vm_list vm_delete and alias voicemail_inject to vm_inject (r:16673)
+	mod_voicemail: update vm_list to include timestamps (r:17014)
+	mod_voicemail: add vm_auto_play=false var if you do not wish the vm to auto-play new messages (r:17055)
+	mod_voipcodecs: move mod_voipcodecs to use spandsp instead of libvoipcodecs (windows build to follow) (r:15036)	
+	mod_voipcodecs: move mod_voipcodecs to use spandsp instead of libvoipcodecs - windows (r:15088)
+	mod_voipcodecs: rearrange codecs so we don't have crazy overlap and remove G723-32 and move it up to dynamic cuz people have nothing better to do then write stupid RFC's (r:16251)
+	mod_xml_cdr: Allow specifying auth-scheme in config (MDXMLINT-56/r:16247)
+	mod_xml_cdr: Add text/xml encoding and uuid to querystring for xml_cdr HTTP posting (XML-21/r:16570)
+	mod_xml_cdr: Add param log-http-and-disk (bool) to let user log only to HTTP or to both (XML-16/r:16643)
+	mod_xml_cdr: Fix regression (MODAPP-397/r:16656)
+	mod_xml_curl: Fix crash when using use-dynamic-url (XML-10/r:14850)
+	mod_xml_curl: Allow choice between HTTP Basic and Digest authentication (r:15107)
+	mod_xml_curl: Don't use signals when a timeout is specified (XMLINT-13/r:15997)
+	mod_xml_curl: change default to disable100continue, we don't acutally handle this case at all anyways, it just causes the request to fail (r:17102)
+	mod_xml_rpc: Fix auth issue (XMLINT-54/r:14580)
+	mod_xml_rpc: Fix crash in xml_rpc web interface (XML-23/r:16941)
+	phrases: Add Recursive phrases support (FSCORE-458/r:15101) 
+	scripts: Fix Freeswitch gentls_cert script so the remove option works (FSBUILD-216/r:15965)
+	support: add fscore_pb script for dumping core info directly to pastebin (r:14904)
+	switch_utils: add a host lookup func (r:14653)
+	mod_zeroconf: Move to unsupported (r:15429)
+	
+
+freeswitch (1.0.4)
+
+	add: TextMate bundle for FreeSWITCH - thanks mrene (r:12559-12560)
+	add: ZRTP Support please download your SDK from http://www.zfone.com and use build/buildzrtp.sh to build the lib. (r:13406)
+	add: gdb helpers to .gdbinit
+	all: numerous code cleanups, removal of unused variables
+	all: update numerous Doxygen comments
+	build: fix mod_flite (FSBUILD-126/r:12153)
+	build: fix getlib.sh curl/wget detection (12175)
+	build: add msvc 2005 project files (r:12197)
+	build: rename spandsp project files windows (r:12195)
+	build: fix spandsp windows build, msvc 2005 (r:12199-12202)
+	build: merge x64 build for msvc9 (r:12207)
+	build: add libtiff auto-download to msvc build (r:12212)
+	build: update to match spandsp api (FSBUILD-129/r:12214)
+	build: inital work on x64 windows build (FSBUILD-125/r:12215)
+	build: fix spandsp msvc build issues (r:12218-12220,12223)
+	build: fix msvc configuration manager for x64 targets in both 2008 sln files (r:12227)
+	build: use compiler intrinsics for windows x64 build (FSBUILD-131/r:12245)
+	build: fix version generator on windows (FSBUILD-115/FSBUILD-69/r:12247)
+	build: fix various msvc build issues (r:12272-12276)
+	build: silence nuisance sun cc warnings (r:12462)
+	build: updated windows projects for flite (FSBUILD-128/FSBUILD-133/r:12477)
+	build: download flite from right tarball location (FSBUILD-135/r:12482)
+	build: rework Windows build for pocketsphinx 5.1 (MODASRTTS-13/r:12483,12541)
+	build: fix automake 1.7 build (r:12487)
+	build: build path cleanups (FSBUILD-130/r:12490)
+	build: fix rebuild every time on msvc 2008 non team editions (FSBUILD-132/r:12492)
+	build: add skypiax to sln file and fix some warnings (r:12502)
+	build: fixed openzap.conf issue in deb package (r:12506)
+	build: fix rlim_t build on Mac (FSCORE-325/r:12533)
+	build: Solaris doesn't define RLIMIT_NPROC (FSCORE-326/r:12534)
+	build: removal of file reference for flite (FSBUILD-139/r:12540)
+	build: integrate mod_erlang_event into the buildsystem (FSBUILD-142/r:12587)
+	build: Fix FreeBSD build (r:12678)
+	build: fix libsoundtouch build dependencies after a configure failure (MODAPP-243/r:12783)
+	build: fix odbc detection to not try to use odbc when no headers are installed (r:12788)
+	build: add build of fs_ivrd (r:12843)
+	build: sphinx downloads for windows (FSBUILD-146/r:12853)
+	build: Build fails at bootstrap with libtool 2.2.6a (FSBUILD-82/r:12899)
+	build: add python build dependency to debian package build (FSBUILD-145/r:12920)
+	build: add libtool major version detection to configure in prep for supporting both libtool 2.x and 1.5.x at the same time (r:12922,12926-27)
+	build: fix older gcc build (FSBUILD-150/r:12924)
+	build: Add a fallback check in case libtool is not yet available in the builddir (get the version from build/config/ltmain.sh instead). print an error message and exit configure if that fails too (r:12933)
+	build: Add mod_memcache (commented) to modules.conf.in (r:12955)
+	build: make libtool version detection more robust (r:12979)
+	build: we need DYNAMIC_LIB_EXTEN for mod_perl and others (r:13023)
+	build: add mod_say_ru to modules.conf.in (r:13037)
+	build: bump sounds version (r:13040)
+	build: use different version file for moh version (r:13093)
+	build: de-couple version numbers and builds of sound files and moh files (FSBUILD-153/r:13096)
+	build: use sound_version.txt and moh_version.txt to determine sound file version on windows (FSBUILD-152/r:13097)
+	build: use in tree libtiff for msvc build and fix some header generation checks (r:13150)
+	build: clean esl on make current (r:13204,13205)
+	build: fix warning-as-error that stops MSVC from building solution (FSCORE-367/r:13301)
+	build: fix MSVC build issue from r13294 (FSBUILD-159/r:13302)
+	build: remove broken code analysis test (r:13364)
+	build: cleanup msvc code analysis warnings (r:13366)
+	build: Add mod_file_string to build + misc cleaning and correction (FSBUILD-158/r:13367)
+	build: add new files to debian package build (FSBUILD-148/r:13368)
+	build: fix mod_file_string dependencies on windows (r:13370)
+	build: fix mod_pocketsphinx build error (JANITOR-1/r:13372)
+	build: fix PTHREAD_MUTEX_RECURSIVE detection on SUSE 10 (r:13386,13390)
+	build: remove regression caused by r13362 (r:13401)
+	build: add mod_nibblebill (r:13462)
+	build: fix msvc build (r:13467/FSBUILD-165)
+	build: add siren to the default build and install (r:13470)
+	build: add upnp to windows build (r:13535)
+	build: fix msvc 64 bit build regression from upnp build (r:13538/FSBUILD-167)
+	build: Check for ifaddrs.h before including it (r:13600/FSBUILD-168)
+	build: fix jobserver unavailable bug in make -j (r:13623/FSBUILD-6)
+	build: clean/uninstall disabled modules as well (r:13716/FSBUILD-85)
+	build: fix msvc pcre build for pcre 7.9 (r:13729)
+	build: trivial build fix (FSBUILD-174/r:13877)
+	build: fix automake warnings about underquoted definitions in apr macros (FSBUILD-175/r:13882)
+	build: make libtool version detection more portable (r:13926)
+	build: change ODBC handling in code to be runtime instead of build time (r:13936)
+	build: update of spec file for current trunk (FSBUILD-176/r:13988)
+	build: replace mod_radius_cdr's Makefile.am with Makefile that pulls freeradius-client source when needed (r:14053)
+	build: add experimental modules section to modules.conf.in (r:14062)
+	build: allow comments (using ##) in modules.conf (r:14093)
+	build: update to 0.6.0 celt codec (r:14206)
+	build: fix 64 bit build of radius modules (FSBUILD-179/r:14201)
+	build: use internal libtiff instead of system libtiff (r:14321)
+	build: partial libsndfile build fix (FSBUILD-180/r14330)
+	build: fix compile on Mac OS X Snow Leopard 10.6 (FSBUILD-178/r:14333)
+	build:  nat pmp causes segfault on solaris, so we won't support upnp or nat pmp on solaris (FSCORE-410/r:14449)
+	config: default config, calling own extension no longer goes to voicemail (r:12596)
+	config: default config, 1000-1019 uses $${default_password} instead of hard-coded 1234 (FSCONFIG-5/r:12838)
+	config: tweak the configs to bind siptrace on and off to F10 and F11 (r:12938)
+	config: Update sample IVR to include ClueCon reg option :) (r:13043)
+	config: Add ext 9991 as ClueCon ext; use transfer instead of bridge on demo ivr opt #4 (r:13046)
+	config: remove invalid options from profiles (r:13153)
+	config: add documention for dist-dtmf member flag in conference.conf.xml
+	config: remove mailbox= attribute (r:13375)
+	config: add default local stream (r:13376)
+	config: small regex adjustment so we can dial PSTN numbers that happen to have 4000 in them (r:13409)
+	config: you can call 9999 from a zrtp endpoint and enroll this should be replaced with an IVR to explain it a bit but most of the work happens client side at this point (r:13445)
+	config: add mod_nibblebill (r:13458)
+	config: clear up docs (r:13468)
+	config: clarify zrtp docs in vars.xml and give link on where to get more info  (r:13469)
+	config: tweaks to codecs in default config (r:13485)
+	config: Add example of sending SAS from b-leg to display on a-leg's phone (r:13500)
+	config: commit config options for new auto nat (r:13595)
+	config: Remove use_profile from default dialplan, move to vars.xml, default value is 'internal'
+	config: clean up configs and put wan.auto in by default commented out (r:13907)
+	config: turn on rollover by default (r:13940)
+	config: remove unused param comfort-noise-level from default conference config file (MODAPP-299/r:14350)
+	core: fix suncc visibility support in libteletone (r:12154-12157)
+	core: fix crash on FS shutdown with "..." (FSCORE-297/r:12173,12361,12402)
+	core: add separate mutex for state related methods (r:12191)
+	core: move media bug removal to hangup state (r:12225)
+	core: create indexes for ODBC (r:12235)
+	core: add direction col to sql db, add direction param to session_create, log DTMF digits to digits_dialed variable for CDR (r:12244)
+	core: avoid operations on closed file handles in embedded languages (r:12255)
+	core: fix bridging issue from r:12244 (FSCORE-308/r:12257)
+	core: fix segfault after 2000 calls, 5 days uptime (FSCORE-309/r:12267-12270)
+	core: fix crash in switch_ivr_digit_stream_parser_feed (MODAPP-221/r:12262)
+	core: fix issue in monitor_early_media_fail (r:12271)
+	core: fix leak in switch_event.c (r:12291-12292)
+	core: clean up ivr_menu, prevent recursion (r:12295)
+	core: improve memory usage (r:12317)
+	core: fix leak in switch_ivr_async.c (r:12330)
+	core: fix leak in switch_channel.c (r:12332)
+	core: uuid_displace stopped working when limit arg used (MODAPP-225/r:12368)
+	core: fix att_xfer media bug problem (FSCORE-317/r:12390)
+	core: improve stability (FSCORE-297/FSCORE-305/FSCORE-315/r:12392,12403)
+	core: add new state for CDR and leg_delay_start originate var (r:12403-12404)
+	core: Make MESSAGE work with SIP PATH Exension (FSCORE-310/r:12426)
+	core: fix uninitialized mutex in switch_core_media_bug (FSCORE-320/r:12428)
+	core: fix segfault with eavesdrop (FSCORE-319/r:12429)
+	core: add generic config parser - thanks mrene (r:12432)
+	core: add sessions since start up to heartbeat event (r:12472)
+	core: increase buffer size for regex api (MODAPP-228/r:12480)
+	core: fix FreeSWITCH start failure - "Error: stacksize 240 is too large" (FSCORE-323/r:12509)
+	core: unloading endpoint module now removes from endpoint list (MODENDP-196/r:12535)
+	core: fix deadlock in fsctl hupall (r:12544)
+	core: add origination_pricavy var to originate api (r:12546)
+	core: increase stack limit for switch_system (FSCORE-328/r:12569)
+	core: fix uuid_originate param not assigning uuid properly (FSCORE-322/r:12591)
+	core: add check for a and b leg no answer on bridge (r:12595)
+	core: fix origination_privacy var (r:12603)
+	core: fix group_confirm regression from svn r12403 (r:12616)
+	core: fix caller ID values not being set in CHANNEL_OUTGOING (FSCORE-336/r:12643)
+	core: make -vg imply -waste so valgrind runs won't re-exec (r:12670)
+	core: add apr_pool_mutex_set() to our apr to fix thread-saftey issue (r:12672)
+	core: make port allocator more random (r:12673,12675)
+	core: make switch_channel_get_variable strdup so the pointer returned is safe and clean up the state locking (r:12674)
+	core: Empty audio files should not be created when RECORD_ANSWER_REQ is set to true and a call is not bridged (r:12682)
+	core: add transfer_after_bridge var (r:12691)
+	core: other_leg_unique_id incorrectly set when briding with using ',' (FSCORE-331/r:12704)
+	core: make gaussian noise less noisy (FSCORE-340/r:12720)
+	core: add import vars to FIFO (r:12722)
+	core: fix switch_core_file_write method not writing the entire buffer to the file (FSCORE-341/r:12728)
+	core: fix hanguphook order of operations vs destroy method issue in c++ code (r:12730)
+	core: rearrange hangup callflow to do more work in the session's own thread (r:12784)
+	core: Allow variables containing variables in set and export (MODAPP-241/r:12804)
+	core: add read_terminator_used var (r:12840)
+	core: change blocking rtp to psuedo-blocking to avoid endlessly blocking reads and refactor jitter buffer (r:12846)
+	core: add rtp-autoflush profile param and rtp_autoflush var (r:12854)
+	core: fix various small leaks (FSCORE-347/r:12873)
+	core: add a couple, two tree stats (r:12913)
+	core: fix play_and_get_digits to unset the var if the regex didn't match (r:12921)
+	core: drop divide by 2 from normalize func (r12935)
+	core: add missing begin/end, allow threads to read and play_and_get_digits methods (r:12958)
+	core: fix windows calling conventions for modules with sub-modules broken in svn r12919 (r:12960)
+	core: add flag to denote if a codec is init or not (FSCORE-349/r:12961)
+	core: add more specific checks to new macro just to be safe (r:12973)
+	core: change CS_DONE to CS_DESTROY and add state handler for destroy and tear down critical parts of the channel from this method which is not called until it's impossible for anything to be referencing the channel (after final write lock and before destroying the pool) (r:12986)
+	core: fix regression from earlier commit (FSCORE-352/r:12987)
+	core: expand channel variables for sound files in IVRs (MODAPP-257/r:13005)
+	core: clone frames in loopback so we can smooth it out better, now with more memory usage (tm) maybe this will curb pepople from using it like candy (r:13011)
+	core: run expand_vars if input contains a special escaped character not just when it contains a variable to eat up back slashes (r:13015)
+	core: change names to be more explicit (r:13028)
+	core: xml_config: Fix issue where default NULL strings were ignored on reload (r:13052)
+	core: autoflush on bridge and add bridge_hangup_cause variable to indicate the hangup cause of the last bridged channel (r:13065)
+	core: add record_ms, record_samples, playback_ms and playback_samples chanvars (r:13105)
+	core: make state_handler macros not let you install the same one more than once (r:13111)
+	core: Do not use struct fd_set uninitialized (always FD_ZERO() them, before using FD_SET() on a new one, or reusing them after select()). Fixes a segfault on solaris (r:13125)
+	core: Fix missing UNPROTECT_INTERFACE in case pre_answer fails (r:13130)
+	core: add record_waste_resources channel variable to send blank audio during recording (r:13144)
+	core: add auto-sync idle timers in switch_time.c (r:13161)
+	core: Add Q850 hangup cause variable (FSCORE-356/r:13163)
+	core: keep presence up to date (r:13166)
+	core: fix failed_xml_cdr_prefix is processed before all variables for the b-leg have been generated (FSCORE-357/r:13167,13176,13264,13274,13285)
+	core: failed_xml_cdr_prefix doesn't work for list of destinations separated by pipe (FSCORE-359/r:13209)
+	core: add support for gcc 4.4.0 (FSCORE-355/r:13210)
+	core: add resume command to event socket and socket_resume variable (r:13212)
+	core: prevent buffer destroy race (r:13219)
+	core: move originate retry related vars to only be in {} not in channel variable list (r:13225)
+	core: Make { } vars take precedence over channel variables (r:13228)
+	core: fix memory issue in core file resampling code (r:13233)
+	core: fix play and get digits when using phrase macros (r:13244)
+	core: Don't set the caller name to origination_uuid's value (r:13248)
+	core: Add switch_xml_parse_str_dynamic and switch_xml_parse_str_dup (r:13255)
+	core: In IVR menu use menu-timeout instead of menu-inter-digit-timeout when no digits have been entered (r:13279)
+	core: fix segault on OpenSolaris 2009.06 snv_111a (FSCORE-365/r:13286)
+	core: allow socket app to operate without pre_answer (r:13294)
+	core: ensure vasprintf is available on linux (FSBUILD-160/r:13358,13361)
+	core: setgroup/initgroup availability on linux (FSBUILD-160/r:13359)
+	core: use uint16_t instead of u_short (FSBUILD-160/r:13360)
+	core: add configure checks for tm->tm_gmtoff and tm->tm_zone (FSBUILD-160/r:13362)
+	core: Fix IVR key response broken when multiple files are played (MODAPP-280/r:13382)
+	core: fixx off-by-one in xml preprocessor (r:13385)
+	core: fix windows pch (r:13392)
+	core: fix segfault on out of memory situation.  (r:13398/FSCORE-366)
+	core: treat app::arg syntax in execute_on_answer as a broadcast request (r:13400)
+	core: use our own handler so it won't get overriden by anyone if zrtp is on (r:13411)
+	core: fix backslash getting removed from regex when using mod_xml_curl (r:13414/FSCORE-370)
+	core: fix handle leak in switch_thread_self on windows (r:13421/FSCORE-371)
+	core: allow switching from secure to clear and back (r:13422)
+	core: add more options to zrtp (r:13424)
+	core: add buffer flush (r:13425)
+	core: add some stuff for zrtp (r:13426)
+	core: can't flush because you have a chance of dumping zrtp control frames (r:13427)
+	core: add zrtp_sas1_string and zrtp_sas2_string variables (r:13429)
+	core: zrtp - this should make sure the secure mitm has a chance over latent connections (r:13436)
+	core: properly detect unterminated (r:13438)
+	core: zrtp - fix mitm to be more reliable (r:13443)
+	core: zrtp - mark verified (r:13444)
+	core: zrtp_secure_media=true will have to be set to true in order for your zrtp to work moving forward similar to how srtp_secure_media works.(r:13461)
+	core: prevent zrtp and srtp at the same time (r:13486)
+	core: add CALL_SECURE event (r:13487)
+	core: add show secure channel status in "show channels" output (r:13502/FSRTP-2)
+	core: add CHANNEL_HANGUP_COMPLETE event to take the place of CHANNEL_HANGUP, CHANNEL_HANGUP now fires as soon as the channel is hungup but you must wait for CHANNEL_HANGUP_COMPLETE for the CDR data (r:13505)
+	core: fix core dump when calling session.execute (r:13508/FSCORE-373)
+	core: add netmask detection for nat discovery work (r:13549)
+	core: fix order of ops to enable logging sooner (r:13556)
+	core: add hunt_caller_profile (r:13625,13626)
+	core: add usec delta to log (r:13647)
+	core: add padding to cycles on session_record (r:13648)
+	core: Export swtich_inet_ntop so modules can use it (r:13738)
+	core: record_sample_rate variable influences the rate record app will use (r:13767,13768,13769)
+	core: init buffer in lead out on speak (r:13787)
+	core: add local_var_clobber variable for {} to set if [] vars should clobber {} vars (default false) (r:13842)
+	core: Fix switch_odbc_handle_callback_exec_detailed to handle floating point database columns properly (FSCORE-384/r:13866)
+	core: set sound path in say app (r:13904)
+	core: add wan.auto acl (r:13905)
+	core: Fix ACL nat.auto (FSCORE-385/r:13925)
+	core: add hostname variable (FSCORE-374/r:13982)
+	core: decrement RWLOCK->rwlock->__data->__nr_readers after Redirect/Transfer (FSCORE-391/r:14030)
+	core: add features to nat-pmp (Thanks Rupa) (FSCORE-381/r:14055)
+	core: fix error message that gives wrong stack size (FSCORE-395/r:14058)
+	core: Fix IVR menu timeout issue (MODAPP-301/r:14129)
+	core: add time of day routing attrs to condition tags in xml dialplan (r:14137)
+	core: change timing for media bug recording *yet again* (r:14143)
+	core: Fix voicemail rewind key, improve file seek (MODAPP-305/FSCORE-401/r:14199)
+	core: Fix uPNP for WRT-54TG-TM (FSCORE-402/r:14241)
+	core: group_confirm_cancel_timeout=true to stop timers once a group_confirm is triggered (r:14247)
+	core: Fix record_sample_rate when using stereo (FSCORE-403/r:14283)
+	core: hit the xml registry to look up path information for the say app (r:14310)
+	core: timeout calls stuck in CS_NEW after 1 minute (r:14313)
+	core: use FREESWITCH_OPTS env var to hold a string of desired command line switches (r:14352)
+	core: Handle UPNP from pfsense sending malformed header (FSCORE-405/r:14373)
+	core: add switch_sockaddr_equal (LBAPR-3/r:14397)
+	core: fix missing UNPROTECT_INTERFACE (r:14398)
+	core: fire_asr_events should be true/false (FSCORE-406/r:14447)
+	docs: Fix filename references in phrase_en.xml (r:12976)
+	docs: Update phrase_en.xml to include v1.0.8 sound prompts (r:13041)
+	docs: Updates to phrase_es.xml (r:13067)
+	docs: Latest revision of Spanish prompts file (r:13115)
+	docs: switch_core.h doxygen update (r:13181)
+	docs: Add ZRTP phrases to phrase_en.xml (r:13488,13489,13490)
+	docs: Add Stephane Alnet's French translations to phrase_fr.xml (r:13624)
+	docs: Add AGL3.0 for zrtp (r:13848)
+	formats: add mod_portaudio_stream to get audio from any dev (MODFORM-25/r:12178)
+	fs_cli: fix solaris build (r:12160)
+	ivr: make tts-engine and tts-voice valid attributes on the menu xml (r:12278)
+	libapr: fix solaris build (r:13671/FSBUILD-169)
+	libapr-util: add xml/expat stuff back to apr-utils (requires re-bootstrap) (r:13289,13290)
+	libdingaling: hijack gcrypt init call to fix threadsafe race in dingaling and fix buffer overrun in iksemel (r:12575)
+	libdingaling: add ldl_handle_running (r:13085)
+	libdingaling: add a function to check for connected and authorized (r:13100)
+	libdingaling: fix auto-restart on disconnect (r:13134)
+	libesl: add api, bgapi methods (r:12179)
+	libesl: add ruby example (r:12180)
+	libesl: add python example (r:12184)
+	libesl: fix missing Event-Name param (MODEVENT-39/r:12311)
+	libesl: example of using esl to get events for ASR (r:12344)
+	libesl: improved filter handling (r:12488-12489)
+	libesl: fix ESL segfault when bgapi is called twice and BACKGROUD_JOB events are subscribed (ESL-5/r:12525)
+	libesl: fix illegal free when invalid bgapi originate args (ESL-8/r:12623)
+	libesl: add disconnect method; add ivrd (r:12724)
+	libesl: add command line args to single_command.py example (ESL-9/r:12729)
+	libesl: check in ESL::IVR perl mod (r:12760)
+	libesl: fix ruby linking on debian (ESL-7/r:12805)
+	libesl: fix esl coredumps in esl_event_serialize when using sendEvent from PHP (ESL-11/r:12884)
+	libesl: add event name when sending (r:12889)
+	libesl: add ESL::IVR::setVar from intralanman (r:12917)
+	libesl: fix ESL/IVR to include the regex (r:12921)
+	libesl: fix ctrl-D in fs_cli not to exit unless cmd line is empty (ESL-13/r:12952)
+	libesl: fix undef check (r:13012)
+	libesl: kill zombies (r:13013)
+	libesl: don't double encode events when sending them  (r:13078)
+	libesl: adding sendevent example for esl perl (r:13079)
+	libesl: send content len with body in esl sendevent (r:13168)
+	libesl: add arbitrary notify (r:13188)
+	libesl: fix Phantom events when doing several bgapi calls without interleaving them with recvEvent (ESL-12/r:13217)
+	libesl: add Ruby example for ESL (ESL-15/r:13235)
+	libesl: add INFO example for Perl (r:13293)
+	libesl: add socketDescriptor() method to ESL::Connection obj (r:13770)
+	libesl: add prelims for Java ESL (r:13949,13950)
+	libesl: add fs_cli command line editing (FSCORE-389/r:13964)
+	libiksemel: let return 0 be a failure on read in iks to avoid cpu race (r:13123,13124,13133)
+	libnatpmp: add (r:13510)
+	libnspr: fix bsd port packaging (r:13715/FSBUILD-170)
+	libpcre: update to pcre 7.9 (r:13706)
+	libsndfile: add executable permissions to libs/libsndfile/src/create_symbols_file.py (FSBUILD-134/r:12535)
+	libsndfile: update to 1.0.19 (r:13415/LBSNDF-7) 
+	libsofiasip: su.h - define su_family via struct sockaddr (r:12260)
+	libsofiasip: sip_parser.c - fixed sip_transport_d() (r:12261)
+	libsofiasip: Fix compile time out-of-bounds error in su_uniqueid.c (SFSIP-136/r:12914)
+	libsofiasip: make info work out of dialog (r:13087)
+	libsofiasip: silence solaris warning from missing braces (SFSIP-132/r:13369)
+	libsofiasip: subscription-state subexp-params missing (r:13439/SFSIP-148)
+	libsofiasip: fix re-register after 423 w/ Min-Expires (r:13619/SFSIP-143)
+	libsofiasip: use addres, id, and version from user sdp if they exist (r:13621)
+	libsofiasip: handle mid-line comments in resolv.conf patch from Lee Verberne (SFSIP-152/r:13749)
+	libsofiasip: fix CNAME record resolve failure (SFSIP-129/r:13915)
+	libspandsp: update to snapshot 20090308 (r:12514)
+	libspandsp: update to snapshot spandsp-20090421 (r:13086)
+	libspandsp: update to snapshot spandsp-20090427 (r:13177)
+	libspandsp: update to spandsp-0.0.6pre12 (r:13311)
+	libspandsp: use __cdecl calling convention for span_rx_handler_t and span_tx_handler_t type functions (r:13509)
+	libspandsp: update to spandsp snapshot 20090714 (r:14316)
+	libspandsp: add --enable-builtin-tiff configure arg to tell spandsp to use pre-built libtiff in parallel directory (r:14318)
+	libspeex: Add visibility support for suncc on solaris (r:13117,13118)
+	libteletone: update api visibility macros for windows
+	libtiff: add libtiff, v3.8.2
+	libxmlrpc: add select to read socket in abyss so we can timeout (r:13107)
+	libxmlrpc: fix segfault (MODAPP-293/r:13906)
+	mod_cdr_csv: add option to disable creation of multiple files if account code is set (MODEVENT-44/r:13968)
+	mod_cidlookup: add new module, mod_cidlookup (r:12990)
+	mod_cidlookup: switch to using CURL instead of mod_http (r:12992)
+	mod_cidlookup: add config file (r:12994)
+	mod_cidlookup: set initial value for status (r:13029)
+	mod_clue_choo: add new module, mod_clue_choo (r:13068,13069,13070)
+	mod_commands: Add show api [name] and show application [name] (r:12296)
+	mod_commands: fix header_string "key" from being set twice from SWITCH_STANDARD_API(user_data_function) (MODAPP-242/r:12786)
+	mod_commands: add show modules functionality (MODAPP-227/r:12806)
+	mod_commands: add echo api command (echo back exact input) and add expand api command (executes another api command with variable expansion) (r:13101,13102)
+	mod_commands: add "stun" fsapi command (r:13137)
+	mod_commands: mod_commands: if no bind ip specified for stun fsapi command, use the guess ip (r:13140)
+	mod_commands: add show channels like %foo% (no % in the string implies wrapped in %, no spaces allowed in match string (r:13193)
+	mod_commands: Add max-sessions to status (MODAPP-254/r:13373)
+	mod_commands: remove double safe_free's (r:13453,13454,13455)
+	mod_commands: add nat_map API (r:13531)
+	mod_commands: add show distinct_channels (mix of show channels and show calls) (r:13944)
+	mod_commands: allow xml_locate to just take section (r:14317)
+	mod_conference: fix read terminating on single digit when called from a meta-app inside a conference (MODAPP-226/r:12466)
+	mod_conference: recording members should be invisible to commands (MODAPP-233/r:12582)
+	mod_conference: add lock caller_control (r:12787)
+	mod_conference: only first call to a conf requires a profile; fix bgdial (MODAPP-245/r:12809)
+	mod_conference: add conference_enforce_security variable to bypass or require pin or locked flag (r:12863)
+	mod_conference: clean up pin prommpting and make local override stay local (r:12864)
+	mod_conference: keep new conference locked the whole time during transfer (r:12988)
+	mod_conference: allow setting the moh_sound from a variable (r:13042)
+	mod_conference: set perpetual_sound from channel var (r:13048)
+	mod_conference: increase sanity timer for conference auto-record to 120 seconds (r:13104)
+	mod_conference: serialize (r:13116)
+	mod_conference: dist-dtmf flag in conference (r:13191)
+	mod_conference: add transfer action to caller-controls (r:13194)
+	mod_conference: fix dtmf queue issue in dist-dtmf feature (MODAPP-268/r:13206)
+	mod_conference: add execute_application to custom controls (r:13216)
+	mod_conference: disallow spaces in conference names (MODAPP-219/r:13313)
+	mod_console: Fix mod_console (missing FD_ZERO before FD_SET) (r:13126)
+	mod_conference: add conference wait-mod flags and member moderator flag to delay starting a conference until someone with a moderator flag has joined (r:13442)
+	mod_conference: add member-type header to relevant events (r:13471)
+	mod_conference: make endconf count cumulative (r:13526)
+	mod_conference: don't transfer back to the same conference (r:13638)
+	mod_conference: Add Job-UUID to conference bgdial  (MODAPP-304/r:14161)
+	mod_curl: Add mod_curl (API for querying Web resources) and moved mod_http to experimental because of probable leaks (r:14092)
+	mod_curl: Add ability to make a post request from dialplan (MODAPP-307/r:14348)
+	mod_dahdi_codec: delay init of resources until the first time they are actually used to avoid unnecessary waste of resources in hardware codec (r:12962)
+	mod_dahdi_codec: set mod_dahdi_codec dahdi transcoding device sockets to non-blocking to avoid hanging when there is no data and just return 0 bytes frame (MODCODEC-8/r:13257)
+	mod_dahdi_codec: added proper waiting (up to 10ms) for the DAHDI transcoder output frame (r:13262)
+	mod_dahdi_codec: return silence frame in dahdi codec when there is no output from the decoder (r:13265)
+	mod_dahdi_codec: add 30ms G729 codec in mod_dahdi_codec (r:13404)
+	mod_dialplan_xml: add min of day to time rules (r:14378)
+	mod_dingaling: fix crash when unloading/reload mod_dingaling (LBDING-13/r:12612)
+	mod_dingaling: fix no sound if phone picked up after 5th dingaling on Gtalk client (MODENDP-198/r:12641)
+	mod_dingaling: fix core dump when calling Gtalk enabled FS using leg_timeout (MODENDP-199/r:12641)
+	mod_dingaling: dl_login command line Usage and parameter doesn't match (MODENDP-202/r:12680)
+	mod_dingaling: fix unload mod_dingaling core dump (MODENDP-204/r:12680)
+	mod_dingaling: fix small memory (r:13374)
+	mod_dingaling: fix potential core dump (MODENDP-230/r:14296)
+	mod_dptools: prevent system crash when "user" in originate dialstring (FSCORE-313/r:12395)
+	mod_dptools: added sched_heartbeat and enable_heartbeat dialplan apps (r:12491)
+	mod_dptools: fix b & c legs not bridging when attended transfer used (FSCORE-334/r:12649)
+	mod_dptools: Custom events fired from event application bypass filtering mechanism (MODAPP-249/r:12894)
+	mod_dptools: change inline limit from 4 to 128 apps (MODAPP-253/r:12957)
+	mod_dptools: improvements to presence function (r:13164)
+	mod_dptools: add group_recurse_variables and user_recurse_variables to {} vars (default is true, set to false to not pass vars down to user or group channels) (r:13241,13246)
+	mod_dptools: add param dial-timeout to directory (MODAPP-271/r:13247)
+	mod_dptools: add set current_application_response channel variable (MODAPP-273/r:13298)
+	mod_dptools: fix SEGV in strncasecmp call (MODAPP-278/r:13317)
+	mod_dptools: fix leaks (r:13446, 13447, 13448)
+	mod_dptools: add sleep_eat_digits channel variable (r:14102)
+	mod_easyroute: fix leak (r:13449)
+	mod_enum: fix enum_auto_route (MODAPP220/r:12243)
+	mod_erlang_event: Bind to 0.0.0.0 instead of 127.0.0.1 by default; like most erlang nodes do. (r:12249)
+	mod_erlang_event: Reply appropriately to net_adm:ping() (r:13066)
+	mod_erlang_event: snprintf needs a format string too, and write has the warn_unused_result attribute set, so store the return value somewhere (r:13090)
+	mod_erlang_event: fix erlang autoconf macro to deal with edge cases (MODEVENT-45/r:13288)
+	mod_erlang_event: fix FreeSWITCH crashing when sending traffic (FSCORE-379/r:13746)
+	mod_event_socket: disallow unloading mod_event_socket from event socket (r:12326,12334)
+	mod_event_socket: fix api_exec crash on OSX (MODEVENT-40,r:12349)
+	mod_event_socket: move connect command to always work on outbound socket not just the first time (r:12723)
+	mod_event_socket: add nat-map option to mod_event_socket (r:13567)
+	mod_event_socket: sendevent Fire events with correct event-name and subclass (MODEVENT-41/r:14354)
+	mod_fax: can't print base 8 number that has a 9 in it.. use stringified version instead (r:13312)
+	mod_fifo: consumer callback waiting an option in fifo.conf.xml (r:12685)
+	mod_fifo: add fire events on bridge in fifo (r:12791)
+	mod_fifo: fix fifo re-parse crash (FSCORE-343/r:12855)
+	mod_fifo: fix uuid_transfer into mod_conference audio issue (MODAPP-259/r:13030)
+	mod_fifo: add  fifo_orbit_dialplan and fifo_orbit_context vars (MODAPP-189/r:13038)
+	mod_fifo: don't do wrapup when agent is in nowait mode or call has ended (r:13094)
+	mod_fifo: don't call all members on on-hook mode and round robin based on next_avail (MODAPP-272/r:13240,13242)
+	mod_fifo: abandon outbound calls when they are not needed, place queue name in the caller id (r:13240)
+	mod_fifo: add "fifo_destroy_after_use" variable to allow quick destruction of one-time use FIFO queues (MODAPP-287/r:13897)
+	mod_file_string: add new module, allows for playing ! delimited lists of sound files (r:13182)
+	mod_flite: three new voices - rms, awb (male), slt (female) (r:12166)
+	mod_flite: mod_flite_shutdown not called/used (MODASRTTS-15/r:13270)
+	mod_g723_1: add more ptimes (r:14095)
+	mod_iax: make mod_iax async (r:13021)
+	mod_iax: autoflush these channels that use queues (r:13057)
+	mod_lcr: allow channel vars in custom_sql (r:12198)
+	mod_lcr: Add ifdefs around odbc calls in shutdown function (r:13268)
+	mod_lcr: Adjust handling of strip parameters so entire number can be stripped (MODAPP-279/r:13365)
+	mod_lcr: honor effective_caller_id_number for CID override (r:13611)
+	mod_lcr: Add variable expansion in cid regexp processing (MODAPP-309/r:14287)
+	mod_lcr: add "as xml" option (r:14311)
+	mod_limit: Add events and a shutdown function (r:12497)
+	mod_limit: close odbc handle (r:12632)
+	mod_limit: Add more error checking to hash api/app (r:13007)
+	mod_limit: prevent multiple bindings of the same event_hooks to make code simpler in mod_limit (MODAPP-264/r:13113)
+	mod_limit: Move over-limit messages down to INFO (MODAPP-308/r:14275)
+	mod_limit: Refactor and add limit_hash_execute application (see wiki) (r:14401)
+	mod_local_stream: Add show_local_stream [stream name] (MODFORM-27/r:13165)
+	mod_local_stream: fail over to default if desired stream is not found (r:13184,13185,13186)
+	mod_local_stream: refactor resampling in mod_local_stream (r:13222)
+	mod_loopback: mod_lopback: other_loopback _leg_uuid variables are sometimes unset while executing the dialplan (MODENDP-210/r:12905)
+	mod_loopback: destroy codec (r:12936)
+	mod_loopback: fix loopback channels that stay alive (FSCORE-349/r:12944,12953)
+	mod_loopback: flush queued frames on audio sync event (r:13018)
+	mod_loopback: autoflush these channels that use queues (r:13057)
+	mod_loopback: pass flush indications across to the b leg (r:13146)
+	mod_loopback: make mod_loopback render silence to prevent livelock (r:13147)
+	mod_loopback: drop excess frames on loopback channel (r:13156,13157,13158)
+	mod_loopback: add loopback_bowout variable (set to false to skip auto-bowout) (r:13162)
+	mod_loopback: mod_loopback plays noise instead of silence (MODENDP-216/r:13214)
+	mod_lua: windows build changes to support externally built modules. (MODLANG-101/r:12237)
+	mod_lua: fix visibility support (FSCORE-302/r:12239-12240)
+	mod_lua: fix windows build (FSBUILD-149/r:12919)
+	mod_lua: fix memory leak (MODLANG-111/r:13298)
+	mod_lua: fix error checking to be more reasonable (MODLANG-116/r:13993)
+	mod_lua: fix  memory leak in xml binding (MODLAN-113/r:14158)
+	mod_managed: fix recursive file record during file playback issue (r:13551/IRC-00)
+	mod_managed: New mod_managed with multi-appdomain (reloading) and scripting support (r:14364)
+	mod_memcache: add new module, mod_memcache; API for memcached (r:12871)
+	mod_memcache: make -ERR for API call less verbose  (r:12949)
+	mod_memcache: add hook reloadxml event (r:12950)
+	mod_memcache: unbind the reloadxml event handler on shutdown (r:12954)
+	mod_memcache: Fix C99 error, move var declaration out of the "for()" statement (no -std=c99?) (r:12959)
+	mod_memcache: cleanup xml config handling (r:13050,13051)
+	mod_memcache: fix compile failure (MODAPP-292/r:13883)
+	mod_native_file: add fh->pos setting (MODFORM-34/r:14388)
+	mod_nibblebill: mod_nibblebill question: DB Error while updating cash (MODAPP-229/r:12907)
+	mod_nibblebill: Updated mod_nibblebill to work properly w/ postgres fields  (r:13031)
+	mod_nibblebill: Added feature mod_nibblebill to check balance and transfer the caller to an alternate dialplan context & extension if they deplete their funds. (r:13432)
+	mod_nibblebill: cleanup, fix leak (r:13463)
+	mod_nibblebill: fix segfault (MODAPP-286/r:13662)
+	mod_nibblebill: Fixed nibblebill to bill on call start (r:13753)
+	mod_nibblebill: code before declaration (FSBUILD-172/r:13755)
+	mod_opal: Fixed transmission of Q.931 Calling-Party-Number, and DisplayName on H.323 Setup (r:12347)
+	mod_opal: allocate frame from session pool so it will not go out of scope (r:12811)
+	mod_opal: disable visibility support broken in newer gcc (MODENDP-190/r:12923)
+	mod_opal: add dtmf method to mod_opal (r:13002)
+	mod_opal: Applied patch to fix some race conditions on call termination (r:13014)
+	mod_opal: prevent endless loop (r:13034)
+	mod_opal: Fixed ability to send a string as user indications (DTMF) (r:13049)
+	mod_opal: try to flag CNG frames (MODOPAL-6/r:13098)
+	mod_opal: Fixed incorrect include path (r:13239)
+	mod_perl: Libtool build fix for mod_perl: use LIBTOOL_LIB_EXTEN to make libtool-2.2 happy and CXXLINK since we are linking a C++ lib (r:13080)
+	mod_pocketsphinx: Revamp mod_pocketsphinx to use jsgf format (r:12224)
+	mod_pocketsphinx: now you can specify the dictionary to use in the config file (r:13747)
+	mod_pocketsphinx: add language weight (r:13910)
+	mod_portaudio: fix audio issue in portaudio (r:12669)
+	mod_python: fix core dump when using startup script (MODLANG-106/r:12648)
+	mod_python: fix python failing during loading startup modules (MODLANG-105/r:12658)
+	mod_python: fix EventConsumer::pop() can deadlock mod_python (MODLANG-109/r:12849)
+	mod_python: fix seg on unload when scripts are running (MODLANG-107/r:13721)
+	mod_say_en: fix missing "at" in time readback, change from cardinal to ordinal numbers on dates, e.g. "January 20th" vs. "January 20" (MODAPP-263/r:13099)
+	mod_say_en: tweak grammar (MODAPP-310/r:14351)
+	mod_say_es: Add stub phrase_es.xml (r:13019)
+	mod_say_ru: add Russian language say module and config files (r:12966-12971)
+	mod_say_ru: change encoding on phrase_ru.xml from cp1251 to utf8 (r:12974)
+	mod_say_ru: add .wav and small fix (r:13000)
+	mod_say_ru: change char million,thousand to enum (r:13009)
+	mod_say_ru: rename currency (r:13024)
+	mod_say_ru: change dollars and cents to rubles and kopecks (r:13025)
+	mod_say_ru: add ru_ip (r:13026)
+	mod_say_ru: Update phrase_ru.xml to include v1.0.8 sound prompts (r:13044,13045)
+	mod_say_ru: add russian language support and makefile targets (r:14091)
+	mod_say_ru: add mod_say_ru to windows build (r:14246)
+	mod_shell_stream: Initial commit (r:13851)
+	mod_shout: Fix race conditions; fix stutter when first 64k is drained from shoutcast stream (r:13218)
+	mod_shout: bring media back so telecast of a no-media call will work. (MODFORM-28/r:13895)
+	mod_shout: add mp3 improvements in seeking, cleanup (MODFORM-32/r:14223)
+	mod_skel: add more example code and info (r:12459)
+	mod_skypiax: move to trunk (r:12167)
+	mod_skypiax: fix hang on invalid mod_skypiax.conf.xml (MODSKYPIAX-21/r:12320-12322,12343)
+	mod_skypiax: modified configs/startskype.sh to specify which unix user will start the Skype client instance (r:12937)
+	mod_skypiax: fixed assignment before declaration on Windows VC++ (r:12956)
+	mod_skypiax: great startup speedup in Windows (using only one Broadcast sendmessage for each interface hunting) (r:13083)
+	mod_skypiax: when repeatedly you try to connect to non-existing Skype account in a short period, the Skype client send you back the two halves of the message 'ERROR 92 CALL: Unrecognised identity' inverted in a way that breaks the flux of the API messages. Maybe an anti-spam feature? Anyway, let's try to work around it and restore sanity with a 1 second delay (r:13663)
+	mod_skypiax: the Skype client sends us BOTH inband and out_of_band DTMFs, no way to shut the inbands. Let's intercept the out_of_bands ONLY if we are not bridged (eg: IVR, so not to waste CPU in detecting inband), but not propagate the out_of_band DTMFs if we are bridged (inband ones will be propagated) (r:13664)
+	mod_skypiax: now it manages the REMOTEHOLD status, when the remote party puts the call on-hold (r:13667)
+	mod_skypiax: removed FARMING ifdefs (r:13810)
+	mod_skypiax: added XInitThreads() to configs/client.c, now is kind of a reliable tool (r:14125)
+	mod_skypiax: added directory 'alsa', contains customized snd-dummy ALSA driver (r:14335)
+	mod_skypiax: added directory 'kernel', contains .config file for compilation of kernel 2.6.24.7 (64bit) tickless and 100HZ. (r:14336)
+	mod_skypiax: added directory 'configs/multiple-instance-same-skype-username', contains configuration file and script to launch Skype clients with multiple instances of the same skype user (r:14337)
+	mod_skypiax: added configs/windows-service directory, contains batch files needed to start skype instances as service, and then start FreeSWITCH (r:14359)
+	mod_skypiax: patch from Muhammad Shahzad for adding and removing interfaces on the fly (r:14367)
+	mod_skypiax: manage the 'BUSY' call status message (r:14371)
+	mod_skypiax: manage the 'WAITING_REDIAL_COMMAND' call status message (r:14372)
+	mod_skypiax: patch from Seven Du for hunting IDLE channels in a round-robin way (RR interface vs ANY interface). patch from Seven Du for removing interface as #'interface_id' and #'interface_name'. gmaruzz (meh) patch interface_remove() not to alter the global 'running' variable (it would cause all running signaling and API thread to exit) but to use a newly added tech_pvt->running variable. Also, changed behavior of interface_exists() for correct identification when using #interface_name and #interface_id. PLEASE TEST IT HEAVILY (r:14410)
+	mod_skypiax: fixed crash when you set an interface as 'sk' console, then remove the interface, then use the 'sk' command to send a message to the API (it try to use a non-existing interface) (r:14411)
+	mod_skypiax: now interprets correctly the_interface whichever it is: interface_id, interface_name, skype_username. And reload works too :-) (r:14414)
+	mod_skypiax: fix segfault when used with record_session (MODSKYPIAX-35/r:14444)
+	mod_skypiax: fix STATE_PRERING/STATE_DOWN issue (MODSKYPIAX-42/r:14453)
+	mod_sndfile: fix off by one error (MODFORM-29/r:13890)
+	mod_sndfile:  update pos on the file handle on reads (MODFORM-33/r:14377)
+	mod_sofia: allow you to set invite, to and from params independently (r:12287)
+	mod_sofia: allow add params to a contact that isn't a gateway (r:12289)
+	mod_sofia: add sip_route_uri var to set proxy route (r:12408)
+	mod_sofia: add sip_send_to Sofia dial param (MODEND-195/r:12409)
+	mod_sofia: add siptrace on/off to sofia command (r:12410,12412)
+	mod_sofia: add network_ip and network_port to registration ODBC table and registration event (MODENDP-194/r:12414)
+	mod_sofia: add configurable outgoing cid types (r:12427)
+	mod_sofia: send SIP INFO DTMF to the bridged leg in bypass media mode (FSCORE-263)
+	mod_sofia: add extension-in-contact param for rare cases when provider makes you say a certain contact user (r:12511)
+	mod_sofia: add contact-host param to gateways (r:12531)
+	mod_sofia: add sip_from_display var and fix backwards switch_strisr calls (r:12566)
+	mod_sofia: remove Redundant NTATAG_DEFAULT_PROXY (MODENDP-197/r:12583)
+	mod_sofia: reset rtp timer on unhold operation (r:12617)
+	mod_sofia: fix G.722 call with broken ptime triggers crash after transfer between contexts (FSCORE-337/r:12647)
+	mod_sofia: fix presence subscription not automatically refreshed due to wrong Contact in 202 (refer accepted) response. (MODENDP-201/r:12657)
+	mod_sofia: fix random segfaults (FSCORE-322/r:12676)
+	mod_sofia: fix registration issue (r:/12715)
+	mod_sofia: add username and realm to sip db (r:12785)
+	mod_sofia: fix subscriptions  being checked even though it belongs to other host (MODAPP-207/r:12792)
+	mod_sofia: reduce exponential mwi notifies (r:12801)
+	mod_sofia: don't auto-disable, just warn on RFC2833 in transcoded call (r:12815)
+	mod_sofia: add 603 for now (r:12883)
+	mod_sofia: make nat options ping configurable and leave it off by default (r:12897)
+	mod_sofia: continue_on_fail broken on SVN12881 (MODENDP-209/r:12902)
+	mod_sofia: add rtp-autofix-timing (defauts to true even when not present) set to false to disable it (FSCORE-281/r:12903,12904)
+	mod_sofia: add set r_sdp_codec_string to list of codecs offered in inbound call dsp (MODENDP-206/r:12946)
+	mod_sofia: add sip_call_info variable (SFSIP-138/r:12977)
+	mod_sofia: move rtp stats up to where they will be more useful (r:13017)
+	mod_sofia: fix FreeSWITCH/SIPX transfer issue (SFSIP-86/r:13032)
+	mod_sofia: ndlb_sendrecv_in_session var NDLB-sendrecv-in-session profile option to reverse the effects of MODENDP-148 (r:13084)
+	mod_sofia: add sip info to event_socket gateway (r:13088)
+	mod_sofia: switch_add_event_header needs a format specifier, or >=gcc-4.3 will be very unhappy (r:13089)
+	mod_sofia: add calls count and failed calls count to sofia profile sorted by direction (r:13103)
+	mod_sofia: only pass 2833 while bridged and while bridged to another channel that uses our RTP stack (r:13131)
+	mod_sofia: send-message-query-on-register profile param, set it to false to disable default of true (r:13139)
+	mod_sofia: fix segfault in sofia xmlstatus profile command (MODENDP-214/r:13141)
+	mod_sofia: add contact lookup (r:13169)
+	mod_sofia: parse out alert-info and call-info from infos (r:13173)
+	mod_sofia: add arbitrary notify (r:13187,13189)
+	mod_sofia: add experimental NDLB-connectile-dysfunction-2.0 (r:13197~13203)
+	mod_sofia: allow register-transport (MODENDP-217/r:13226)
+	mod_sofia: fix mem corruption on failed register (r:13229,13230)
+	mod_sofia: Ignore ptime when missing instead of using @0i (MODENDP-206/r:13231)
+	mod_sofia: fix evil send myself a refer bug (FSCORE-350/r:13237)
+	mod_sofia: Add sofia profile params to fine-tune timers (r:13245)
+	mod_sofia: Fix incoming anonymous from MetaSwitch will not bridge (SFSIP-144/r:13266)
+	mod_sofia: Fix command "sofia xmlstatus profile internal reg" returns invalid xml text (SFSIP-145/r:13267)
+	mod_sofia: Allow retrieval of redirect contact uri parameters via channel variable (MODSOFIA-7/r:13271)
+	mod_sofia: Fix Polycom SRTP (r:13295)
+	mod_sofia: preserve the transport on SLA interactions, still needs work for TLS but should work for UDP and TCP (r:13303)
+	mod_sofia: now pickup, barge-in and various other things will work with SLA is turned on (r:13306)
+	mod_sofia: Add ability to supply call-id when using SEND_INFO (MODENDP-219/r:13357)
+	mod_sofia: Allow sending the flush/reboot all the registration of a domain (MODENDP-187/r:13363)
+	mod_sofia: Fix double re-register problem (SFSIP-143/r:13384)
+	mod_sofia: make autoflush on bridge the default (r:13389)
+	mod_sofia: add contact-user profile param to override default contact username for a profile (MODSOFIA-8/r:13397)
+	mod_sofia: add proxy-follow-redirect flag (experimental) (r:13402)
+	mod_sofia: add proxy-follow-redirect flag (experimental) (r:13403)
+	mod_sofia: Update CID on Polycom when doing an Attended transfer, Make send_display work with Polycom and others, add patch with mods from SFSIP-111 (r:13492/SFSIP-111)
+	mod_sofia: handle vegastream broken sip info packets (r:13506)
+	mod_sofia: Rewrite sofia_glue_get_user_host (r:13543)
+	mod_sofia: Fix NOTIFY message sending incorrect information (MODENDP-225/r:13719)
+	mod_sofia: add sofia tracelevel <level> and tracelevel param in <settings> (r:13735)
+	mod_sofia: Fix wrong contact header in SIP on incoming calls and NAT (SFSIP-151/r:13736)
+	mod_sofia: increase compat on NDLB-to-in-200-contact to handle NAT (r:13759)
+	mod_sofia: fix segfault (FSCORE-382/r:13774)
+	mod_sofia: Fix multicast replication of sofia registrations (r:13786)
+	mod_sofia: don't put params in chan names on sofia urls (r:13841)
+	mod_sofia: Fix mod_sofia is not looking fs_path for correct url if endpoint is behind NAT or proxy (MODENDP-221/r:13865)
+	mod_sofia: Move sip-allow-multiple-registrations and similar variables from variables to params (MODENDP-222/r:13875)
+	mod_sofia: fix segfault on refer with no content-type or body (SFSIP-153/r:13889)
+	mod_sofia: fix segfault on reinvite on nomedia call when using uuid_media (r:13894)
+	mod_sofia: use the register proxy for the R-URI on register when register-proxy is set (MODSOFIA-12/r:13911)
+	mod_sofia: Dereferencing a null pointer causes segfault: sofia_handle_sip_r_invite doesn't check profile->extsipip before use (FSCORE-386/r:13937)
+	mod_sofia: preserve transport on route (SFSIP-157/r:13948)
+	mod_sofia: do not set route_uri unless there is actually one to go to (r:13952)
+	mod_sofia: P-Asserted-Identity and P-Preferred-Identity headers now available as channel vars (BOUNTY-7 and MODENDP-146/r:13977)
+	mod_sofia: this one was my fault, it shouldn't set them as sip_h just in case.  Moved it to set the full header into sip_HEADERNAME so you can use it as you see fit or re-export it to a sip_h on the b-leg if needed unchanged. (r:14081)
+	mod_sofia: manually handle bye to delay the 200 OK till after the call is torn down (reversible with a define) (r:14121)
+	mod_sofia: Have I said how dumb sip is sometimes? (r:14142)
+	mod_sofia: fix SFSIP-163, don't blindly copy the extrtpip when ip is defined. (r:14209)
+	mod_sofia: add sip_auto_answer_detected var set when we get intercom request on inbound invite. (r:14220)
+	mod_sofia: Gateway Config option caller-id-in-from disables/ignores option from-domain (MODSOFIA-16/r:14244)
+	mod_sofia: Fix OPTIONS ping sends OPTIONS of many gateways to one gateway (SFSIP-162/r:14249,14250)
+	mod_sofia: Fix problem w/OCS after svn14200 with transport=tcp (MODSOFIA-17/r:14251)
+	mod_sofia: Send outbound INVITES to outbound proxy (SFSIP-165/r:14263)
+	mod_sofia: do not auto-set from-domain value (r:14304)
+	mod_sofia: fix MODSOFIA-18 (r:14319)
+	mod_sofia: add some err checking to sqlite case for nonce checking (r:14322)
+	mod_sofia: Also support 300 redirections (r:14329)
+	mod_sofia: Mitel interop (MODSOFIA-15/r:14332)
+	mod_sofia: Fix issue of gateway parameters register-proxy and outbound-proxy being interchanged (SFSIP-167/r:14344)
+	mod_sofia: Fix Multiple ODBC table creation issues (SFSIP-168/r:14346)
+	mod_sofia: Optionally rewrite fs_path element of sip contact string on multicasted registrations (MODENDP-231/r:14353)
+	mod_sofia: add sofia_gateway_data api (r:14425)
+	mod_spidermonkey: fix segfaults on dtmf callback (FSCORE-327/r:12577)
+	mod_spidermonkey: fix error loading mod_spidermonkey due to missing PR_* symbols (r:12934,12939)
+	mod_spidermonkey: add destroy method to js (r:13016)
+	mod_spidermonkey: Let session.destroy() take the cause as a string too (r:13020)
+	mod_spidermonkey: add error checking on switch_core_db_column_text (r:14323)
+	mod_spy: add new module, mod_spy (MODAPP-260/r:13035,13036)
+	mod_syslog: Keep the indent string in memory (LOGGER-1/r:12852)
+	mod_t38gateway: Introduction of the skeleton of a media bug implementing a T.38 gateway, so the
+	related infrastructure work can take place around it (r:13082)
+	mod_voicemail: remove endless loop on leaving message (MODAPP-233/r:12315-12316)
+	mod_voicemail: add indexes to mod_voicemail (r:12341)
+	mod_voicemail: fix audio cutoffs in voicemail_leave_main (MODAPP-225/r:12367)
+	mod_voicemail: fix profile id mismatch when changing password via menu (MODAPP-236/r:12602)
+	mod_voicemail: fix incorrect (NULL) recipient stored for VM on dynamic binding of FS directory. (MODAPP-240/r:12850)
+	mod_voicemail: fix segfault on vm_boxcount when box has "sip:" prefix (MODAPP-250/r:12915)
+	mod_voicemail: add parameter "login-keys" to allow user to customize which key is used to log in (MODAPP-251/r:12916)
+	mod_voicemail: change len to seconds (r:13127)
+	mod_voicemail: message-query-exact-match global param in settings section of voicemail to assume profile names match domain names (r:13138)
+	mod_voicemail: allow unload and reload of mod_voicemail (MODAPP-177/r:13145)
+	mod_voicemail: expand the right variable (r:13272)
+	mod_voicemail: rework vm_boxcount api and add an optional profile parameter (r:13283)
+	mod_voicemail: add voicemail disk quota (MODAPP-173/r:13314)
+	mod_voicemail: abolish mailbox attribute in users and use number-alias attribute instead (MODAPP-218/r:13377,13378,13379,13380,13381)
+	mod_voicemail: Implement new config parser (r:13878,13879)
+	mod_voicemail: Implement reload in non-blocking way (r:13884)
+	mod_voicemail: fix playback control keys being non-functional (MODAPP-302/r:14090)
+	mod_voicemail: Fix seg fault and do some cleanup (r:14107)
+	mod_voicemail: Flush DTMF Before Tone (MODAPP-312/r:14380)
+	mod_voicemail: add option to move to next and previous message(MODAPP-313/r:14386) 
+	mod_voicemail: allow Voicemail FF REW key to have configurable millisec interval AND allow REW to limit at the begining of the recording. (MODAPP-311/r:14389)
+	mod_voicemail: allow to skip the info section of a message by pressing a key (MODAPP-314/r:14392) 
+	mod_voicemail: fix isten to the msg again option after pressing # to stop info msg (MODAPP-316/r:14395)
+	mod_unimrcp: add to trunk (r:13788,13789,13790,13791)
+	mod_unimrcp: make mod_unimrcp compile with gcc 4.3 (MODUNIMRCP-1/r:13833)
+	mod_unimrcp: mrcp_profile for unimrcpserver 0.6.0 (MODASRTTS-18/r:13835)
+	mod_unimrcp: use paths referenced to the project file dir (r:13840)
+	mod_unimrcp: Added LPCM (16-bit linear PCM) codec, which is used internally in host order; while L16 is RFC3551 defined 16-bit linear PCM codec in network order. (r:13859)
+	mod_unimrcp: add speech_channel_set_state_unlocked() (r:14049)
+	mod_xml_cdr: Implement optional directory rotation for mod_xml_cdr (XML-6/r:14300)
+	mod_xml_cdr: use switch_true instead of atoi (r:14342)
+	mod_xml_curl: fix data fetch (MODXMLINT-48/r:12586)
+	mod_xml_curl mod_xml_cdr: fix ssl verify peer option and add cookie options (MDXMLINT-51/MDXMLINT-52/r:14208)
+	mod_xml_rpc: xmlrpc fails to check security restrictions (MDXMLINT-53/r:13912)
+	mod_xml_rpc: add virtual-host (default to true) and default-domain params (MDXMLINT-45/r:14349)
+	scripts: Add -days option to set expiration time of certificates in gentls_cert (r:13825)
+	scripts: Add zrtp enrollment script, we do auto enrollment and verification (r:13843)
+	scripts: Add AT&T System 25 PBX style call pickup (FSSCRIPTS-16/FSSCRIPTS-17/r:13896)
+	support: Add print_list gdb macro (r:12687)	
+	switch_cpp: fix leak (FSCORE-394/r:14097)
+
+
+freeswitch (1.0.3)
+
+	build: add targets cd-sounds[-install] and cd-moh[-install] for 48k sounds (r:11151)
+	build: autoconf detect odbc library (FSBUILD-8)
+	build: fix sound install on windows build (r:11635,11638)
+	build: fix configure --sysconfdir (FSBUILD-84)
+	build: fix uclibc build (MODLANG-99)
+	build: fix adduser in debian (FSBUILD-122, FSBUILD-102)
+	core: fix buffering issues (r:11101,11145,11152-11157,11162,11191,11200)
+	core: fix c leg no hangup when converting attended to blind transfer before b leg answers (MODENDP-165/r:11061)
+	core: fix codec and media handling issues (r:11104) 
+	core: fix double close of file handles and add recording of native files (r:11108-11113,11482,11483)
+	core: fix file resampling issue (r:11090)
+	core: fix incorrect call progress timestamps in timetable (r:11186-11187/FSCORE-268)
+	core: fix media handling issues (r:11079-11082)
+	core: fix multiple 2833 dtmf handling issues (r:11149,11261,11262,11266,11293,11294,11338/FSCORE-266,FSCORE-273)
+	core: send more event types verbos bridge,unbridge,park,unpark (r:11097-11098)
+	core: Prevent media setup on failed originates (r:11462/FSCORE-279)
+	core: fix recorded soundfiles had random data at end of file (r:11491/MODAPP-205)
+	core: fix user for windows service (r:11538/FSCORE-277)
+	core: modify variable expansion code to expand in more places and to fix potential security issue from injecting variables (r:11569,11570)
+	core: look for soundfiles in more locations based on rate (r:11601/MODFORM-23)
+	core: state machine veto behavior changed (r:11610)
+	core: add enable_file_write_buffering variable (r:11677)
+	core: fix garbled audio on media bug during bridge using stateful codecs (FSCORE-288)
+	core: fix tone detect running multiple bugs when detecting multiple tones
+	core: add {instant_ringback=true} to make ringback not wait for indication to generate ringback
+	core: fix segfault from race condition on multiple reloadxml calls (MOODAPP-211)
+	core: modify xml locking so phrases do not lock the xml for the duration of playing them
+	core: replace resampler with the speexdsp resampler
+	core: fix windows calling convention on threads launched that return a value to fix shutdown segfault (FSCORE-298)
+	core: do not auto-export origination_caller_id_* to avoid confusion (r:12052)
+	core: API visibility support (GCC/SUNCC) (FSCORE-264)
+	core: fix leak in exposed event class serialize method (r:12068)
+	core: add volume as possible return value from input callback on embedded languages (r:12114)
+	core: add resampler to seech handles (r:12141)
+	core: add api.getTime to embedded languages (r:12149)
+	freeswitch: allow you to specify -htdocs dir at runtime. (r:11614)
+	fs_cli: add "debug" command to change the esl debug level at runtime (r:11057)
+	iksemel: update to 1.3 (r:11645)
+	libesl: fix disconnect failure (r:11078,11083)
+	libesl: fix solaris build (r:11067,11068)
+	libesl: add c++ wrapper and swigged wrappers for multiple scripting languages
+	libg722_1: fix dct4.h code generator to include the "f" (r:11188-11189,11367)
+	libilbc: update to new library from Steve Underwood
+	mod_amrwb: add amr wideband passthrough codec (r:11971)
+	mod_cepstral: fix failure return code handling (MODASRTTS-9)
+	mod_conference: add 'conference xml_list' and 'conference [conf_name] xml_list' (r:11062-11063)
+	mod_conference: make conference verbose-events param to control if events have all the channel data or not (r:11073-11077)
+	mod_conference: add MINTWO flag to end conference when down to 1 participant (r:11523)
+	mod_conference: refactor conference record function (r:11626)
+	mod_conference: add conference list summary command (MODAPP-197)
+	mod_conference: fix Deadlock or coredump on conference commands play, transfer (MODAPP-209)
+	mod_dahdi_codec: added (MODCODEC-7)
+	mod_dialplan_xml: make previous auto hunt feature optional and off by defaule use auto_hunt=true session or global variable to enable (r:12144)
+	mod_dptools: Add failure_causes channel variable (r:12058)
+	mod_easyroute: add configuration file example for custom-query (r:11055)
+	mod_easyroute: add custom-query configuration option (r:11054)
+	mod_easyroute: fix build error when not configured for odbc (r:11478)
+	mod_easyroute: fix memory leak (r:11611)
+	mod_erlang_event: add ability to spawn a process (module/function) outbound on a specified node. (r:11460,11477)
+	mod_erlang_event: Fix some issues with standing up a new outbound listener and cleaning up after a failed session (r:11479)
+	mod_erlang_event: Fix setting up a listener for an outbound session if one doesn't already exist (r:11488)
+	mod_erlang_event: add "erlang" fscli command (r:11488)
+	mod_erlang_event: Monitor spawned outbound processes for premature exits (r:11489)
+	mod_erlang_event: Allow the event encoding strategy to be configurable; choices are string or binary (r:11495)
+	mod_erlang_event: Allow certain tuple elements to be binaries or strings, to reduce conversion requirements on the erlang side (r:11496)
+	mod_erlang_event: Support sending a message to a registered process to request a pid (when spawning won't cut it) (r:11499)
+	mod_erlang_event: Ensure events received while a pid session is being created aren't discarded but are queued instead (r:11500)
+	mod_erlang_event: Add freeswitch.erl - An erlang module to make talking to mod_erlang_event more painless (r:11525)
+	mod_erlang_event: use rpc:call instead of spawn and to make the registered process argument to handlecall optional (r:11542)
+	mod_event_socket: add ability to use a comma sep list of events on event-sink create-listener (r:11056)
+	mod_event_socket: add debug logging to event-sink (r:11060)
+	mod_event_socket: fix race condition (r:11680,12146)
+	mod_dptools: add all modifier to break command (r:11557,11558)
+	mod_dptools: add sound_test application (r:11658)
+	mod_fax: Dont hangup after sending/receiving faxes
+	mod_fifo: pause media bugs while not in a bridge (r:11466,11490)
+	mod_fifo: allow unpark during chime list playing (r:11555/MODAPP-206)
+	mod_fifo: fix outbound fifos doesn't check if the consumer is in the fifo in question. (r:11561/MODAPP-207)
+	mod_fifo: Fix segfault when no argument were supplied to fifo_member call (MODAPP-210)
+	mod_lcr: added (r:11180,11184,11532,11609)
+	mod_limit: fix memory corruption caused by race condition when using limit hash (r:11070-11071)
+	mod_limit: Fix transfer bug, fix leak and make the channel hangup if the extension is \!hangup_cause (r:11604,11932)
+	mod_limit: add write different channel variables per realm_id (r:11608)
+	mod_limit: Make max argument optional on the limit app, set the limit_usage variable to current count after inserting call in the db (r:11955)
+	mod_lua: Create empty argv table when no args are passed to a Lua script (r:11559)
+	mod_lua: use dll for lua windows build (FSCORE-299)
+	mod_openmrcp: removed (r:11176-11179)
+	mod_opal: added
+	mod_pocketsphinx: fix leak (r:11974)
+	mod_portaudio: fix stuck channels on outbound calls (r:11160,11470,11471,11472,11475,11476,11485)
+	mod_python: fix build when site dir is not /usr/lib/python2.4 (r:12070)
+	mod_say_en: add short form date/time (MODAPP-180)
+	mod_sofia: add auto-rtp-bugs profile option to make rtp bug compensation configurable  (r :11146-11147)
+	mod_sofia: add support in sdp for a=maxptime (r:11103)
+	mod_sofia: fix codec change race condition (r:11143)
+	mod_sofia: fix notify event wasn't allowing content-length 0 (r:11106/MODENDP-167)
+	mod_sofia: fix sending extra sdp in 200 OK when using 100rel in violation of sdp o/a protocol draft-ietf-sipping-sip-offeranswer-10 (r:11088)
+	mod_sofia: fix sip_auto_answer=true (r:11069)
+	mod_sofia: improve outbound registration error message (r:11059)
+	mod_sofia: reset media timeout on re-invite (r:11161)
+	mod_sofia: fix segfault due to missing contact header in invite (r:11463/MODENDP-177)
+	mod_sofia: allow <params> tag in gateways as well as <variables> with direction inbound/outbound (default both) and call counter (r:11468)
+	mod_sofia: add support or SLA, works with Polycom and Snom(Sylantro mode). (r:11562/MODENDP-179)
+	mod_sofia: tolerate missing user in the request uri (r:11636)
+	mod_sofia: Add purpose=gateways and profile=[name] so xml_curl requests make sense (MDXMLINT-46)
+	mod_sofia: Add disable-srv and disable-naptr params to sip profiles (default false) (MODENDP-183)
+	mod_sofia: add outbound-proxy param (MODENDP-184)
+	mod_sofia: fix segfault with stun-enabled=false (SFSIP-120)
+	mod_sofia: Profile Name in Expire Event is incorrect (MODENDP-185)
+	mod_sofia: add "scrooge" mode to "inbound-codec-negotiation" (r:11881)
+	mod_sofia: Add context to reconfig_sofia (r:12080)
+	mod_sofia: fix segfault when calling from a Cisco 7940 using bypass_media (FSCORE-301)
+	mod_sofia: ilbc to default to 30 if no mode= fmtp is defined on the inbound (r:12110)
+	mod_sofia: fix challenge-realm (r:12113)
+	mod_sofia: Segmentation fault when running killgw command on sofia profile without specifying a gateway (MODENDP-189)
+	mod_sofia: gateways will inherit the context from its parent unless manually provided (r:12138)
+	mod_sndfile: Add IMA ADPCM support (MODFORM-22)
+	mod_spidermonkey: fix loading of spidermonkey modules (r:11084-11085)
+	mod_spidermonkey: block some unwanted behaviours in  session.originate
+	mod_spidermonkey_socket: fix gc blocking (MODLANG-97)
+	mod_xml_rpc: fixed authentication using @domain syntax (r:11064)
+	mod_xml_rpc: fix http content types sent in responses (r:11099,11148,11150)
+	mod_voicemail: voicemail insert into the proper fields (MODAPP-190)
+	mod_voipcodecs: add  G.726 24k (r:12083)
+	sofia-sip: update to current sofia-sip repository
+	spandsp: sync to latest snapshot and fix windows build
+	speex: updated to 1.2rc1
+	sqlite: fix random assert on windows (FSCORE-292)
+
+
+freeswitch (1.0.2)
+
+	all: don't add module interfaces before returning from error conditions in module load functions (MDXMLINT-36)
+	all: fixed multiple memory leaks
+	all: improved module unloading/reloading support
+	build: add support for --switchconfdir (FSBUILD-84)
+	build: fixed netbsd build
+	build: make freeswitch stop graceflly with /etc/init.d/freeswitch stop on debian add working dir to start-stop-dir so freeswitch dumps core in workdir
+	build: multiple packaging fixes
+	build: user freeswitch not added to audio group on deb install (FSBUILD-95)
+	Configuration: many updates to default configuration
+	core: Add ability to choose uuid from originate string, originate_uuid var (use at your own risk) 
+	core: add bridge_generate_comfort_noise option for bridge to generate comfort noise to the A leg when there is no audio on the B leg
+	core: add chan vars to param event during hangup hook
+	core: add exec directive to xml preprocessor (not available on windows)
+	core: add force_transfer_dialplan and force_transfer_context variables
+	core: add hashing to event header lookup 
+	core: add hits to tone_detect
+	core: add last_dtmf_duration variable
+	core: add msleep function to swigged languages
+	core: add park_after_bridge variable
+	core: add per leg timeouts and specific cause codes in reject_on_single_fail
+	core: add runtime selection of the module dir (FSCORE-198)
+	core: add scheduler support for heartbeat
+	core: add session heartbeat feature
+	core: add session.destroy psuedo method to sort of destroy a session at least for the sake of FS
+	core: add session.unsetInputCallback
+	core: add strftime format string validation for user supplied values
+	core: add vars param to switch_ivr_originate for recursion (MODAPP-175)
+	core: added a "group" concept to the user directory
+	core: added ability to do dns lookup to find ip with host: like stun: (FSCORE-219)
+	core: added better locking for codec changes during a call
+	core: added current_application and current_application_data variables
+	core: added error/ magic endpoint so modules can return error causes in situations like sofia_contact
+	core: added read_result channel variable
+	core: added support for "F" to indicate flash in dtmf (FSCORE-213)
+	core: allow calls to be stolen from originate
+	core: allow you to get the privacy bits in the caller_profile
+	core: change dso code to load symbols local
+	core: changes core flags to be array based so we have more
+	core: eavesdrop causes the people being eavesdropped on to not hear ach other (MODAPP-140)
+	core: expose time table to variable interface via caller field lookup 
+	core: fix 100% cpu when sending parked call to moh (FSCORE-234)
+	core: fix bridge app to make sure both channels are ready for media when one is only in ringing state
+	core: fix buffer overflow (FSCORE-188)
+	core: fix conference dial by allowing multiple braces in originate, fix bad pointer op (FSCORE-208)
+	core: fix double detection of DTMF in IVR (FSCORE-221)
+	core: fix hangup_after_bridge is false on a bridge started with the intercept app
+	core: fix issue where pid file is accidentally truncated
+	core: fix ivr timeout (FSCORE-181)
+	core: fix memory leak in alias tab completion code
+	core: fix min digits in read app
+	core: fix out-of-bounds pointer in variable expansion (FSCORE-171)
+	core: fix segfault in media bugs when in bypass media (FSCORE-193)
+	core: fix segfault on gtalk to sip calls (FSCORE-212)
+	core: fix segfault on reloadxml (FSCORE-176)
+	core: fix segfault on trasfering eavesdopping party (FSCORE-210)
+	core: fix segfault using switch_system function (FSCORE-196)
+	core: fix session.bridge
+	core: fix setting effective_caller_id_name / effective_caller_id_number on bridge dialstring (MODAPP-122)
+	core: fix stream_raw_write (MODAPP-145)
+	core: fix using resampling on ringback file
+	core: fixed performance bottleneck in sqlite db's
+	core: fixed race in reloadxml
+	core: increment app before execute in case it returns to execute it will go to the next item in the list and not the same
+	core: ivr menu max_failures and max_timeouts now default to 3 if not specified or invalid (less than 1) values are specified (FSCORE-244)
+	core: ivr_menu max-timeouts option, result in ivr_menu_status var (FSCORE-183)
+	core: let b legs use park_after_bridge too
+	core: make events less verbose unless verbose_events is set
+	core: parse private events during originate
+	core: pass pdd data to a leg on oubound calls using bridge
+	core: prevent crash in crazy situation with xml interface lookup failures (FSCORE-169)
+	core: reduce cpu requirement for generated comfort noise
+	core: remove interface names from core db on unload
+	core: reworked timing resulting in significant performance increase and better rtp timing
+	core: rewrite switch_play_and_get_digits (MODAPP-166)
+	core: session.recordFile never terminates (MODLANG-79)
+	core: session.transfer make dialplan and context optional
+	core: set_user app now sets domain vars as well as user vars
+	core: tone_detect not triggering app after tone detection (MODAPP-182)
+	core: unprivileged user setting bigger stack for switch_system thread failure (FSCORE-197)
+	core: user_exists returns false when fetching a user from XML Curl or other xml interfaces
+	libesl: added c event socket library and fs_cli
+	libsndfile: fix autoconf 2.62 support (LBSNDF-5)
+	mod commands: add "all" modifier to "break" command
+	mod_celt: added new module
+	mod_commands: Add support for more than 2 variables to uuid_setvar_multi (MODAPP-171)
+	mod_commands: Add support for passing the cause of hangup to the uuid_kill command (FSCORE-217)
+	mod_commands: add attr lookup to user_data
+	mod_commands: add domain_exists fsapi command
+	mod_commands: add eval fsapi command
+	mod_commands: add flush_dtmf app and uuid_flush_dtmf api command
+	mod_commands: add fsctl send_sighup, fsctl shutdown asap, unsched_api commands
+	mod_commands: add fsctl shutdown [elegant|restart|cancel]
+	mod_commands: add new syntax to uuid_setvar to allow you to unset a var. <uuid> <var> [value]   (MODAPP-167)
+	mod_commands: add reload fsapi command to reload a module
+	mod_commands: add system fsapi and application (MODAPP-138)
+	mod_commands: added hupall fsapi command
+	mod_commands: added strftime_tz api command
+	mod_commands: break all now stops broadcast too
+	mod_commands: fix api command sent through sched_api was getting the last char lopped off
+	mod_commands: fix race on transfer with -both
+	mod_commands: fix system dialplan app problems (MODAPP-86)
+	mod_commands: only send content-type on status when it really is http.
+	mod_conference: add fsapi to stop async playback too
+	mod_conference: add video caps to mod_conference with video follow audio
+	mod_conference: better sound prefix handling when using say: and allow say: on kick sounds.
+	mod_conference: fix race in record
+	mod_conference: fix runaway thread when floor holder has no video and other people do have video
+	mod_conference: fix seg when kicking many members quickly (MODAPP-129)
+	mod_conference: fix segfault on invalid chat event
+	mod_conference: perpetual sound does not auto-mute, you can do that yourself if you want it 
+	mod_dialplan_xml: add Hunt- vars in dialplan lookup after transfer
+	mod_dialplan_xml: fail call on extensions with nested conditions
+	mod_dingaling: (LBDING-7) fix segfault on os x
+	mod_dingaling: end call on ice timeout
+	mod_dingaling: fix presence on jabber to be less protocol ambiguous
+	mod_dingaling: fix segfault (LBDING-10)
+	mod_dingaling: update to support latest client from google
+	mod_dptools: add a mechanism to tell if a file played from sendmsg over event socket
+	mod_dptools: add playback_terminator support to phrase and say app
+	mod_dptools: add playback_terminator_used variable (MODAPP-132)
+	mod_dptools: add presence application
+	mod_dptools: fix originate api not parsing users properly (FSCORE-246)
+	mod_dptools: fix record and record_session to create directory if it does not exist (FSCORE-250)
+	mod_dptools: fixed limit and + parsing bug in record_session app (MODAPP-148)
+	mod_dptools: remove_bugs added to remove all media bugs on a session
+	mod_erlang_event: add new module
+	mod_event_socket:  missing : after Content-Length in event socket (MODEVENT-33)
+	mod_event_socket: add event socket listener filters
+	mod_event_socket: add stateful listener fsapi commands for ajax-y type event interface over http
+	mod_event_socket: fix arg parsing errors (MODEVENT-34)
+	mod_event_socket: fix shutdown segfault race (MODEVENT-32)
+	mod_event_socket: inbound connection to event_socket can now take over an existing channel with 'myevents <uuid>' to take on the behaviour of an outbound socket
+	mod_event_socket: let any channel get messages
+	mod_event_socket: make event socket wait for hangup on outbound mode and send disconnect message
+	mod_expr: fix endless loop
+	mod_fax: new module
+	mod_fifo: add fifo_consumer_wrapup_time var (MODAPP-117)
+	mod_fifo: added callback agents
+	mod_fifo: honor keyword silence (MODAPP-118)
+	mod_flite: added windows build
+	mod_fsv: fix in a windows enviroment opening the record file in text mode. (MODAPP-169)
+	mod_http: added new module
+	mod_java: updated to new module api to support read/write locks on interface
+	mod_limit: accept dialplan context for transfer (MODAPP-161)
+	mod_limit: added hashtable based limit functions
+	mod_limit: prevent empty error log message (MODAPP-134)
+	mod_local_stream: add start_local_stream and stop_local_stream fsapi commands to start/stop dynamically (MODFORM-13)
+	mod_local_stream: fix leak and improve error checking
+	mod_local_stream: fix seg when no timer name specified in config file. (MODFORM-16)
+	mod_loopback: add new module
+	mod_lua: add local scripts directory support (MODLANG-86)
+	mod_lua: don't eval blank string
+	mod_lua: fix originate
+	mod_lua: fix segfault (MODLANG-77)
+	mod_lua: update to lua 5.1.4 (MODLANG-87)
+	mod_lumenvox: removed
+	mod_managed: new module replaces mod_mono now supports native .net runtime on windows as well
+	mod_opal: added to trunk (still very beta)
+	mod_perl: fix segfault (MODLANG-77)
+	mod_pocketsphinx: fix rpm build
+	mod_portaudio: fix cpu race on inbound call to pa when no ring file is set
+	mod_radius_cdr: dictionary update for cause code changes (MODEVENT-27)
+	mod_radius_cdr: fix unload (MODEVENT-29)
+	mod_shout: add stereo recording broadcast support
+	mod_shout: added windows build
+	mod_shout: fix segfault when recording mp3's (MODFORM-12)
+	mod_shout: improved stability of mp3 decoding
+	mod_siren: added new module
+	mod_sndfile added support to record 16bit for the various rates including 48kHz
+	mod_sofia: Add filter to "sofia status profile XXX" (MODENDP-138)
+	mod_sofia: Add force-register-db-domain which works in conjunction with force-register-domain. 
+	mod_sofia: Add optional <variables> and <params> tag to <gateway> tag.
+	mod_sofia: Challenge the right realm when to_host is outside the users domain. (MODENDP-136)
+	mod_sofia: Improve notify messages through a proxy (MODENDP-147)
+	mod_sofia: MWI for multiple domains (MODAPP-126)
+	mod_sofia: Move "a=sendrecv" from session to media section of SDP (MODENDP-148)
+	mod_sofia: add 200 OK re-invite without sdp
+	mod_sofia: add custom sofia::gateway_state event (MODENDP-112)
+	mod_sofia: add fire events for the refer SIP NOTIFY event package (MODENDP-152)
+	mod_sofia: add more params for xml_curl directory lookup
+	mod_sofia: add new auto vals for challenge-realm param <param name="challenge-realm" value="auto_from|auto_to|<hardcoded_val>"/>
+	mod_sofia: add option to turn of auto_restart of sofia profiles on ip change
+	mod_sofia: add params to use sip callid as uuid on inbound calls and uuid as sip callid on outbound calls
+	mod_sofia: add parsing of Privacy header for privacy info (MODENDP-133)
+	mod_sofia: add proto_specific_hangup_cause to both legs
+	mod_sofia: add proxy 3pcc mode
+	mod_sofia: add redirect variable to channel as well as partner channe (MODENDP-135)
+	mod_sofia: add sip-forbid-register to user params to refuse to let a certian user register
+	mod_sofia: add sip: into register-proxy when it's not specified
+	mod_sofia: add sip_history_info var for inbound invites.
+	mod_sofia: add sip_via_protocol variable
+	mod_sofia: add sofia xmlstatus (MODENDP-156)
+	mod_sofia: add support for params other than Replaces in Refer-To (MODENDP-143)
+	mod_sofia: add support for profiles sharing databases so that you can have a domain that uses multiple profiles for split dns type setups
+	mod_sofia: add support for refer transfer involving multiple machines 
+	mod_sofia: add support to send a notify in the invite dialog by specifying the uuid of the call. (SFSIP-92)
+	mod_sofia: add suppress_from_cidname var to not have display name in from header (MODENDP-153)
+	mod_sofia: added sip_hangup_disposition variable
+	mod_sofia: allow send_message and notify events to send a message/notify without a body if needed.
+	mod_sofia: append -1 .. -N postfix after any X-headers as vars that have the same name
+	mod_sofia: cache auth_gateway_name in sofia for challenged bye
+	mod_sofia: cancel proxy or no-media mode if you purposely answer or pre_answer
+	mod_sofia: correct result code mapping for Unallocated Number (MODENDP-124)
+	mod_sofia: disable 100rel by default
+	mod_sofia: don't accept crypto in the RTP/AVP (MODENDP-126)
+	mod_sofia: don't put CN in sdp answer if it was not in the offer.
+	mod_sofia: fix Incorrect IP address shows up in SDP "o" field when multiple external IPs available and FS not bound to first (MODENDP-132)
+	mod_sofia: fix Wrong RTP media port destination after reinvite/UNHOLD (SFSIP-82)
+	mod_sofia: fix bug on linksys where they lie about the ptime and handle linksys transfer problem
+	mod_sofia: fix chat (send an IM) assumes that the user's profile is the same as their domain, which isn't necessarily so (SFSIP-83)
+	mod_sofia: fix dtmf handling of broken info dtmf endpoints
+	mod_sofia: fix eyebeam presence to be RFC compliant (MODENDP-144)
+	mod_sofia: fix ip change detection when in proxy mode
+	mod_sofia: fix register_proxy ignoring the paramaters (MODENDP-121)
+	mod_sofia: fix remote session refresh triggers request glare (MODENDP-131)
+	mod_sofia: fix rtp auto adjust running when it should not
+	mod_sofia: fix rtp sent to wrong port after some re-INVITE scenarios (MODENDP-141)
+	mod_sofia: fix sending of cn packets across bridge when we shouldn't
+	mod_sofia: fix sqlite issue with select of the sip contact
+	mod_sofia: fixed segfault on invalid presence payload
+	mod_sofia: gateway ping needs to look for 501 (SFSIP-78)
+	mod_sofia: handle multi contact register responses and register timeout better
+	mod_sofia: improve gateway resilience
+	mod_sofia: log ip and port you get reply to invite from
+	mod_sofia: make multiple-registations=true use the contact method and call-id option to do it the old way
+	mod_sofia: make proxy mode pull the port from m=image as well
+	mod_sofia: make register-proxy preserve the url composed from proxy but target the packets to desired address (MODENDP-121)
+	mod_sofia: many fixes for sonus rtp issues silence_when_idle=400 chanvar to send generated silence duing sleeps etc
+	mod_sofia: many fixes in presence handling
+	mod_sofia: passthrough t.38 fixes
+	mod_sofia: pick ipv4 or ipv6 based on sipip instead of having mixed in sdp
+	mod_sofia: send NOTIFY on TCP/UDP depending on the SUBSCRIBE (SFSIP-104)
+	mod_sofia: setting profile option multiple-registrations=contact key multi reg off the contact string
+	mod_sofia: wait for a reply on refer
+	mod_soundtouch: fixes and improvements, many options changed (MODAPP-149)
+	mod_soundtouch: updated to new module api
+	mod_spidermonkey: Segmentation fault in check_hangup_hook at mod_spidermonkey.c:1589 (MODLANG-74)
+	mod_spidermonkey: fix bug in apiExecute
+	mod_spidermonkey: fix memory pool handling and leaks
+	mod_spidermonkey: limit recursion busting through the stack (FSCORE-202)
+	mod_spidermonkey: make session.getVariable return blank string not the word false 
+	mod_spidermonkey_curl: add optional content-type arg
+	mod_spidermonkey_odbc: fix numRows and add numCols
+	mod_spidermonkey_odbc: fix segfault (MODLANG-75)
+	mod_stress: new module for voice stress analysis
+	mod_syslog: don't log blank lines (FSCORE-163)
+	mod_tone_stream: let silence_stream://0 indicate perpetual silence
+	mod_vmd: add new module to detect voicemail "beep"
+	mod_voicemail: Add vm_alternate_greet_id param to directory entry (MODAPP-174)
+	mod_voicemail: Patch to add voicemail preference controlling date announcement new param 'play-date-announcement' to values 'first' 'last' or 'never'  defaults to first to retain previous behavior (MODAPP-121)
+	mod_voicemail: Update mwi light after delete vm via web. (MODAPP-124)
+	mod_voicemail: add ability to get to options without listening to every saved message (MODAPP-115)
+	mod_voicemail: add ability to skip greeting when leaving a voicemail. (MODAPP-181)
+	mod_voicemail: add change-pass-key config file option
+	mod_voicemail: add forwarding support
+	mod_voicemail: add local dtmf driven alternat vm pass
+	mod_voicemail: add proper notification of a vm message being too short
+	mod_voicemail: add support for auth via a1-hash
+	mod_voicemail: add the "storage-dir" parameter to be set on a per-user basis (MODAPP-133)
+	mod_voicemail: add voicemail_greeting_path variable
+	mod_voicemail: added voicemail_alternate_greet_id variable
+	mod_voicemail: allow changing of password from voicemail to update user directory if using non-static config (MODAPP-156)
+	mod_voicemail: created email date (int overflow)  (MODAPP-125)
+	mod_voicemail: don't try to deliver vm when no file was recorded. (MODAPP-133)
+	mod_voicemail: fix MWI with xml_curl used for directory (MODAPP-176)
+	mod_voicemail: fix Voicemail messages occasionally lost / stranded (MODAPP-178)
+	mod_voicemail: fix invalid event after message deleted (MODAPP-170)
+	mod_voicemail: fix mwi for phones with multiple registrations problem (MODAPP-153)
+	mod_voicemail: fix voicemail segfault on incorrect password (FSCORE-187)
+	mod_voicemail: fix voicemail_inject error handling (MODAPP-133)
+	mod_voicemail: fix voicemail_inject usage api call
+	mod_voicemail: improve error checking (MODAPP-142)
+	mod_voicemail: localize notification emails (MODAPP-139)
+	mod_voicemail: make more multi-domain friendly (MODAPP-162)
+	mod_voicemail: make playback created file macros optional (MODAPP-150)
+	mod_voicemail: recognize operator key in more places (MODAPP-159)
+	mod_voicemail: web interface displays incorrect created / last heard dates (MODAPP-123)
+	mod_wanpipe: removed
+	mod_xml_cdr: add https support
+	mod_xml_cdr: add optional a-leg prefix to xml cdr filenames (MDXMLINT-39)
+	mod_xml_cdr: add support for fallback webserver for cdr posting (FSCORE-238)
+	mod_xml_curl: Allow specification of HTTP method, and dynamic expansion of variables in URI. (MDXMLINT-41)
+	mod_xml_curl: added redirect following (max 10)
+	mod_xml_ldap: almost a complete rewrite of this module
+	mod_xml_rpc: allow setting of global realm without a global user (MDXMLINT-45)
+	mod_xml_rpc: fix multiple segfaults
+	mod_xml_rpc: fix segfault on originate via http
+	sofia-sip: updated to 1.12.10 (plus a few patches)
+
+freeswitch (1.0.1)
+
+	FIX: prevent intercept race condition that can also be solved with continue_on_fail=originator_cancel
+	FIX: NULL dereference detected by klockwork (www.klockwork.com)
+	FIX: don't open failed local stream (MODFORM-9)
+	FIX: instability in mod_local_stream in failure scenarios
+	FIX: xmlrpc-c build on OS X 10.4 (FSBUILD-47)
+	ENHANCEMENT: Added tab completion on many api commands in console
+	ENHANCEMENT: polycom BLF support
+	FIX: many sip NAT related fixes in mod_sofia
+	FIX: support sip unregister with Contact: *
+	FIX: multiple segfaults in xmlrpc-c
+	FIX: sip unregister event being skipped
+	FIX: hangup properly on malformed sip 3pcc calls being used as a way to ping
+	ADD: enable-3pcc sofia profile param, it is now disabled by default.
+	ADD: presence events to sip proxy mode
+	ADD: legs param to cdr_csv 
+	ADD: support for perl as an embedded lanugage
+	ENHANCEMENT: many new api's and functions to the embedded languages including api support, xml interface support, auto start scripts,  and many new objects
+	CHANGE: python embedded language api changed to match perl, lua, java
+	FIX: many stability fixes in embedded langauges perl, lua, java, python
+	ADD: failed_xml_cdr magic channel variable
+	FIX: access free memory error in mod_sofia when using respond app
+	ENHNACEMENT: make global_setvar only have 2 fields so you can set foo=bar=blah w/o quotes
+	FIX: mod_spidermonkey keep hangup hook in the session thread
+	ENHANCEMENT: mod_ldap added sasl support and search filters
+	ADD: answered, waitForAnswer and mediaReady methods to embedded language Session object
+	ENHANCEMENT: mod_voicemail param change to allow notification emails using templates
+	ADD: per user acl in sofia
+	FIX: deadlock in mod_portaudio
+	ENHANCEMENT: blank username in sip will trigger a lookup for the user "nobody"
+	ADD: import variable to import variables from a peer channel at time of originate
+	FIX: api type fix for c++ modules when incorrectly using enums
+	FIX: eliminate need for escaped , in [] on originate
+	ADD: NDLB-force-rport option to force behavior as if rport was sent in the via
+	ENHANCEMENT: honor execute_on_answer on outbound legs too
+	ADD: execute_on_ring variable
+	FIX: Seg fault in CoreSession() class destructor
+	ADD: per channel caller id in originate
+	ADD: sip_outgoing_call_id variable
+	FIX: multiple memory leaks in mod_sofia
+	FIX: find_local_ip IPv6 support
+	ADD: variable expansion to on execute vars.(FSCORE-114)
+	ADD: count optional arg to show calls and show channels (MODAPP-103)
+	FIX: MODEVENT-25 (WSAWOULDBLOCK error on socket send in windows) in event socket
+	FIX: multiple fixes to the logic in mod_say_zh
+	ADD: inter digit timeout to swigged embedded languages getDigits method. (MODLANG-65)
+	ADD: Linksys P-RTP-Stat SIP header values (SFSIP-66)
+	FIX: small leak in core
+	ADD: progress_timeout var to originate
+	UPDATE: portaudio library
+	FIX: added timeout to iax read
+	ADD: 'pa rescan' to portaudio to look for new devices
+	FIX: wait for broadcast to start when starting async hold to avoid race
+	FIX: mod_rss, don't always play the first news feed
+	FIX: mod_rss inverval to use the session inteval (audio problems on 30ms channels)
+	ADD: Path: support in mod_sofia on register
+	FIX: mod_shout record stream
+	ENHANCEMENT: mod_voicemail support for effective_caller_id_name/number
+	ADD: url encode/decode api calls
+	FIX: "nua()" in debug information in sofia instead of the real function name
+	FIX: better handling of sips: uris
+	FIX: don't seg when using more than SWITCH_MAX_CODECS and bump SWITCH_MAX_CODECS to 50 (we have more than 30 in tree) (MODFORM-10)
+	ADD: mod_yaml
+	FIX: segfault on freeswitch startup if installed directories are removed
+	FIX: segfault when intercept with inbound_late_negotiation=true set
+	FIX: dont flood logs with eavesdrop messages (MODAPP-101)
+	FIX: don't destroy a codec that has not been created (MODAPP-101)
+	ENHANCEMENT: allows the "eavesdrop_group" variable to contain several groups, comma separated.  (MODAPP-101)
+	FIX: cross compile (FSBUILD-53)
+	FIX: add header that Nuaunce considers mandatory (MODASRTTS-5)
+	ADD: write locks to the core and a function to unregister event bindings (adds better ability to unload modules)
+	ENHANCEMENT: make modules unbind events and un-reserve subclasses on module unload
+	ADD: removable xml hook bindings
+	ADD: EventConsumer object to embedded languages so you can make event handlers
+	FIX: sending CN with supress-cng true
+	FIX: segfault in the event system when trying to remove NULL event
+	ADD: flags to turn off srtp auth and rtp auto adj (FSCORE-149 && MODENDP-115)
+	FIX: use lighter math and avoid infinite loop in port allocator  (FSCORE-148)
+	ENHANCEMENT: let conference pin entry start during prompt (MODAPP-111)
+	ADD: mod_pocketsphinx
+	FIX: Misuse of SQLRowCount, issues with MSSQL (MODAPP-105)
+	FIX: segfaults in mod_python with dtmf callback
+	ENHANCEMENT: mod_conference auto-record parameter  (MODAPP-112)
+	ENHANCEMENT: reload support to many modules
+	FIX: mod_sofia add replaces to supported header
+	ENHANCEMENT: add args callback to sleep so you can process dtmf and events while "sleeping"
+	ADD: mod_flite
+	ENHANCEMENT: switch_xml converted back to c code and support double globs on windows
+	ENHANCEMENT: mod_sofia support for adding and removing gateways without restarting profiles
+	ADD: extract contact header info into A channel when unhandled 3xx response is received (MODENDP-116)
+	FIX: outbound event_socket + late negotiation
+	ADD: copy_xml_cdr variable
+	ADD: silence_stream (like tone_stream but silent)
+	ADD: module_exists api call
+	ADD: emailer implementation for windows
+	ADD: wait_for_silence application
+	FIX: no error message generated if OS is unable to load a module ( due to dependency/installation issues )
+	FIX: segfault in media bugs
+	FIX: acl lists not correctly matching all ip adresses
+	FIX: mod_spidermonkey exit() does not stop script when called from the hangup callback (return "exit" from the callback)
+	FIX: mod_syslog works again
+	FIX: crash on terminal resize
+	FIX: audio problems on big endian
+	ENHANCEMENT: Disable multiple registrations on a per-device basis (MODENDP-117)
+	ADD: fifo_consumer_exit_key variable (MODAPP-100)
+	ADD: cidr based user auth in mod_sofia
+	ADD: uuid_send_dtmf fsapi command (MODAPP-114)
+	ADD: server registration fiels to sip_registration database (MODENDP-118)
+	FIX: use a variable, realm or to host to find gateway when it's not obvious (handles challenged REFER)
+	ADD: timeout to curl run in javascript
+	ADD: voicemail_inject fsapi command
+	ADD: reboot option for sip phones to flush_inboud_reg sofia profile api command
+	FIX: add small padding to end of mp3 to avoid cut off mp3 recording
+	FIX: patch multiple SDP connection lines in sdp for proxy media mode (MODENDP-109)
+	FIX: don't parse ringback varable in proxy situations
+	ADD: per call vm recording ext with vm_message_ext variable
+	ADD: sip_bye_h prefix to add headers to bye
+	ENHANCEMENT: more interfaces available in show fsapi command
+	FIX: don't leak in buffers on realloc fail
+	FIX: fail out of a conference call if write fails
+	ADD: auto ip-change detection
+	ADD: mod_snom
+	FIX: mod_sofia don't send sipfrag on transfer to cisco so they don't hang up the call
+
+
+
+freeswitch (1.0.0)
+
+	Enhanced sofia sip nat handling
+	Many fixes found by Klockwork (www.klocwork.com)
+	Added disable_app_log variable
+	Fixed mod_local_stream with rates on windows
+	Fixed finding of files in rate dirs on windows
+	Fixed memory corruption from sofia_contact function
+	Added sofia profile param NDLB-received-in-nat-reg-contact
+	Added sofia profile param aggressive-nat-detection
+	Fixed video sip calls in proxy media mode
+	Added bridge_terminate_key var
+	Update xmlrpc-c lib to trunk revision from upstream, fix windows xmlrpc
+	Enhanced nat handling in proxy media mode in sip
+	Add progress media to timetable so you can calculate pdd
+	Fixed seg when using unicast on socket when call has no read_codec
+	Fixed missed log events on busy box
+	Added -bleg to intercept
+	Enhance configure detection of python
+	Fixed build on solaris and freebsd for several modules
+	Added param "vm-email-only" to make voicemail sent by email only (previously default behavior)
+	Added param "vm-mailto-notify" to allow sending a notification email
+	Fixed mod_java build
+	Fixed mwi failures for some devices that don't subscribe
+	Removed fsapi functions (killchan, transfer, session_displace, reject)
+	Removed fsapi functions (session_record, broadcast, hold, media)
+	Many updates to sofia-sip library including over 100 fixes
+	
+freeswitch (1.0.rc6)
+
+	Changed to not allow pass_2833 on transcoded calls (it never worked, now it will tell you)
+	Enhanced sofia sip nat handling
+	Fix libedit build on solaris
+	Fix session timers in mod_sofia
+	Fix conference fire-call
+	Change: add var_event down into the endpoints so chans with no parents can still pass options
+	Added enable-post-var param to xml_rpc
+	Fix mod_lua build on solaris
+	Many fixes found by Klockwork (www.klocwork.com)
+	Add unregister event in mod_sofia
+	Enhance python configure detection
+	Add vm_boxcount api func
+	Fixed att_xfer issue
+	Fix sip now includes the Allow-Events header in more places
+
+freeswitch (1.0.rc5)
+
+	Changed internal state names to avoid confusion
+	Fixed video negotiation
+	Enhanced accuracy of windows timer
+	Fixed mod_ldap build
+	Added dialplan and context to sql table for channels
+	Multiple fixes to mod_lua and mod_perl
+	Fixed logic bug in fifo causing segfault
+	internal changes to sip stack so we can remove a hash redundant to the stack
+	Fixed multiple memory leaks in mod_sofia
+	Fixed event fetch segfault on sip subscribe
+	Fixed segfault on timer rollover in sofia on 64bit
+	Fixed audio timing issues in mod_portaudio
+	Changed names of sip profiles in default config to avoid confusion
+	Fixed memory usage leak-like behavior when playing files requiring resampling
+	Removed some unused api's
+	Fix rtp timeout when playing moh
+	Removed some un-needed libraries and files from tree
+	Fixed multiple issues in sip stack including multiple segfaults
+	Added support for sip transfers on bypass_media and proxy_media calls
+	Added say application
+	Fixed --disable-debug configure option
+	Enhanced switch_cpp wrapper (and perl, python, lua, java)
+	Fixed segfault on inavalid stun response
+	Fixed configure help output
+	Fixed segfault on mp3 playback
+	Fixed assert on invalid sdp (missing m= line)
+	Added configurable windows service name
+	Fixed proxy mode call transition to non proxy call
+	Fixed solaris build of voipcodecs
+	Fixed sofia seg when call failure edge case
+
+freeswitch (1.0.rc4)
+
+	Add tab completion in cli
+	Add "inline" dialplan
+	Fixed segfault in enum
+	Enhance enum to fork dial equal priority entries
+	Added auto-reload to enum
+	Fixed odbc bug is mod_sofia presence handling
+	Add presence for conference and dial an eavesdrop
+	Fix stack overflow segfault when recursively parking calls
+	Fixed race is sofia registration handling
+	Enhance sofia registration, unregister on keep-alive OPTIONS failure
+	Added internal routing loop detection/avoidance
+	Fixed race in bgapi in event socket
+	Fixed vars to execute apps before bridge "bridge_pre_execute_aleg_app" and "bridge_pre_execute_bleg_app"
+	Fixed re-setting sound prefix to no prefix after a pharse
+	Enhanced setting of bracket vars from originate so they show in the CHANNEL_ORIGINATE event
+	Add "enable-timer" and "enable-100rel" options to turn off default behaviors in sofia
+	Add originate_timeout to originate vars
+	Fixed hanging channels in mod_portaudio
+	Added auto time sync on vps migration to different hardware
+	Fixed seg on transfer when both legs are not sip
+	Added configurable dtmf duration defaults
+	Enhanced voicemail, allow interruption of hello message
+	Fixed voicemail to not light up light on saved messages
+	Enhance mod_amr honor disable dtx in fmtp (MODCODEC-3)
+	Fixed bootstrap to install automake dependencies so you can use tarball without same version of automake installed
+	Fixed MODLANG-56 (bad audio on originate and javascript streamFile)
+	Added hold/unhold dialplan apps
+	Enhanced sofia error checking to outlaw 0.0.0.0 in sofia ip params
+	Backport fixes from sofia-sip tree
+	Fixed MSVC build
+	Fixed segfault on sip SUBSCRIBE with Expires: 0
+	Added mod_say_zh
+	Added --with-pyton and --with-pyton-config configure options
+	Added mod_lua
+	Enhanced switch_cpp wrapper in core and normalized interfaces for perl, python, lua, and java
+	Fixed multiple issues in cpp wrapper and the languages perl, python, lua and java
+	Added back mod_perl
+	Added sofia gateway option ping to adjust options ping frequency
+	Added .net event socket lib to contrib
+	Fixed passing of exact response codes of sip across a bridge
+	Added mod_reference, reference endpoint module
+	Enhanced build so you can now make commented out modules using "make mod_name"
+	
+freeswitch (1.0.rc3)
+
+        Enhance xml menu system
+        Fixes upstream from sofia-sip library
+        Enhance mod_fifo
+        Added close method to ODBC spidermonkey class
+        Fix multiple bugs in the cpp wrapper used in mod_java and mod_python
+        Fix hung sip channel issue using respond app or on re-invite with bypass media after 1xx or 2xx responses
+
+freeswitch (1.0.rc2)
+
+	Fixed speex protocol negotiation issues (8k vs 16k)
+	Fixed mod_iax race conditions
+	Fixed ptime negotiation issues when re-packetizing
+	Added ip based acl lists
+
+freeswitch (1.0.rc1)
+
+
+	
