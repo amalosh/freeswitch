@@ -196,7 +196,7 @@ SWITCH_DECLARE(void) switch_cache_db_detach(void)
 	switch_hash_index_t *hi;
 	const void *var;
 	void *val;
-	char *key;
+	//char *key;
 	switch_cache_db_handle_t *dbh = NULL;
 
 	snprintf(thread_str, sizeof(thread_str) - 1, "%lu", (unsigned long) (intptr_t) switch_thread_self());
@@ -204,7 +204,7 @@ SWITCH_DECLARE(void) switch_cache_db_detach(void)
 
 	for (hi = switch_hash_first(NULL, sql_manager.dbh_hash); hi; hi = switch_hash_next(hi)) {
 		switch_hash_this(hi, &var, NULL, &val);
-		key = (char *) var;
+	//	key = (char *) var;
 		if ((dbh = (switch_cache_db_handle_t *) val)) {
 			if (switch_mutex_trylock(dbh->mutex) == SWITCH_STATUS_SUCCESS) {
 				if (strstr(dbh->name, thread_str)) {
@@ -270,14 +270,14 @@ SWITCH_DECLARE(switch_status_t) _switch_cache_db_get_db_handle(switch_cache_db_h
 		switch_hash_index_t *hi;
 		const void *var;
 		void *val;
-		char *key;
+	//	char *key;
 		unsigned long hash = 0;
 
 		hash = switch_ci_hashfunc_default(db_str, &hlen);
 
 		for (hi = switch_hash_first(NULL, sql_manager.dbh_hash); hi; hi = switch_hash_next(hi)) {
 			switch_hash_this(hi, &var, NULL, &val);
-			key = (char *) var;
+		//	key = (char *) var;
 
 			if ((new_dbh = (switch_cache_db_handle_t *) val)) {
 				if (hash == new_dbh->hash && !strncasecmp(new_dbh->name, db_str, strlen(db_str)) &&
@@ -311,7 +311,7 @@ SWITCH_DECLARE(switch_status_t) _switch_cache_db_get_db_handle(switch_cache_db_h
 
 				if ((odbc_dbh = switch_odbc_handle_new(connection_options->odbc_options.dsn,
 													   connection_options->odbc_options.user, connection_options->odbc_options.pass))) {
-					if (switch_odbc_handle_connect(odbc_dbh) != SWITCH_STATUS_SUCCESS) {
+					if ((int)switch_odbc_handle_connect(odbc_dbh) != (int)SWITCH_STATUS_SUCCESS) {
 						switch_odbc_handle_destroy(&odbc_dbh);
 					}
 				}
@@ -386,7 +386,7 @@ static switch_status_t switch_cache_db_execute_sql_real(switch_cache_db_handle_t
 	case SCDB_TYPE_ODBC:
 		{
 			switch_odbc_statement_handle_t stmt = NULL;
-			if ((status = switch_odbc_handle_exec(dbh->native_handle.odbc_dbh, sql, &stmt, NULL)) != SWITCH_ODBC_SUCCESS) {
+			if ((int)(status = switch_odbc_handle_exec(dbh->native_handle.odbc_dbh, sql, &stmt, NULL)) != (int)SWITCH_ODBC_SUCCESS) {
 				errmsg = switch_odbc_handle_get_error(dbh->native_handle.odbc_dbh, stmt);
 			}
 			switch_odbc_statement_handle_free(&stmt);

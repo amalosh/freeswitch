@@ -1663,7 +1663,7 @@ void sofia_presence_handle_sip_i_subscribe(int status,
 										   tagi_t tags[])
 {
 	if (sip) {
-		long exp_abs, exp_delta;
+		long/* exp_abs,*/ exp_delta;
 		char exp_delta_str[30] = "";
 		sip_to_t const *to = sip->sip_to;
 		sip_from_t const *from = sip->sip_from;
@@ -1828,14 +1828,14 @@ void sofia_presence_handle_sip_i_subscribe(int status,
 		}
 
 		exp_delta = profile->force_subscription_expires ? profile->force_subscription_expires : (sip->sip_expires ? sip->sip_expires->ex_delta : 3600);
-
+/*
 		if (exp_delta) {
 			exp_abs = (long) switch_epoch_time_now(NULL) + exp_delta;
 		} else {
 			exp_abs = 0;
 			sub_state = nua_substate_terminated;
 		}
-
+*/
 		switch_snprintf(exp_delta_str, sizeof(exp_delta_str), "%ld", exp_delta);
 
 		if (to_user && (strstr(to_user, "ext+") || strstr(to_user, "user+"))) {
@@ -2356,9 +2356,9 @@ void sofia_presence_handle_sip_i_message(int status,
 		sip_to_t const *to = sip->sip_to;
 		const char *to_user = NULL;
 		const char *to_host = NULL;
-		sip_subject_t const *sip_subject = sip->sip_subject;
+	//	sip_subject_t const *sip_subject = sip->sip_subject;
 		sip_payload_t *payload = sip->sip_payload;
-		const char *subject = "n/a";
+	//	const char *subject = "n/a";
 		char *msg = NULL;
 
 		if (sip->sip_content_type && sip->sip_content_type->c_subtype) {
@@ -2385,14 +2385,14 @@ void sofia_presence_handle_sip_i_message(int status,
 			msg = payload->pl_data;
 		}
 
-		if (sip_subject) {
+	/*	if (sip_subject) {
 			subject = sip_subject->g_value;
 		}
-
+*/
 		if (nh) {
 			char hash_key[512];
 			private_object_t *tech_pvt;
-			switch_channel_t *channel;
+		//	switch_channel_t *channel;
 			switch_event_t *event;
 			char *to_addr;
 			char *from_addr;
@@ -2420,7 +2420,7 @@ void sofia_presence_handle_sip_i_message(int status,
 
 			sofia_presence_set_hash_key(hash_key, sizeof(hash_key), sip);
 			if ((tech_pvt = (private_object_t *) switch_core_hash_find(profile->chat_hash, hash_key))) {
-				channel = switch_core_session_get_channel(tech_pvt->session);
+		//		channel = switch_core_session_get_channel(tech_pvt->session);
 				if (switch_event_create(&event, SWITCH_EVENT_MESSAGE) == SWITCH_STATUS_SUCCESS) {
 					switch_event_add_header_string(event, SWITCH_STACK_BOTTOM, "proto", SOFIA_CHAT_PROTO);
 					switch_event_add_header_string(event, SWITCH_STACK_BOTTOM, "login", profile->url);

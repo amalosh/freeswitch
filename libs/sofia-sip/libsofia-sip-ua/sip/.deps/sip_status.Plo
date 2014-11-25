@@ -1,0 +1,14 @@
+sip_status.lo: sip_status.c ../../config.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h \
+ sofia-sip/sip_status.h ../su/sofia-sip/su_config.h \
+ ../su/sofia-sip/su_configure.h
+
+../../config.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.6/include/stddef.h:
+
+sofia-sip/sip_status.h:
+
+../su/sofia-sip/su_config.h:
+
+../su/sofia-sip/su_configure.h:

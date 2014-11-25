@@ -315,7 +315,7 @@ void nea_subnode_init(nea_subnode_t *sn, nea_sub_t *s, sip_time_t now)
  *
  * @param agent       pointer to an @b nta agent object
  * @param root        pointer to an @b root object
- * @param url         url of the server to be created
+ *\A0@param url         url of the server to be created
  * @param max_subs    maximum number of subscriptions
  * @param callback    authorization function,
  *                    or @c NULL if no authorization is required
@@ -546,7 +546,7 @@ int nea_server_shutdown(nea_server_t *nes,
 			int retry_after)
 {
   nea_sub_t *s;
-  int status = 200;
+ // int status = 200;
   int in_callback;
 
   if (nes == NULL)
@@ -572,8 +572,8 @@ int nea_server_shutdown(nea_server_t *nes,
 		   TAG_IF(!retry_after, NEATAG_REASON("deactivated")),
 		   TAG_IF(retry_after, NEATAG_RETRY_AFTER(retry_after)),
 		   TAG_END());
-    else
-      status = 180;
+  //  else
+   //   status = 180;
   }
 
   nes->nes_in_callback = in_callback;

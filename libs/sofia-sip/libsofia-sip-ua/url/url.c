@@ -567,7 +567,7 @@ static
 int _url_d(url_t *url, char *s)
 {
   size_t n, p;
-  char *s0, rest_c, *host, *user;
+  char /**s0,*/ rest_c, *host, *user;
   int have_authority = 1;
 
   memset(url, 0, sizeof(*url));
@@ -578,7 +578,7 @@ int _url_d(url_t *url, char *s)
     return 0;
   }
 
-  s0 = s;
+ // s0 = s;
 
   n = strcspn(s, ":/?#");
 

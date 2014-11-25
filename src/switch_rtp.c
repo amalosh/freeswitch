@@ -1728,7 +1728,7 @@ static void do_flush(switch_rtp_t *rtp_session)
 {
 	int was_blocking = 0;
 	switch_size_t bytes;
-	switch_status_t status;
+	//switch_status_t status;
 
 	if (!switch_rtp_ready(rtp_session) || switch_test_flag(rtp_session, SWITCH_RTP_FLAG_PROXY_MEDIA)) {
 		return;
@@ -1759,7 +1759,7 @@ static void do_flush(switch_rtp_t *rtp_session)
 		do {
 			if (switch_rtp_ready(rtp_session)) {
 				bytes = sizeof(rtp_msg_t);
-				status = switch_socket_recvfrom(rtp_session->from_addr, rtp_session->sock_input, 0, (void *) &rtp_session->recv_msg, &bytes);
+		//		status = switch_socket_recvfrom(rtp_session->from_addr, rtp_session->sock_input, 0, (void *) &rtp_session->recv_msg, &bytes);
 				if (bytes) {
 					rtp_session->stats.inbound.raw_bytes += bytes;
 					rtp_session->stats.inbound.flush_packet_count++;
@@ -3018,14 +3018,14 @@ SWITCH_DECLARE(int) switch_rtp_write_frame(switch_rtp_t *rtp_session, switch_fra
 	
 	if (switch_test_flag(rtp_session, SWITCH_RTP_FLAG_PROXY_MEDIA)) {
 		switch_size_t bytes;
-		char bufa[30];
-		const char *tx_host;
+		//char bufa[30];
+	//	const char *tx_host;
 		/* Fast PASS! */
 		if (!switch_test_flag(frame, SFF_PROXY_PACKET)) {
 			return 0;
 		}
 		bytes = frame->packetlen;
-		tx_host = switch_get_addr(bufa, sizeof(bufa), rtp_session->remote_addr);
+	//	tx_host = switch_get_addr(bufa, sizeof(bufa), rtp_session->remote_addr);
 
 
 		send_msg = frame->packet;

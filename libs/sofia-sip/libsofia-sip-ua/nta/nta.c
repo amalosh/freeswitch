@@ -2304,7 +2304,7 @@ int agent_init_via(nta_agent_t *self, tport_t *primaries, int use_maddr)
 
   /* Set via fields for the tports */
   for (tp = primaries; tp; tp = tport_next(tp)) {
-    int maddr, first_via;
+    int maddr/*, first_via*/;
     tp_name_t tpn[1];
     char const *comp = NULL;
 
@@ -2336,7 +2336,7 @@ int agent_init_via(nta_agent_t *self, tport_t *primaries, int use_maddr)
 
     if (tport_has_tls(tp)) self->sa_tport_tls = 1;
 
-    first_via = 1;
+   // first_via = 1;
 
     ai = tport_get_address(tp);
 

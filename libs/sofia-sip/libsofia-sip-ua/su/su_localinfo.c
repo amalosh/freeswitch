@@ -194,7 +194,7 @@ static void li_sort(su_localinfo_t *i, su_localinfo_t **rresult);
 int su_getlocalinfo(su_localinfo_t const *hints,
 		    su_localinfo_t **return_localinfo)
 {
-  int error = 0, ip4 = 0, ip6 = 0;
+  int error = 0/*, ip4 = 0, ip6 = 0*/;
   su_localinfo_t *result = NULL, **rr = &result;
   su_localinfo_t hh[1] = {{ 0 }};
 
@@ -220,18 +220,18 @@ int su_getlocalinfo(su_localinfo_t const *hints,
 #if SU_HAVE_IN6
   case AF_INET6:
     if (hh->li_flags & LI_V4MAPPED)
-      ip6 = ip4 = 1, hh->li_family = 0;
-    else
-      ip6 = 1;
+     /* ip6 = ip4 = 1,*/ hh->li_family = 0;
+   // else
+   //   ip6 = 1;
     break;
 #endif
 
   case AF_INET:
-    ip4 = 1;
+   // ip4 = 1;
     break;
 
   case 0:
-    ip6 = ip4 = 1;
+  /*  ip6 = ip4 = 1;*/
     break;
 
   default:
@@ -243,10 +243,10 @@ int su_getlocalinfo(su_localinfo_t const *hints,
 #else
 
 #  if SU_HAVE_IN6
-  if (ip6) {
-    error = localinfo6(hh, rr);
-    if (error == ELI_NOADDRESS && ip4)
-      error = 0;
+  //if (ip6) {
+  //  error = localinfo6(hh, rr);
+   // if (error == ELI_NOADDRESS && ip4)
+ //     error = 0;
 
     if (!error)
       /* Search end of list */
@@ -254,7 +254,7 @@ int su_getlocalinfo(su_localinfo_t const *hints,
 	;
   }
 #  endif
-  if (ip4 && !error) {
+  if (/*ip4 &&*/ !error) {
     /* Append IPv4 addresses */
     error = localinfo4(hh, rr);
   }

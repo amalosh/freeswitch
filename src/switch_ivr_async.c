@@ -1088,7 +1088,7 @@ static switch_bool_t preprocess_callback(switch_media_bug_t *bug, void *user_dat
 	pp_cb_t *cb = (pp_cb_t *) user_data;
 	switch_codec_implementation_t read_impl = { 0 };
 	switch_frame_t *frame = NULL;
-	int y;
+//	int y;
 
 	switch_core_session_get_read_impl(session, &read_impl);
 
@@ -1133,7 +1133,7 @@ static switch_bool_t preprocess_callback(switch_media_bug_t *bug, void *user_dat
 					memcpy(frame->data, cb->read_out, frame->datalen);
 				}
 
-				y = speex_preprocess_run(cb->read_st, frame->data);
+		//		y = speex_preprocess_run(cb->read_st, frame->data);
 			}
 
 			if (cb->write_ec) {
@@ -1154,7 +1154,7 @@ static switch_bool_t preprocess_callback(switch_media_bug_t *bug, void *user_dat
 					memcpy(frame->data, cb->write_out, frame->datalen);
 				}
 
-				y = speex_preprocess_run(cb->write_st, frame->data);
+		//		y = speex_preprocess_run(cb->write_st, frame->data);
 			}
 
 			if (cb->read_ec) {

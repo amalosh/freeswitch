@@ -2017,14 +2017,14 @@ SWITCH_STANDARD_APP(record_function)
 	char *path;
 	switch_input_args_t args = { 0 };
 	switch_file_handle_t fh = { 0 };
-	int argc;
+	//int argc;
 	char *mydata, *argv[4] = { 0 };
 	char *l = NULL;
 	const char *tmp;
 	int rate;
 
 	if (!zstr(data) && (mydata = switch_core_session_strdup(session, data))) {
-		argc = switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
+		/*argc =*/ switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
 	} else {
 		switch_log_printf(SWITCH_CHANNEL_SESSION_LOG(session), SWITCH_LOG_ERROR, "No file specified.\n");
 		return;

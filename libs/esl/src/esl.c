@@ -257,7 +257,7 @@ static const char *LEVEL_NAMES[] = {
 };
 
 static int esl_log_level = 7;
-
+/*
 static const char *cut_path(const char *in)
 {
 	const char *p, *ret = in;
@@ -272,11 +272,11 @@ static const char *cut_path(const char *in)
 	}
 	return ret;
 }
-
+*/
 
 static void default_logger(const char *file, const char *func, int line, int level, const char *fmt, ...)
 {
-	const char *fp;
+//	const char *fp;
 	char *data;
 	va_list ap;
 	int ret;
@@ -288,7 +288,7 @@ static void default_logger(const char *file, const char *func, int line, int lev
 		return;
 	}
 	
-	fp = cut_path(file);
+//	fp = cut_path(file);
 
 	va_start(ap, fmt);
 

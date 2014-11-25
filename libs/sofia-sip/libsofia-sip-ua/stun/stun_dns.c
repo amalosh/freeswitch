@@ -79,7 +79,7 @@ enum stun_dns_state {
 /**
  * Internal callback used for gathering DNS replies.
  */
-static void priv_sres_cb(stun_dns_lookup_t *self,
+/*static void priv_sres_cb(stun_dns_lookup_t *self,
 			 sres_query_t *q,
 			 sres_record_t **answer)
 {
@@ -87,8 +87,8 @@ static void priv_sres_cb(stun_dns_lookup_t *self,
 
   sres_sort_answers(self->stun_sres, answer);
 
-  /* note: picks the first ones (sort puts records with most
-   *       weight at start */
+  * note: picks the first ones (sort puts records with most
+   *       weight at start *
 
   for (i = 0; answer && answer[i] != NULL; i++) {
     sres_srv_record_t *rr = (sres_srv_record_t *) answer[i]->sr_srv;
@@ -122,7 +122,7 @@ static void priv_sres_cb(stun_dns_lookup_t *self,
 
   sres_free_answers(self->stun_sres, answer);
 }
-
+*/
 /**
  * Performs a DNS-SRV check for STUN 'stun' (tcp) and
  * 'stun' (udp) services for 'domain'.
@@ -136,7 +136,7 @@ stun_dns_lookup_t *stun_dns_lookup(stun_magic_t *magic,
 				   const char *domain)
 {
   stun_dns_lookup_t *self;
-  sres_query_t *query;
+//  sres_query_t *query;
 
   if (!domain ||
       strlen(domain) + strlen(STUN_SRV_SERVICE_UDP ".") + 1>= SRES_MAXDNAME)
@@ -154,15 +154,15 @@ stun_dns_lookup_t *stun_dns_lookup(stun_magic_t *magic,
 
     snprintf(srvname, sizeof srvname, "%s.%s", STUN_SRV_SERVICE_UDP, domain);
 
-    query = sres_query(self->stun_sres, priv_sres_cb, self,
+/*    query = sres_query(self->stun_sres, priv_sres_cb, self,
 		       sres_type_srv,
 		       srvname);
-
+*/
     snprintf(srvname, sizeof srvname, "%s.%s", STUN_SRV_SERVICE_TCP, domain);
 
-    query = sres_query(self->stun_sres, priv_sres_cb, self,
+  /*  query = sres_query(self->stun_sres, priv_sres_cb, self,
 		       sres_type_srv,
-		       srvname);
+		       srvname);*/
   }
   else {
     su_free(NULL, self), self = NULL;

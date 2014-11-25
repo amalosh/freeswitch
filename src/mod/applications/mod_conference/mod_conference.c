@@ -875,7 +875,7 @@ static void *SWITCH_THREAD_FUNC conference_video_thread_run(switch_thread_t *thr
 	conference_member_t *imember;
 	switch_frame_t *vid_frame;
 	switch_status_t status;
-	int has_vid = 1, req_iframe = 0;
+	int has_vid = 1/*, req_iframe = 0*/;
 	int yield = 0;
 	uint32_t last_member = 0;
 	switch_core_session_t *session;
@@ -910,7 +910,7 @@ static void *SWITCH_THREAD_FUNC conference_video_thread_run(switch_thread_t *thr
 
 		if (!SWITCH_READ_ACCEPTABLE(status) || !conference->floor_holder || switch_test_flag(vid_frame, SFF_CNG)) {
 			conference->floor_holder = NULL;
-			req_iframe = 0;
+			//req_iframe = 0;
 			goto do_continue;
 		}
 
@@ -945,7 +945,7 @@ static void *SWITCH_THREAD_FUNC conference_video_thread_run(switch_thread_t *thr
 				goto do_continue;
 			}
 
-			req_iframe = 0;
+	//		req_iframe = 0;
 		}
 
 		last_member = conference->floor_holder->id;
@@ -2157,7 +2157,7 @@ static void conference_loop_output(conference_member_t *member)
 	switch_timer_t timer = { 0 };
 	uint32_t interval;
 	uint32_t samples;
-	uint32_t csamples;
+//	uint32_t csamples;
 	uint32_t tsamples;
 	uint32_t flush_len;
 	uint32_t low_count, bytes;
@@ -2180,7 +2180,7 @@ static void conference_loop_output(conference_member_t *member)
 	channel = switch_core_session_get_channel(member->session);
 	interval = read_impl.microseconds_per_packet / 1000;
 	samples = switch_samples_per_packet(member->conference->rate, interval);
-	csamples = samples;
+//	csamples = samples;
 	tsamples = member->orig_read_impl.samples_per_packet;
 	flush_len = 0;
 	low_count = 0;
@@ -2345,16 +2345,16 @@ static void conference_loop_output(conference_member_t *member)
 
 		/* if a caller action has been detected, handle it */
 		if (caller_action != NULL && caller_action->fndesc != NULL && caller_action->fndesc->handler != NULL) {
-			char *param = NULL;
+		//	char *param = NULL;
 
 			if (caller_action->fndesc->action != CALLER_CONTROL_MENU) {
-				param = caller_action->data;
+	//			param = caller_action->data;
 			}
 #ifdef INTENSE_DEBUG
-			switch_log_printf(SWITCH_CHANNEL_SESSION_LOG(member->session),
+	/*		switch_log_printf(SWITCH_CHANNEL_SESSION_LOG(member->session),
 							  SWITCH_LOG_INFO,
 							  "executing caller control '%s' param '%s' on call '%u, %s\n",
-							  caller_action->fndesc->key, param ? param : "none", member->id, switch_channel_get_name(channel));
+							  caller_action->fndesc->key, param ? param : "none", member->id, switch_channel_get_name(channel));*/
 #endif
 
 			caller_action->fndesc->handler(member, caller_action);
@@ -2493,7 +2493,7 @@ static void *SWITCH_THREAD_FUNC conference_record_thread_run(switch_thread_t *th
 	conference_record_t *rec = (conference_record_t *) obj;
 	conference_obj_t *conference = rec->conference;
 	uint32_t samples = switch_samples_per_packet(conference->rate, conference->interval);
-	uint32_t low_count = 0, mux_used;
+	uint32_t /*low_count = 0,*/ mux_used;
 	char *vval;
 	switch_timer_t timer = { 0 };
 	uint32_t rlen;
@@ -2596,7 +2596,7 @@ static void *SWITCH_THREAD_FUNC conference_record_thread_run(switch_thread_t *th
 			if (mux_used) {
 				/* Flush the output buffer and write all the data (presumably muxed) to the file */
 				switch_mutex_lock(member->audio_out_mutex);
-				low_count = 0;
+			//	low_count = 0;
 
 				if ((rlen = (uint32_t) switch_buffer_read(member->mux_buffer, data_buf, data_buf_len))) {
 					len = (switch_size_t) rlen / sizeof(int16_t);
@@ -3590,7 +3590,7 @@ static void conference_xlist(conference_obj_t *conference, switch_xml_t x_confer
 		switch_channel_t *channel;
 		switch_caller_profile_t *profile;
 		char *uuid;
-		char *name;
+	//	char *name;
 		uint32_t count = 0;
 		switch_xml_t x_tag;
 		int toff = 0;
@@ -3602,7 +3602,7 @@ static void conference_xlist(conference_obj_t *conference, switch_xml_t x_confer
 		uuid = switch_core_session_get_uuid(member->session);
 		channel = switch_core_session_get_channel(member->session);
 		profile = switch_channel_get_caller_profile(channel);
-		name = switch_channel_get_name(channel);
+	//	name = switch_channel_get_name(channel);
 
 
 		x_member = switch_xml_add_child_d(x_members, "member", moff++);
@@ -5070,7 +5070,7 @@ static int setup_media(conference_member_t *member, conference_obj_t *conference
 SWITCH_STANDARD_APP(conference_function)
 {
 	switch_codec_t *read_codec = NULL;
-	uint32_t flags = 0;
+//	uint32_t flags = 0;
 	conference_member_t member = { 0 };
 	conference_obj_t *conference = NULL;
 	switch_channel_t *channel = switch_core_session_get_channel(session);
@@ -5440,7 +5440,7 @@ SWITCH_STANDARD_APP(conference_function)
 	member.pool = switch_core_session_get_pool(session);
 
 	if (setup_media(&member, conference)) {
-		flags = 0;
+	//	flags = 0;
 		goto done;
 	}
 

@@ -790,7 +790,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_gentones(switch_core_session_t *sessi
 	}
 
 	for (;;) {
-		int done = 0;
+	//	int done = 0;
 		switch_status_t status;
 
 		if (!switch_channel_ready(channel)) {
@@ -827,7 +827,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_gentones(switch_core_session_t *sessi
 			if (switch_channel_has_dtmf(channel)) {
 				if (!args->input_callback && !args->buf) {
 					status = SWITCH_STATUS_BREAK;
-					done = 1;
+		//			done = 1;
 					break;
 				}
 				switch_channel_dequeue_dtmf(channel, &dtmf);
@@ -849,7 +849,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_gentones(switch_core_session_t *sessi
 			}
 
 			if (status != SWITCH_STATUS_SUCCESS) {
-				done = 1;
+	//			done = 1;
 				break;
 			}
 		}
@@ -893,7 +893,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_play_file(switch_core_session_t *sess
 	switch_status_t status = SWITCH_STATUS_SUCCESS;
 	switch_file_handle_t lfh;
 	const char *p;
-	char *title = "", *copyright = "", *software = "", *artist = "", *comment = "", *date = "";
+//	char *title = "", *copyright = "", *software = "", *artist = "", *comment = "", *date = "";
 	uint8_t asis = 0;
 	char *ext;
 	const char *prefix;
@@ -1100,32 +1100,32 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_play_file(switch_core_session_t *sess
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_TITLE, &p) == SWITCH_STATUS_SUCCESS) {
-			title = switch_core_session_strdup(session, p);
+	//		title = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_TITLE", p);
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_COPYRIGHT, &p) == SWITCH_STATUS_SUCCESS) {
-			copyright = switch_core_session_strdup(session, p);
+	//		copyright = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_COPYRIGHT", p);
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_SOFTWARE, &p) == SWITCH_STATUS_SUCCESS) {
-			software = switch_core_session_strdup(session, p);
+	//		software = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_SOFTWARE", p);
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_ARTIST, &p) == SWITCH_STATUS_SUCCESS) {
-			artist = switch_core_session_strdup(session, p);
+	//		artist = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_ARTIST", p);
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_COMMENT, &p) == SWITCH_STATUS_SUCCESS) {
-			comment = switch_core_session_strdup(session, p);
+	//		comment = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_COMMENT", p);
 		}
 
 		if (switch_core_file_get_string(fh, SWITCH_AUDIO_COL_STR_DATE, &p) == SWITCH_STATUS_SUCCESS) {
-			date = switch_core_session_strdup(session, p);
+	// 		date = switch_core_session_strdup(session, p);
 			switch_channel_set_variable(channel, "RECORD_DATE", p);
 		}
 
@@ -2052,7 +2052,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_speak_text(switch_core_session_t *ses
 	switch_status_t status = SWITCH_STATUS_SUCCESS;
 	switch_speech_handle_t lsh, *sh;
 	switch_speech_flag_t flags = SWITCH_SPEECH_FLAG_NONE;
-	switch_codec_t *read_codec;
+//	switch_codec_t *read_codec;
 	const char *timer_name, *var;
 	cached_speech_handle_t *cache_obj = NULL;
 	int need_create = 1, need_alloc = 1;
@@ -2093,7 +2093,7 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_speak_text(switch_core_session_t *ses
 	timer_name = switch_channel_get_variable(channel, "timer_name");
 
 	switch_core_session_reset(session, SWITCH_FALSE, SWITCH_FALSE);
-	read_codec = switch_core_session_get_read_codec(session);
+	//read_codec = switch_core_session_get_read_codec(session);
 
 	rate = read_impl.actual_samples_per_second;
 	interval = read_impl.microseconds_per_packet / 1000;

@@ -286,13 +286,13 @@ static void *SWITCH_THREAD_FUNC unicast_thread_run(switch_thread_t *thread, void
 {
 	switch_unicast_conninfo_t *conninfo = (switch_unicast_conninfo_t *) obj;
 	switch_size_t len;
-	switch_channel_t *channel;
+//	switch_channel_t *channel;
 
 	if (!conninfo) {
 		return NULL;
 	}
 
-	channel = switch_core_session_get_channel(conninfo->session);
+//	channel = switch_core_session_get_channel(conninfo->session);
 
 	while (switch_test_flag(conninfo, SUF_READY) && switch_test_flag(conninfo, SUF_THREAD_RUNNING)) {
 		len = conninfo->write_frame.buflen;
@@ -1210,11 +1210,11 @@ SWITCH_DECLARE(switch_status_t) switch_ivr_media(const char *uuid, switch_media_
 				switch_channel_wait_for_flag(channel, CF_REQ_MEDIA, SWITCH_FALSE, 250, NULL);
 				switch_yield(250000);
 			} else {
-				switch_status_t st;
+			//	switch_status_t st;
 				switch_channel_wait_for_flag(channel, CF_REQ_MEDIA, SWITCH_FALSE, 10000, NULL);
 				switch_channel_wait_for_flag(channel, CF_MEDIA_ACK, SWITCH_TRUE, 10000, NULL);
 				switch_channel_wait_for_flag(channel, CF_MEDIA_SET, SWITCH_TRUE, 10000, NULL);
-				st = switch_core_session_read_frame(session, &read_frame, SWITCH_IO_FLAG_NONE, 0);
+		//		st = switch_core_session_read_frame(session, &read_frame, SWITCH_IO_FLAG_NONE, 0);
 			}
 
 			if ((flags & SMF_REBRIDGE)
@@ -2095,7 +2095,7 @@ SWITCH_DECLARE(void) switch_ivr_delay_echo(switch_core_session_t *session, uint3
 	switch_frame_t *read_frame, write_frame = { 0 };
 	switch_status_t status;
 	switch_channel_t *channel = switch_core_session_get_channel(session);
-	uint32_t interval, samples;
+	uint32_t interval/*, samples*/;
 	uint32_t ts = 0;
 	switch_codec_implementation_t read_impl = { 0 };
 	switch_core_session_get_read_impl(session, &read_impl);
@@ -2107,7 +2107,7 @@ SWITCH_DECLARE(void) switch_ivr_delay_echo(switch_core_session_t *session, uint3
 	}
 
 	interval = read_impl.microseconds_per_packet / 1000;
-	samples = switch_samples_per_packet(read_impl.samples_per_second, interval);
+//	samples = switch_samples_per_packet(read_impl.samples_per_second, interval);
 
 	qlen = delay_ms / (interval);
 	switch_log_printf(SWITCH_CHANNEL_SESSION_LOG(session), SWITCH_LOG_DEBUG, "Setting delay to %dms (%d frames)\n", delay_ms, qlen);

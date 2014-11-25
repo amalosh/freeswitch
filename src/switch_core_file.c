@@ -204,7 +204,7 @@ SWITCH_DECLARE(switch_status_t) switch_core_perform_file_open(const char *file, 
 SWITCH_DECLARE(switch_status_t) switch_core_file_read(switch_file_handle_t *fh, void *data, switch_size_t *len)
 {
 	switch_status_t status = SWITCH_STATUS_FALSE;
-	switch_size_t want, got, orig_len = *len;
+	switch_size_t want/*, got*/, orig_len = *len;
 
 	switch_assert(fh != NULL);
 	switch_assert(fh->file_interface != NULL);
@@ -276,7 +276,7 @@ SWITCH_DECLARE(switch_status_t) switch_core_file_read(switch_file_handle_t *fh, 
 	}
 
 
-	got = *len;
+	//got = *len;
 
 	if (!switch_test_flag(fh, SWITCH_FILE_NATIVE) && fh->native_rate != fh->samplerate) {
 		if (!fh->resampler) {
@@ -551,14 +551,14 @@ SWITCH_DECLARE(switch_status_t) switch_core_file_close(switch_file_handle_t *fh)
 
 	if (fh->spool_path) {
 		char *command;
-		int result;
+	//	int result;
 
 #ifdef _MSC_VER
 		command = switch_mprintf("move %s %s", fh->spool_path, fh->file_path);
 #else
 		command = switch_mprintf("/bin/mv %s %s", fh->spool_path, fh->file_path);
 #endif
-		result = system(command);
+	//	result = system(command);
 		switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_DEBUG, "Copy spooled file [%s] to [%s]\n", fh->spool_path, fh->file_path);
 		free(command);
 	}

@@ -2174,7 +2174,7 @@ SWITCH_STANDARD_API(uuid_broadcast_function)
 {
 	char *mycmd = NULL, *argv[4] = { 0 };
 	int argc = 0;
-	switch_status_t status = SWITCH_STATUS_FALSE;
+	//switch_status_t status = SWITCH_STATUS_FALSE;
 
 	if (!zstr(cmd) && (mycmd = strdup(cmd))) {
 		argc = switch_separate_string(mycmd, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
@@ -2197,7 +2197,7 @@ SWITCH_STANDARD_API(uuid_broadcast_function)
 			flags |= SMF_ECHO_ALEG;
 		}
 
-		status = switch_ivr_broadcast(argv[0], argv[1], flags);
+	//	status = switch_ivr_broadcast(argv[0], argv[1], flags);
 		stream->write_function(stream, "+OK Message Sent\n");
 	}
 
@@ -2210,7 +2210,7 @@ SWITCH_STANDARD_API(sched_broadcast_function)
 {
 	char *mycmd = NULL, *argv[4] = { 0 };
 	int argc = 0;
-	switch_status_t status = SWITCH_STATUS_FALSE;
+	//switch_status_t status = SWITCH_STATUS_FALSE;
 
 	if (!zstr(cmd) && (mycmd = strdup(cmd))) {
 		argc = switch_separate_string(mycmd, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
@@ -2220,14 +2220,14 @@ SWITCH_STANDARD_API(sched_broadcast_function)
 		stream->write_function(stream, "-USAGE: %s\n", SCHED_BROADCAST_SYNTAX);
 	} else {
 		switch_media_flag_t flags = SMF_NONE;
-		time_t when;
-
+//		time_t when;
+/*
 		if (*argv[0] == '+') {
 			when = switch_epoch_time_now(NULL) + atol(argv[0] + 1);
 		} else {
 			when = atol(argv[0]);
 		}
-
+*/
 		if (argv[3]) {
 			if (!strcasecmp(argv[3], "both")) {
 				flags |= (SMF_ECHO_ALEG | SMF_ECHO_BLEG);
@@ -2240,7 +2240,7 @@ SWITCH_STANDARD_API(sched_broadcast_function)
 			flags |= SMF_ECHO_ALEG;
 		}
 
-		status = switch_ivr_schedule_broadcast(when, argv[1], argv[2], flags);
+	//	status = switch_ivr_schedule_broadcast(when, argv[1], argv[2], flags);
 		stream->write_function(stream, "+OK Message Scheduled\n");
 	}
 
@@ -3227,7 +3227,7 @@ SWITCH_STANDARD_API(show_function)
 	struct holder holder = { 0 };
 	int help = 0;
 	char *mydata = NULL, *argv[6] = { 0 };
-	int argc;
+//	int argc;
 	char *command = NULL, *as = NULL;
 	switch_core_flag_t cflags = switch_core_flags();
 	switch_status_t status = SWITCH_STATUS_SUCCESS;
@@ -3240,7 +3240,7 @@ SWITCH_STANDARD_API(show_function)
 	holder.justcount = 0;
 
 	if (cmd && (mydata = strdup(cmd))) {
-		argc = switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
+	/*	argc =*/ switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
 		command = argv[0];
 		if (argv[2] && !strcasecmp(argv[1], "as")) {
 			as = argv[2];
@@ -3970,13 +3970,13 @@ SWITCH_STANDARD_API(strftime_tz_api_function)
 SWITCH_STANDARD_API(hupall_api_function)
 {
 	char *mycmd = NULL, *argv[3] = { 0 };
-	int argc = 0;
+	//int argc = 0;
 	char *var = NULL;
 	char *val = NULL;
 	switch_call_cause_t cause = SWITCH_CAUSE_MANAGER_REQUEST;
 
 	if (!zstr(cmd) && (mycmd = strdup(cmd))) {
-		argc = switch_separate_string(mycmd, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
+	/*	argc = */switch_separate_string(mycmd, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
 		switch_assert(argv[0]);
 		if ((cause = switch_channel_str2cause(argv[0])) == SWITCH_CAUSE_NONE) {
 			cause = SWITCH_CAUSE_MANAGER_REQUEST;

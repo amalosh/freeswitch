@@ -1153,7 +1153,7 @@ static void switch_core_set_serial(void)
 	char path[256];
 
 	int fd = -1, write_fd = -1;
-	switch_ssize_t bytes = 0;
+	//switch_ssize_t bytes = 0;
 
 	switch_snprintf(path, sizeof(path), "%s%sfreeswitch.serial", SWITCH_GLOBAL_dirs.conf_dir, SWITCH_PATH_SEPARATOR);
 
@@ -1175,12 +1175,12 @@ static void switch_core_set_serial(void)
 		switch_stun_random_string(buf + 8, 4, "0123456789abcdef");
 
 		if ((write_fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) >= 0) {
-			bytes = write(write_fd, buf, sizeof(buf));
+		//	bytes = write(write_fd, buf, sizeof(buf));
 			close(write_fd);
 			write_fd = -1;
 		}
 	} else {
-		bytes = read(fd, buf, sizeof(buf));
+	//	bytes = read(fd, buf, sizeof(buf));
 		close(fd);
 		fd = -1;
 	}

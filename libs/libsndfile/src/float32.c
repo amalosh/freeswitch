@@ -505,12 +505,12 @@ d2f_array (const double *src, float *dest, int count)
 
 static sf_count_t
 host_read_f2s	(SF_PRIVATE *psf, short *ptr, sf_count_t len)
-{	void		(*convert) (const float *, int, short *, float) ;
+{	//void		(*convert) (const float *, int, short *, float) ;
 	int			bufferlen, readcount ;
 	sf_count_t	total = 0 ;
 	float		scale ;
 
-	convert = (psf->add_clipping) ? f2s_clip_array : f2s_array ;
+//	convert = (psf->add_clipping) ? f2s_clip_array : f2s_array ;
 	bufferlen = ARRAY_LEN (psf->u.fbuf) ;
 	scale = (psf->float_int_mult == 0) ? 1.0 : 0x7FFF / psf->float_max ;
 

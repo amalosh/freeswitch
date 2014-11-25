@@ -232,8 +232,8 @@ static switch_status_t my_on_reporting(switch_core_session_t *session)
 #else
 			if ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)) > -1) {
 #endif
-				int wrote;
-				wrote = write(fd, xml_text, (unsigned) strlen(xml_text));
+			//	int wrote;
+			//	wrote = write(fd, xml_text, (unsigned) strlen(xml_text));
 				close(fd);
 				fd = -1;
 			} else {
@@ -385,8 +385,8 @@ static switch_status_t my_on_reporting(switch_core_session_t *session)
 #else
 			if ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)) > -1) {
 #endif
-				int wrote;
-				wrote = write(fd, xml_text, (unsigned) strlen(xml_text));
+			//	int wrote;
+			//	wrote = write(fd, xml_text, (unsigned) strlen(xml_text));
 				close(fd);
 				fd = -1;
 			} else {

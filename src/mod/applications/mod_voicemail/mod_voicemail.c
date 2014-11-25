@@ -2286,7 +2286,7 @@ static switch_status_t deliver_vm(vm_profile_t *profile,
 	switch_xml_t x_param, x_params;
 	char *vm_email = NULL;
 	char *vm_notify_email = NULL;
-	char *email_addr = NULL;
+	//char *email_addr = NULL;
 	char *vm_timezone = NULL;
 	int send_mail = 0;
 	int send_main = 0;
@@ -2345,7 +2345,7 @@ static switch_status_t deliver_vm(vm_profile_t *profile,
 		} else if (!strcasecmp(var, "vm-notify-mailto")) {
 			vm_notify_email = switch_core_strdup(pool, val);
 		} else if (!strcasecmp(var, "email-addr")) {
-			email_addr = switch_core_strdup(pool, val);
+	//		email_addr = switch_core_strdup(pool, val);
 		} else if (!strcasecmp(var, "vm-email-all-messages") && (send_main = switch_true(val))) {
 			send_mail++;
 		} else if (!strcasecmp(var, "vm-notify-email-all-messages") && (send_notify = switch_true(val))) {
@@ -2811,8 +2811,8 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 	int send_mail = 0;
 	cc_t cc = { 0 };
 	char *read_flags = NORMAL_FLAG_STRING;
-	int priority = 3;
-	int email_attach = 1;
+	//int priority = 3;
+	//int email_attach = 1;
 	char buf[2];
 	char key_buf[80];
 	char *greet_path = NULL;
@@ -2826,7 +2826,7 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 	char *record_macro = VM_RECORD_MESSAGE_MACRO;
 	int send_main = 0;
 	int send_notify = 0;
-	int insert_db = 1;
+//	int insert_db = 1;
 	const char *read_id = NULL;
 	const char *caller_id_name = NULL;
 	const char *caller_id_number = NULL;
@@ -2881,9 +2881,9 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 					} else if (!strcasecmp(var, "vm-notify-email-all-messages") && (send_notify = switch_true(val))) {
 						send_mail++;
 					} else if (!strcasecmp(var, "vm-keep-local-after-email")) {
-						insert_db = switch_true(val);
+				//		insert_db = switch_true(val);
 					} else if (!strcasecmp(var, "vm-attach-file")) {
-						email_attach = switch_true(val);
+			//			email_attach = switch_true(val);
 					} else if (!strcasecmp(var, "vm-disk-quota")) {
 						disk_quota = atoi(val);
 					} else if (!strcasecmp(var, "vm-alternate-greet-id")) {
@@ -2914,11 +2914,11 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 				switch_log_printf(SWITCH_CHANNEL_SESSION_LOG(session), SWITCH_LOG_WARNING,
 								  "Falling back to leaving message locally due to too many misconfiguration.\n");
 				send_mail = 0;
-				insert_db = 1;
+		//		insert_db = 1;
 			}
 
 			if (send_notify && !send_main) {
-				insert_db = 1;
+		//		insert_db = 1;
 			}
 
 		} else {
@@ -3099,7 +3099,7 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 		(void) vm_macro_get(session, VM_RECORD_URGENT_CHECK_MACRO, key_buf, input, sizeof(input), 1, "", &term, profile->digit_timeout);
 		if (*profile->urgent_key == *input) {
 			read_flags = URGENT_FLAG_STRING;
-			priority = 1;
+		//	priority = 1;
 			(void) switch_ivr_phrase_macro(session, VM_ACK_MACRO, "marked-urgent", NULL, NULL);
 		} else {
 			(void) switch_ivr_phrase_macro(session, VM_ACK_MACRO, "saved", NULL, NULL);
@@ -3151,9 +3151,9 @@ static switch_status_t voicemail_leave_main(switch_core_session_t *session, vm_p
 
 SWITCH_STANDARD_APP(voicemail_function)
 {
-	int argc = 0;
+	//int argc = 0;
 	char *argv[6] = { 0 };
-	char *mydata = NULL;
+	//char *mydata = NULL;
 	vm_profile_t *profile = NULL;
 	const char *profile_name = NULL;
 	const char *domain_name = NULL;
@@ -3163,8 +3163,8 @@ SWITCH_STANDARD_APP(voicemail_function)
 	switch_channel_t *channel = switch_core_session_get_channel(session);
 
 	if (!zstr(data)) {
-		mydata = switch_core_session_strdup(session, data);
-		argc = switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
+	//	mydata = switch_core_session_strdup(session, data);
+	//	argc = switch_separate_string(mydata, ' ', argv, (sizeof(argv) / sizeof(argv[0])));
 	}
 
 	for (;;) {

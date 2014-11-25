@@ -94,7 +94,7 @@ static void do_rotate(cdr_fd_t *fd)
 	char date[80] = "";
 	switch_size_t retsize;
 	char *p;
-	size_t len;
+//	size_t len;
 
 	close(fd->fd);
 	fd->fd = -1;
@@ -103,7 +103,7 @@ static void do_rotate(cdr_fd_t *fd)
 		switch_time_exp_lt(&tm, switch_micro_time_now());
 		switch_strftime_nocheck(date, &retsize, sizeof(date), "%Y-%m-%d-%H-%M-%S", &tm);
 
-		len = strlen(fd->path) + strlen(date) + 2;
+	//	len = strlen(fd->path) + strlen(date) + 2;
 		p = switch_mprintf("%s.%s", fd->path, date);
 		assert(p);
 		switch_file_rename(fd->path, p, globals.pool);
@@ -346,8 +346,10 @@ static switch_status_t load_config(switch_memory_pool_t *pool)
 				} else if (!strcasecmp(var, "default-template")) {
 					globals.default_template = switch_core_strdup(pool, val);
 				} else if (!strcasecmp(var, "master-file-only")) {
-					globals.masterfileonly = switch_true(val);
-				}
+					
+globals.masterfileonly = switch_true(val);
+				
+}
 			}
 		}
 
